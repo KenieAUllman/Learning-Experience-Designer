@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="About McKena Ullman, an Instructional Designer and Learning Experience Designer focused on learning strategy, eLearning, performance analytics, curriculum architecture, and measurable outcomes."
+  />
+  <meta name="author" content="McKena Ullman" />
+  <meta name="theme-color" content="#163A2F" />
+
+  <title>About | McKena Ullman</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <script src="js/main.js" defer></script>
+
+  <style>
+    .about-hero {
+      padding-top: clamp(4.5rem, 9vw, 8rem);
+      padding-bottom: clamp(4.5rem, 9vw, 7rem);
+      background: var(--warm-ivory);
+    }
+
+    .about-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: clamp(3rem, 8vw, 8rem);
+      align-items: start;
+    }
+
+    .about-hero h1 {
+      max-width: 12ch;
+      margin-bottom: 1.6rem;
+      font-size: clamp(3.6rem, 7.5vw, 6.7rem);
+    }
+
+    .about-copy {
+      max-width: 780px;
+      color: var(--muted-ink);
+      font-size: 1.05rem;
+    }
+
+    .about-copy p {
+      margin-bottom: 1.15rem;
+    }
+
+    .about-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .photo-placeholder {
+      min-height: 540px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(rgba(20,33,28,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20,33,28,0.035) 1px, transparent 1px),
+        rgba(217,228,220,0.45);
+      background-size: 28px 28px;
+    }
+
+    .photo-placeholder-inner {
+      max-width: 260px;
+      text-align: center;
+      color: var(--muted-ink);
+    }
+
+    .photo-placeholder-mark {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 1rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--warm-ivory);
+      color: var(--evergreen);
+      font-family: var(--font-serif);
+      font-size: 2rem;
+    }
+
+    .photo-placeholder strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--deep-ink);
+    }
+
+    .approach-section {
+      padding-block: clamp(4.5rem, 9vw, 7rem);
+      background: var(--white);
+    }
+
+    .approach-header {
+      max-width: 760px;
+      margin-bottom: 2.5rem;
+    }
+
+    .approach-header p:not(.eyebrow) {
+      color: var(--muted-ink);
+    }
+
+    .approach-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .approach-card {
+      padding: clamp(1.5rem, 4vw, 2.4rem);
+      background: var(--warm-ivory);
+    }
+
+    .approach-card:nth-child(2) {
+      background: var(--soft-sage);
+    }
+
+    .approach-card:nth-child(3) {
+      background: var(--white);
+    }
+
+    .approach-number {
+      display: block;
+      margin-bottom: 1.5rem;
+      color: var(--warm-brass);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .approach-card h2 {
+      max-width: none;
+      margin-bottom: 0.55rem;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+    }
+
+    .approach-card p {
+      margin-bottom: 0;
+      color: var(--muted-ink);
+    }
+
+    .capabilities-section {
+      padding-block: clamp(4.5rem, 9vw, 7rem);
+      background: var(--soft-sage);
+    }
+
+    .capabilities-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 2.5rem;
+    }
+
+    .capabilities-header h2 {
+      margin-bottom: 0;
+      max-width: 12ch;
+    }
+
+    .capabilities-header p {
+      margin-bottom: 0;
+      color: var(--muted-ink);
+    }
+
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .capability-card {
+      min-width: 0;
+      padding: clamp(1.5rem, 3vw, 2rem);
+      background: var(--warm-ivory);
+    }
+
+    .capability-card h3 {
+      margin-bottom: 1.2rem;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+    }
+
+    .capability-list {
+      display: grid;
+      gap: 0;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .capability-list li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted-ink);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .capability-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .capability-list li::before {
+      content: "↳";
+      margin-right: 0.5rem;
+      color: var(--warm-brass);
+    }
+
+    .tools-note {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(20,33,28,0.18);
+      color: var(--muted-ink);
+      font-size: 0.9rem;
+    }
+
+    .tools-note strong {
+      color: var(--deep-ink);
+    }
+
+    .closing-section {
+      padding-block: clamp(4.5rem, 9vw, 7rem);
+      background: var(--deep-ink);
+      color: var(--white);
+    }
+
+    .about-closing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: clamp(3rem, 8vw, 8rem);
+      align-items: end;
+    }
+
+    .about-closing-grid h2 {
+      max-width: 12ch;
+      margin-bottom: 0;
+    }
+
+    .about-closing-grid p {
+      color: #CED8D2;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 940px) {
+      .about-hero-grid,
+      .approach-flow,
+      .capabilities-header,
+      .capability-grid,
+      .about-closing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-placeholder {
+        min-height: 380px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="McKena Ullman home">
+        <span class="brand-name">McKena Ullman</span>
+        <span class="brand-title">Instructional Designer &amp; Learning Experience Designer</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open navigation"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
+        <a href="work.html">Work</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="resume.html">Résumé</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="about-hero">
+      <div class="container about-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">About</p>
+          <h1>I design learning by figuring out what people actually need first.</h1>
+
+          <div class="about-copy">
+            <p>
+              I started teaching while earning my graduate degree and quickly became fascinated by what happens when complicated ideas finally click.
+            </p>
+
+            <p>
+              That interest took me from education into corporate learning, consulting, and instructional design across technically complex and regulated environments.
+            </p>
+
+            <p>
+              What has stayed constant is the part I enjoy most: ambiguity.
+            </p>
+
+            <p>
+              Give me a complicated process, a stack of source material, an expert who knows so much they don't know where to begin, or a training program that isn't producing the outcome it should, and I want to understand why.
+            </p>
+
+            <p>
+              I tend to work from the system outward.
+            </p>
+
+            <p>
+              What should people be able to do? What prevents them from doing it today? What information actually matters? How should it be organized? What belongs in training? What belongs in performance support? And what doesn't need to be taught at all?
+            </p>
+
+            <p>
+              Then I build.
+            </p>
+
+            <p>
+              My background in education taught me how people learn. Work in regulated environments taught me to care about accuracy and execution. Consulting sharpened my ability to translate complexity into decisions. Data analysis taught me not to stop at whether someone completed a course.
+            </p>
+
+            <p>
+              I want to know whether the learning worked.
+            </p>
+          </div>
+        </div>
+
+        <aside class="photo-placeholder reveal reveal--delay-1" aria-label="Professional headshot placeholder">
+          <div class="photo-placeholder-inner">
+            <div class="photo-placeholder-mark">M</div>
+            <strong>Professional photo coming soon</strong>
+            <p>
+              This space is intentionally reserved for a future headshot at
+              <code>assets/images/mckena-headshot.webp</code>.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="approach-section">
+      <div class="container">
+        <div class="approach-header reveal">
+          <p class="eyebrow">Professional Approach</p>
+          <h2>Diagnose → Design → Measure</h2>
+          <p>
+            I use the framework quietly in the background to keep the work anchored to performance instead of drifting toward content for content’s sake.
+          </p>
+        </div>
+
+        <div class="approach-flow">
+          <article class="approach-card reveal">
+            <span class="approach-number">01</span>
+            <h2>Diagnose</h2>
+            <p>
+              Define the performance problem, audience, constraints, workflow, and evidence before deciding what learning should look like.
+            </p>
+          </article>
+
+          <article class="approach-card reveal reveal--delay-1">
+            <span class="approach-number">02</span>
+            <h2>Design</h2>
+            <p>
+              Build the right combination of instruction, practice, facilitation, tools, and performance support around what people actually need to do.
+            </p>
+          </article>
+
+          <article class="approach-card reveal reveal--delay-2">
+            <span class="approach-number">03</span>
+            <h2>Measure</h2>
+            <p>
+              Look beyond completion to determine whether the experience improved understanding, application, performance, or the larger system.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="capabilities-section">
+      <div class="container">
+        <div class="capabilities-header reveal">
+          <div>
+            <p class="eyebrow">Capabilities</p>
+            <h2>Strategy, experience, and measurement in one system.</h2>
+          </div>
+
+          <p>
+            My work sits at the intersection of instructional design, learning technology, facilitation, analytics, and project execution.
+          </p>
+        </div>
+
+        <div class="capability-grid">
+          <article class="capability-card reveal">
+            <h3>Learning Strategy</h3>
+            <ul class="capability-list">
+              <li>Needs analysis</li>
+              <li>Performance consulting</li>
+              <li>Curriculum architecture</li>
+              <li>Action mapping</li>
+              <li>ADDIE / SAM</li>
+              <li>Evaluation</li>
+              <li>Stakeholder &amp; SME collaboration</li>
+              <li>Project management</li>
+            </ul>
+          </article>
+
+          <article class="capability-card reveal reveal--delay-1">
+            <h3>Learning Experience</h3>
+            <ul class="capability-list">
+              <li>Articulate Storyline</li>
+              <li>Rise 360</li>
+              <li>ILT / VILT</li>
+              <li>Scenario design</li>
+              <li>Storyboarding</li>
+              <li>Facilitation</li>
+              <li>Performance support</li>
+              <li>Microlearning</li>
+            </ul>
+          </article>
+
+          <article class="capability-card reveal reveal--delay-2">
+            <h3>Data &amp; Systems</h3>
+            <ul class="capability-list">
+              <li>Learning analytics</li>
+              <li>Excel</li>
+              <li>KPI development</li>
+              <li>LMS</li>
+              <li>Program evaluation</li>
+              <li>Data interpretation</li>
+              <li>AI-assisted workflows</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="tools-note reveal">
+          <strong>Additional tools:</strong> Canva, Adobe Creative Suite, Figma, Vyond, PowerPoint, HTML/CSS, Microsoft 365, and Google Workspace.
+        </p>
+      </div>
+    </section>
+
+    <section class="closing-section">
+      <div class="container about-closing-grid reveal">
+        <div>
+          <p class="eyebrow eyebrow--light">From ambiguity to measurable performance</p>
+          <h2>I like the part where the problem is still messy.</h2>
+        </div>
+
+        <div>
+          <p>
+            That is usually where the most useful questions are hiding, and where instructional design has the biggest opportunity to become more than a course.
+          </p>
+
+          <div class="button-row">
+            <a class="button button--light" href="work.html">View My Work</a>
+            <a class="button button--ghost-light" href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="footer-brand" href="index.html">McKena Ullman</a>
+        <p>Instructional Designer &amp; Learning Experience Designer</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Résumé</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-note">
+        <p>Designed around clarity. Built for learning.</p>
+        <p>© <span data-current-year></span> McKena Ullman</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
