@@ -1,27 +1,14 @@
-# Page 1 — Home
+# Fleet Foundations page
 
-Upload these files into the root of your GitHub Pages repository.
+Upload:
 
-## Required repository structure
+- `projects/fleet-foundations.html` → replace the placeholder file in your repository's `projects` folder.
+- `js/fleet.js` → add this new file to your repository's `js` folder.
 
-```text
-index.html
-css/
-  styles.css
-  components.css
-js/
-  main.js
-```
+This page depends on your existing shared files:
 
-This homepage already links to the future portfolio pages:
+- `css/styles.css`
+- `css/components.css`
+- `js/main.js`
 
-- `work.html`
-- `about.html`
-- `resume.html`
-- `contact.html`
-- `projects/fleet-foundations.html`
-- `projects/emergency-response.html`
-- `projects/training-analytics.html`
-- `lab/index.html`
-
-Those pages need to exist in the repository for those links to resolve.
+Do not replace those shared files for this page.
