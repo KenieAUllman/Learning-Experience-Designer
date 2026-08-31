@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Résumé for McKena Ullman, Instructional Designer and Learning Experience Designer with experience in maritime learning, consulting, financial services training, education, analytics, and regulated environments."
+  />
+  <meta name="author" content="McKena Ullman" />
+  <meta name="theme-color" content="#163A2F" />
+
+  <title>Résumé | McKena Ullman</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <script src="js/main.js" defer></script>
+
+  <style>
+    .resume-hero {
+      padding-top: clamp(4.5rem, 9vw, 8rem);
+      padding-bottom: clamp(4rem, 8vw, 6rem);
+      background: var(--warm-ivory);
+    }
+
+    .resume-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: clamp(3rem, 8vw, 8rem);
+      align-items: end;
+    }
+
+    .resume-hero h1 {
+      max-width: 12ch;
+      margin-bottom: 1rem;
+      font-size: clamp(3.8rem, 8vw, 7rem);
+    }
+
+    .resume-intro {
+      max-width: 720px;
+      margin-bottom: 1.6rem;
+      color: var(--evergreen);
+      font-family: var(--font-serif);
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .resume-summary {
+      max-width: 760px;
+      color: var(--muted-ink);
+      font-size: 1.05rem;
+    }
+
+    .resume-action-card {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .resume-action-card p {
+      color: var(--muted-ink);
+      font-size: 0.9rem;
+    }
+
+    .resume-section {
+      padding-block: clamp(4.5rem, 9vw, 7rem);
+    }
+
+    .resume-section--white { background: var(--white); }
+    .resume-section--ivory { background: var(--warm-ivory); }
+    .resume-section--sage { background: var(--soft-sage); }
+
+    .resume-section-grid {
+      display: grid;
+      grid-template-columns: minmax(210px, 0.36fr) minmax(0, 1fr);
+      gap: clamp(2.5rem, 7vw, 7rem);
+      align-items: start;
+    }
+
+    .resume-section-label {
+      position: sticky;
+      top: 110px;
+    }
+
+    .resume-section-label h2 {
+      max-width: 9ch;
+      margin-bottom: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr);
+      gap: clamp(1.25rem, 4vw, 3rem);
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .experience-meta {
+      color: var(--muted-ink);
+      font-size: 0.82rem;
+    }
+
+    .experience-meta strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--deep-ink);
+      font-size: 0.9rem;
+    }
+
+    .experience-meta span {
+      display: block;
+    }
+
+    .experience-body h3 {
+      margin-bottom: 0.35rem;
+      font-size: clamp(1.45rem, 2.6vw, 2rem);
+    }
+
+    .experience-body .org {
+      margin-bottom: 1rem;
+      color: var(--evergreen);
+      font-weight: 800;
+    }
+
+    .experience-body ul {
+      display: grid;
+      gap: 0.6rem;
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted-ink);
+    }
+
+    .experience-body li::marker {
+      color: var(--warm-brass);
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .education-card {
+      padding: clamp(1.5rem, 4vw, 2.4rem);
+      background: var(--white);
+    }
+
+    .education-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    }
+
+    .education-card .degree {
+      margin-bottom: 0.2rem;
+      color: var(--evergreen);
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .education-card p {
+      margin-bottom: 0.2rem;
+      color: var(--muted-ink);
+    }
+
+    .skills-band {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .skills-card {
+      padding: 1.5rem;
+      background: var(--warm-ivory);
+    }
+
+    .skills-card h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+
+    .skills-card p {
+      margin-bottom: 0;
+      color: var(--muted-ink);
+      font-size: 0.9rem;
+    }
+
+    .resume-footer-cta {
+      padding-block: clamp(4rem, 8vw, 6rem);
+      background: var(--deep-ink);
+      color: var(--white);
+    }
+
+    .resume-footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .resume-footer-grid h2 {
+      max-width: 14ch;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 940px) {
+      .resume-hero-grid,
+      .resume-section-grid,
+      .experience-item,
+      .education-grid,
+      .skills-band,
+      .resume-footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .resume-section-label {
+        position: static;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="McKena Ullman home">
+        <span class="brand-name">McKena Ullman</span>
+        <span class="brand-title">Instructional Designer &amp; Learning Experience Designer</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open navigation"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="resume.html" aria-current="page">Résumé</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="resume-hero">
+      <div class="container resume-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Résumé</p>
+          <h1>Experience built at the intersection of learning, systems, and analysis.</h1>
+
+          <p class="resume-intro">
+            My career has moved through education, training, consulting, and instructional design,
+            but the through-line has remained the same: translating complexity into structures people can understand and use.
+          </p>
+
+          <p class="resume-summary">
+            I design learning systems, translate regulated and technical content into clear instruction,
+            build scalable onboarding and performance-support tools, and use data to evaluate what happens after training.
+          </p>
+        </div>
+
+        <aside class="resume-action-card reveal reveal--delay-1">
+          <p class="eyebrow">Full résumé</p>
+          <p>
+            Prefer the traditional version? Download the full PDF résumé for a complete career history and additional details.
+          </p>
+
+          <a
+            class="button button--primary"
+            href="assets/downloads/McKena-Ullman-Resume.pdf"
+            download
+          >
+            Download Résumé
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="resume-section resume-section--white">
+      <div class="container resume-section-grid">
+        <div class="resume-section-label reveal">
+          <p class="eyebrow">Selected Experience</p>
+          <h2>Learning work across four environments.</h2>
+        </div>
+
+        <div class="experience-list reveal reveal--delay-1">
+
+          <article class="experience-item">
+            <div class="experience-meta">
+              <strong>June 2026 to Present</strong>
+              <span>Maritime learning</span>
+            </div>
+
+            <div class="experience-body">
+              <h3>Instructional Designer / Training Specialist</h3>
+              <p class="org">American Cruise Lines</p>
+
+              <ul>
+                <li>
+                  Designs and develops eLearning in Articulate Storyline and Rise, translating USCG regulations,
+                  STCW standards, and operational SOPs into structured, compliance-aligned learning for maritime staff and officers.
+                </li>
+                <li>
+                  Analyzed 1,050+ new-hire records using Excel, pivot tables, and correlation statistics to establish
+                  training-program KPIs and identify effectiveness patterns that informed curriculum decisions.
+                </li>
+                <li>
+                  Completed a comprehensive SmarterU LMS audit to establish a content-quality baseline and prioritized development roadmap.
+                </li>
+                <li>
+                  Develops Train-the-Trainer structure for internal maritime subject-matter experts.
+                </li>
+                <li>
+                  Conducts formal needs analysis to establish upskilling guidelines and structured learning pathways for shipboard personnel.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <div class="experience-meta">
+              <strong>August 2024 to May 2026</strong>
+              <span>Consulting</span>
+            </div>
+
+            <div class="experience-body">
+              <h3>Learning &amp; Performance Consultant</h3>
+              <p class="org">RPE Strategies</p>
+
+              <ul>
+                <li>
+                  Translated complex financial, underwriting, and risk concepts into actionable learning experiences for clients,
+                  investors, and internal teams.
+                </li>
+                <li>
+                  Designed webinars, microlearning modules, technical reference materials, and learning pathways to streamline onboarding and improve independent application.
+                </li>
+                <li>
+                  Developed investor-ready financial models and technical guides while coaching clients on interpreting outputs and making informed decisions.
+                </li>
+                <li>
+                  Created interactive tools and templates that accelerated client proficiency and reduced reliance on one-on-one consultation.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <div class="experience-meta">
+              <strong>September 2023 to May 2024</strong>
+              <span>Financial services training</span>
+            </div>
+
+            <div class="experience-body">
+              <h3>Training Coordinator</h3>
+              <p class="org">All In Credit Union</p>
+
+              <ul>
+                <li>
+                  Designed and implemented onboarding and training systems in a regulated financial environment,
+                  supporting stronger operational consistency and decision accuracy.
+                </li>
+                <li>
+                  Built SOPs, process documentation, and internal knowledge resources to support scalable operations.
+                </li>
+                <li>
+                  Restructured onboarding workflows, reducing training time and improving employee retention by 12%.
+                </li>
+                <li>
+                  Partnered with leadership to align procedures with compliance, risk standards, and operational goals.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <div class="experience-meta">
+              <strong>2019 to 2023</strong>
+              <span>Education</span>
+            </div>
+
+            <div class="experience-body">
+              <h3>Concurrent Enrollment Teacher &amp; Economics Professor</h3>
+              <p class="org">Lumen Scholar Institute</p>
+
+              <ul>
+                <li>
+                  Designed and delivered online courses through LMS platforms, integrating eLearning materials and educational technology.
+                </li>
+                <li>
+                  Applied adult-learning principles to create student-centered experiences and support knowledge retention.
+                </li>
+                <li>
+                  Supervised and mentored teachers to support content quality and alignment with learning objectives.
+                </li>
+                <li>
+                  Designed applied economics instruction focused on decision-making, analytical reasoning, and real-world application.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-section resume-section--sage">
+      <div class="container resume-section-grid">
+        <div class="resume-section-label reveal">
+          <p class="eyebrow">Education</p>
+          <h2>Academic foundation.</h2>
+        </div>
+
+        <div class="education-grid reveal reveal--delay-1">
+          <article class="education-card">
+            <p class="degree">M.A. International Relations &amp; Global Enterprise</p>
+            <h3>University of Utah</h3>
+            <p>Salt Lake City, Utah</p>
+            <p>2016 to 2018</p>
+          </article>
+
+          <article class="education-card">
+            <p class="degree">B.A. Criminal Justice</p>
+            <h3>Utah Valley University</h3>
+            <p>Orem, Utah</p>
+            <p>2013 to 2015</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-section resume-section--ivory">
+      <div class="container resume-section-grid">
+        <div class="resume-section-label reveal">
+          <p class="eyebrow">Core Strengths</p>
+          <h2>What I bring to the work.</h2>
+        </div>
+
+        <div class="skills-band reveal reveal--delay-1">
+          <article class="skills-card">
+            <h3>Instructional Design</h3>
+            <p>ADDIE, curriculum development, adult learning, needs analysis, eLearning, ILT, web-based training, LMS, facilitation, and technical writing.</p>
+          </article>
+
+          <article class="skills-card">
+            <h3>Analysis</h3>
+            <p>Excel, quantitative analysis, statistical analysis, data interpretation, KPI development, risk evaluation, process improvement, and program evaluation.</p>
+          </article>
+
+          <article class="skills-card">
+            <h3>Systems &amp; Collaboration</h3>
+            <p>Stakeholder management, SME collaboration, project management, cross-functional communication, SOP documentation, process design, and regulated-environment execution.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-footer-cta">
+      <div class="container resume-footer-grid reveal">
+        <div>
+          <p class="eyebrow eyebrow--light">From experience to evidence</p>
+          <h2>See the projects behind the résumé.</h2>
+        </div>
+
+        <div class="button-row">
+          <a class="button button--light" href="work.html">View Work</a>
+          <a class="button button--ghost-light" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="footer-brand" href="index.html">McKena Ullman</a>
+        <p>Instructional Designer &amp; Learning Experience Designer</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Résumé</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-note">
+        <p>Designed around clarity. Built for learning.</p>
+        <p>© <span data-current-year></span> McKena Ullman</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
