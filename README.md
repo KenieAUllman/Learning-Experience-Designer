@@ -1,29 +1,19 @@
-# McKena Ullman Portfolio Homepage
+# Page 1 — Home
 
-This folder contains the Phase 1 homepage for a static GitHub Pages portfolio.
+Upload these files into the root of your GitHub Pages repository.
 
-## Files
-
-- `index.html` — homepage
-- `css/styles.css` — layout, typography, responsive design
-- `css/components.css` — shared buttons and focus states
-- `js/main.js` — mobile navigation, reveal effects, header state, year
-- `.nojekyll` — tells GitHub Pages not to run the site through Jekyll
-
-## Upload to GitHub Pages
-
-Upload the contents of this folder to the root of your `YOURUSERNAME.github.io` repository.
-
-Your repository root should look like:
+## Required repository structure
 
 ```text
 index.html
-.nojekyll
 css/
+  styles.css
+  components.css
 js/
+  main.js
 ```
 
-The homepage already links to future pages:
+This homepage already links to the future portfolio pages:
 
 - `work.html`
 - `about.html`
@@ -34,4 +24,4 @@ The homepage already links to future pages:
 - `projects/training-analytics.html`
 - `lab/index.html`
 
-Those links will return 404 errors until the later portfolio pages are added. That is expected during Phase 1.
+Those pages need to exist in the repository for those links to resolve.
