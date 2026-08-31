@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Interaction Lab by McKena Ullman: small experiments in learning technologies, interaction patterns, responsive behavior, data storytelling, accessibility, and native-web development."
+  />
+  <meta name="author" content="McKena Ullman" />
+  <meta name="theme-color" content="#163A2F" />
+
+  <title>Interaction Lab | McKena Ullman</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <script src="../js/main.js" defer></script>
+
+  <style>
+    .lab-hero {
+      padding-top: clamp(4.5rem, 9vw, 8rem);
+      padding-bottom: clamp(4rem, 8vw, 6rem);
+      background: var(--warm-ivory);
+    }
+
+    .lab-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: clamp(3rem, 8vw, 8rem);
+      align-items: end;
+    }
+
+    .lab-hero h1 {
+      max-width: 9ch;
+      margin-bottom: 0;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+    }
+
+    .lab-intro {
+      max-width: 760px;
+      margin-bottom: 0;
+      color: var(--muted-ink);
+      font-size: clamp(1.08rem, 2vw, 1.28rem);
+    }
+
+    .experiments-section {
+      padding-block: clamp(4.5rem, 9vw, 7rem);
+      background: var(--white);
+    }
+
+    .experiments-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 2rem;
+    }
+
+    .experiments-header h2 {
+      max-width: 12ch;
+      margin-bottom: 0;
+    }
+
+    .experiments-header p {
+      max-width: 520px;
+      margin-bottom: 0;
+      color: var(--muted-ink);
+    }
+
+    .experiment-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .experiment-card {
+      position: relative;
+      display: grid;
+      grid-template-rows: minmax(240px, auto) auto;
+      min-height: 100%;
+      border: 1px solid var(--border);
+      background: var(--warm-ivory);
+      transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+    }
+
+    .experiment-card:hover {
+      transform: translateY(-2px);
+      background: var(--white);
+      border-color: rgba(22,58,47,0.3);
+    }
+
+    .experiment-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background:
+        linear-gradient(rgba(20,33,28,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20,33,28,0.035) 1px, transparent 1px),
+        rgba(217,228,220,0.45);
+      background-size: 28px 28px;
+    }
+
+    .lab-window {
+      width: min(100%, 520px);
+      margin-inline: auto;
+      border: 1px solid rgba(20,33,28,0.2);
+      background: var(--white);
+      box-shadow: 0 14px 40px rgba(20,33,28,0.07);
+    }
+
+    .lab-window-bar {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 0.8rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--warm-ivory);
+    }
+
+    .lab-window-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(20,33,28,0.22);
+    }
+
+    .lab-window-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px;
+      gap: 1rem;
+      padding: 1.2rem;
+      align-items: center;
+    }
+
+    .fake-copy {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .fake-line {
+      height: 8px;
+      background: rgba(20,33,28,0.12);
+    }
+
+    .fake-line--wide { width: 90%; }
+    .fake-line--med { width: 70%; }
+    .fake-line--short { width: 48%; }
+
+    .donut {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin-inline: auto;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          var(--evergreen) 0 28%,
+          rgba(22,58,47,0.68) 28% 55%,
+          rgba(180,123,57,0.82) 55% 77%,
+          rgba(20,33,28,0.24) 77% 100%
+        );
+    }
+
+    .donut::after {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border-radius: 50%;
+      background: var(--white);
+    }
+
+    .experiment-content {
+      display: flex;
+      flex-direction: column;
+      padding: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    .experiment-number {
+      margin-bottom: 1rem;
+      color: var(--warm-brass);
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+    }
+
+    .experiment-content h3 {
+      margin-bottom: 0.6rem;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+    }
+
+    .experiment-content > p {
+      color: var(--muted-ink);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 0.4rem 0 1.4rem;
+    }
+
+    .tag {
+      padding: 0.28rem 0.5rem;
+      border: 1px solid var(--border);
+      color: var(--muted-ink);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .experiment-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      align-self: flex-start;
+      margin-top: auto;
+      color: var(--evergreen);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .experiment-link::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -0.25rem;
+      left: 0;
+      height: 1px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: currentColor;
+      transition: transform var(--transition);
+    }
+
+    .experiment-link:hover::after,
+    .experiment-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .placeholder-card {
+      display: grid;
+      min-height: 100%;
+      place-items: center;
+      padding: 2rem;
+      border: 1px dashed rgba(20,33,28,0.22);
+      background: rgba(247,244,236,0.55);
+      text-align: center;
+    }
+
+    .placeholder-card p {
+      max-width: 360px;
+      margin-bottom: 0;
+      color: var(--muted-ink);
+      font-size: 0.9rem;
+    }
+
+    .lab-footer-cta {
+      padding-block: clamp(4rem, 8vw, 6rem);
+      background: var(--soft-sage);
+    }
+
+    .lab-footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .lab-footer-grid h2 {
+      margin-bottom: 0;
+      max-width: 15ch;
+    }
+
+    @media (max-width: 900px) {
+      .lab-hero-grid,
+      .experiment-grid,
+      .lab-footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experiments-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .lab-window-body {
+        grid-template-columns: 1fr;
+      }
+
+      .donut {
+        width: 100px;
+        height: 100px;
+      }
+
+      .donut::after {
+        inset: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="McKena Ullman home">
+        <span class="brand-name">McKena Ullman</span>
+        <span class="brand-title">Instructional Designer &amp; Learning Experience Designer</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open navigation"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
+        <a href="../work.html">Work</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Résumé</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="lab-hero">
+      <div class="container lab-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Interaction Lab</p>
+          <h1>Small builds. Specific experiments.</h1>
+        </div>
+
+        <p class="lab-intro reveal reveal--delay-1">
+          The Interaction Lab is where I test learning technologies, interaction patterns,
+          responsive behavior, data storytelling, and development techniques outside larger projects.
+        </p>
+      </div>
+    </section>
+
+    <section class="experiments-section">
+      <div class="container">
+        <div class="experiments-header reveal">
+          <div>
+            <p class="eyebrow">Experiments</p>
+            <h2>Focused builds with a narrow question.</h2>
+          </div>
+
+          <p>
+            These aren’t full case studies. Each one isolates a smaller design or development problem
+            so I can test an interaction, technology, accessibility pattern, or visual idea more deeply.
+          </p>
+        </div>
+
+        <div class="experiment-grid">
+
+          <article class="experiment-card reveal">
+            <div class="experiment-visual" aria-hidden="true">
+              <div class="lab-window">
+                <div class="lab-window-bar">
+                  <span class="lab-window-dot"></span>
+                  <span class="lab-window-dot"></span>
+                  <span class="lab-window-dot"></span>
+                </div>
+
+                <div class="lab-window-body">
+                  <div class="fake-copy">
+                    <div class="fake-line fake-line--short"></div>
+                    <div class="fake-line fake-line--wide"></div>
+                    <div class="fake-line fake-line--med"></div>
+                    <div class="fake-line fake-line--wide"></div>
+                    <div class="fake-line fake-line--short"></div>
+                  </div>
+
+                  <div class="donut"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="experiment-content">
+              <div class="experiment-number">01</div>
+
+              <h3>Most Popular Pets in America</h3>
+
+              <p>
+                A native-web reconstruction of an Articulate Storyline interaction exploring responsive
+                data visualization, state-based navigation, accessible hover alternatives, and persistent interaction state.
+              </p>
+
+              <div class="tag-row" aria-label="Project tags">
+                <span class="tag">Native Web</span>
+                <span class="tag">Data Visualization</span>
+                <span class="tag">Responsive Interaction</span>
+                <span class="tag">Accessibility</span>
+              </div>
+
+              <a class="experiment-link" href="pets.html">
+                Explore the Experiment <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <div class="placeholder-card reveal reveal--delay-1" aria-label="Future experiment placeholder">
+            <div>
+              <p class="eyebrow">More experiments later</p>
+              <h3>This lab is designed to grow without rearranging the portfolio.</h3>
+              <p>
+                Future microlearning, interaction, accessibility, data-storytelling, or front-end learning experiments can drop into this grid as standalone cards.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-footer-cta">
+      <div class="container lab-footer-grid reveal">
+        <div>
+          <p class="eyebrow">Back to the larger systems</p>
+          <h2>See how the experiments connect to full learning projects.</h2>
+        </div>
+
+        <a class="button button--primary" href="../work.html">View Case Studies</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="footer-brand" href="../index.html">McKena Ullman</a>
+        <p>Instructional Designer &amp; Learning Experience Designer</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../work.html">Work</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Résumé</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-note">
+        <p>Designed around clarity. Built for learning.</p>
+        <p>© <span data-current-year></span> McKena Ullman</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

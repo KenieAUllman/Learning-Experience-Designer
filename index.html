@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Interaction Lab by McKena Ullman: small experiments in learning technologies, interaction patterns, responsive behavior, data storytelling, accessibility, and native-web development."
+    content="McKena Ullman is an Instructional Designer and Learning Experience Designer specializing in learning strategy, eLearning, performance analytics, curriculum architecture, and measurable outcomes."
   />
   <meta name="author" content="McKena Ullman" />
   <meta name="theme-color" content="#163A2F" />
 
-  <title>Interaction Lab | McKena Ullman</title>
+  <title>McKena Ullman | Instructional Designer & Learning Experience Designer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,300 +19,9 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="../css/components.css" />
-  <script src="../js/main.js" defer></script>
-
-  <style>
-    .lab-hero {
-      padding-top: clamp(4.5rem, 9vw, 8rem);
-      padding-bottom: clamp(4rem, 8vw, 6rem);
-      background: var(--warm-ivory);
-    }
-
-    .lab-hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
-      gap: clamp(3rem, 8vw, 8rem);
-      align-items: end;
-    }
-
-    .lab-hero h1 {
-      max-width: 9ch;
-      margin-bottom: 0;
-      font-size: clamp(3.6rem, 8vw, 7rem);
-    }
-
-    .lab-intro {
-      max-width: 760px;
-      margin-bottom: 0;
-      color: var(--muted-ink);
-      font-size: clamp(1.08rem, 2vw, 1.28rem);
-    }
-
-    .experiments-section {
-      padding-block: clamp(4.5rem, 9vw, 7rem);
-      background: var(--white);
-    }
-
-    .experiments-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 2rem;
-      align-items: end;
-      margin-bottom: 2rem;
-    }
-
-    .experiments-header h2 {
-      max-width: 12ch;
-      margin-bottom: 0;
-    }
-
-    .experiments-header p {
-      max-width: 520px;
-      margin-bottom: 0;
-      color: var(--muted-ink);
-    }
-
-    .experiment-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .experiment-card {
-      position: relative;
-      display: grid;
-      grid-template-rows: minmax(240px, auto) auto;
-      min-height: 100%;
-      border: 1px solid var(--border);
-      background: var(--warm-ivory);
-      transition:
-        transform var(--transition),
-        background var(--transition),
-        border-color var(--transition);
-    }
-
-    .experiment-card:hover {
-      transform: translateY(-2px);
-      background: var(--white);
-      border-color: rgba(22,58,47,0.3);
-    }
-
-    .experiment-visual {
-      position: relative;
-      overflow: hidden;
-      min-height: 260px;
-      padding: 1.5rem;
-      border-bottom: 1px solid var(--border);
-      background:
-        linear-gradient(rgba(20,33,28,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(20,33,28,0.035) 1px, transparent 1px),
-        rgba(217,228,220,0.45);
-      background-size: 28px 28px;
-    }
-
-    .lab-window {
-      width: min(100%, 520px);
-      margin-inline: auto;
-      border: 1px solid rgba(20,33,28,0.2);
-      background: var(--white);
-      box-shadow: 0 14px 40px rgba(20,33,28,0.07);
-    }
-
-    .lab-window-bar {
-      display: flex;
-      gap: 0.4rem;
-      align-items: center;
-      min-height: 34px;
-      padding: 0 0.8rem;
-      border-bottom: 1px solid var(--border);
-      background: var(--warm-ivory);
-    }
-
-    .lab-window-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: rgba(20,33,28,0.22);
-    }
-
-    .lab-window-body {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 150px;
-      gap: 1rem;
-      padding: 1.2rem;
-      align-items: center;
-    }
-
-    .fake-copy {
-      display: grid;
-      gap: 0.5rem;
-    }
-
-    .fake-line {
-      height: 8px;
-      background: rgba(20,33,28,0.12);
-    }
-
-    .fake-line--wide { width: 90%; }
-    .fake-line--med { width: 70%; }
-    .fake-line--short { width: 48%; }
-
-    .donut {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      margin-inline: auto;
-      border-radius: 50%;
-      background:
-        conic-gradient(
-          var(--evergreen) 0 28%,
-          rgba(22,58,47,0.68) 28% 55%,
-          rgba(180,123,57,0.82) 55% 77%,
-          rgba(20,33,28,0.24) 77% 100%
-        );
-    }
-
-    .donut::after {
-      content: "";
-      position: absolute;
-      inset: 26px;
-      border-radius: 50%;
-      background: var(--white);
-    }
-
-    .experiment-content {
-      display: flex;
-      flex-direction: column;
-      padding: clamp(1.4rem, 3vw, 2rem);
-    }
-
-    .experiment-number {
-      margin-bottom: 1rem;
-      color: var(--warm-brass);
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-    }
-
-    .experiment-content h3 {
-      margin-bottom: 0.6rem;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-    }
-
-    .experiment-content > p {
-      color: var(--muted-ink);
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin: 0.4rem 0 1.4rem;
-    }
-
-    .tag {
-      padding: 0.28rem 0.5rem;
-      border: 1px solid var(--border);
-      color: var(--muted-ink);
-      font-size: 0.66rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .experiment-link {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      align-self: flex-start;
-      margin-top: auto;
-      color: var(--evergreen);
-      font-size: 0.9rem;
-      font-weight: 800;
-    }
-
-    .experiment-link::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      bottom: -0.25rem;
-      left: 0;
-      height: 1px;
-      transform: scaleX(0);
-      transform-origin: left;
-      background: currentColor;
-      transition: transform var(--transition);
-    }
-
-    .experiment-link:hover::after,
-    .experiment-link:focus-visible::after {
-      transform: scaleX(1);
-    }
-
-    .placeholder-card {
-      display: grid;
-      min-height: 100%;
-      place-items: center;
-      padding: 2rem;
-      border: 1px dashed rgba(20,33,28,0.22);
-      background: rgba(247,244,236,0.55);
-      text-align: center;
-    }
-
-    .placeholder-card p {
-      max-width: 360px;
-      margin-bottom: 0;
-      color: var(--muted-ink);
-      font-size: 0.9rem;
-    }
-
-    .lab-footer-cta {
-      padding-block: clamp(4rem, 8vw, 6rem);
-      background: var(--soft-sage);
-    }
-
-    .lab-footer-grid {
-      display: grid;
-      grid-template-columns: minmax(0,1fr) auto;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .lab-footer-grid h2 {
-      margin-bottom: 0;
-      max-width: 15ch;
-    }
-
-    @media (max-width: 900px) {
-      .lab-hero-grid,
-      .experiment-grid,
-      .lab-footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .experiments-header {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .lab-window-body {
-        grid-template-columns: 1fr;
-      }
-
-      .donut {
-        width: 100px;
-        height: 100px;
-      }
-
-      .donut::after {
-        inset: 22px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <script src="js/main.js" defer></script>
 </head>
 
 <body>
@@ -320,7 +29,7 @@
 
   <header class="site-header" data-header>
     <div class="container header-inner">
-      <a class="brand" href="../index.html" aria-label="McKena Ullman home">
+      <a class="brand" href="index.html" aria-label="McKena Ullman home">
         <span class="brand-name">McKena Ullman</span>
         <span class="brand-title">Instructional Designer &amp; Learning Experience Designer</span>
       </a>
@@ -338,114 +47,328 @@
       </button>
 
       <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
-        <a href="../work.html">Work</a>
-        <a href="../about.html">About</a>
-        <a href="../resume.html">Résumé</a>
-        <a href="../contact.html">Contact</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Résumé</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
 
-    <section class="lab-hero">
-      <div class="container lab-hero-grid">
-        <div class="reveal">
-          <p class="eyebrow">Interaction Lab</p>
-          <h1>Small builds. Specific experiments.</h1>
+    <!-- HERO -->
+    <section class="hero section section--ivory">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Instructional Design • Learning Experience • Performance Analytics</p>
+
+          <p class="hero-name">McKena Ullman</p>
+          <p class="hero-role">Instructional Designer &amp; Learning Experience Designer</p>
+
+          <h1>
+            I turn complex work into
+            <span class="serif-emphasis">learning people can actually use.</span>
+          </h1>
+
+          <p class="hero-lede">
+            I design learning systems from the ground up, transforming ambiguous performance problems,
+            dense subject matter, and operational data into clear instruction, useful learning experiences,
+            and measurable outcomes.
+          </p>
+
+          <div class="button-row">
+            <a class="button button--primary" href="work.html">
+              Explore My Work <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button button--secondary" href="resume.html">
+              View Résumé
+            </a>
+          </div>
         </div>
 
-        <p class="lab-intro reveal reveal--delay-1">
-          The Interaction Lab is where I test learning technologies, interaction patterns,
-          responsive behavior, data storytelling, and development techniques outside larger projects.
-        </p>
+        <!-- INTERACTIVE SYSTEM VISUAL -->
+        <div class="hero-system reveal reveal--delay-1">
+          <div class="system-heading">
+            <span class="system-kicker">From ambiguity to measurable performance</span>
+            <span class="system-caption">A systems view of the work</span>
+          </div>
+
+          <div class="system-diagram" data-system-diagram>
+            <div class="input-cluster" aria-label="Messy inputs">
+              <span class="input-node node-a">SOPs</span>
+              <span class="input-node node-b">SMEs</span>
+              <span class="input-node node-c">Data</span>
+              <span class="input-node node-d">Processes</span>
+              <span class="input-node node-e">Business goals</span>
+            </div>
+
+            <div class="system-flow" aria-label="Messy input becomes diagnose, design, measure, and performance">
+              <div class="system-step">
+                <span class="system-step-number">01</span>
+                <strong>Diagnose</strong>
+              </div>
+
+              <div class="system-arrow" aria-hidden="true">↓</div>
+
+              <div class="system-step">
+                <span class="system-step-number">02</span>
+                <strong>Design</strong>
+              </div>
+
+              <div class="system-arrow" aria-hidden="true">↓</div>
+
+              <div class="system-step">
+                <span class="system-step-number">03</span>
+                <strong>Measure</strong>
+              </div>
+
+              <div class="system-arrow" aria-hidden="true">↓</div>
+
+              <div class="system-output">
+                <span class="output-dot" aria-hidden="true"></span>
+                <strong>Performance</strong>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="experiments-section">
+    <!-- EVIDENCE STRIP -->
+    <section class="evidence-strip" aria-label="Selected project scale">
+      <div class="container metric-grid">
+        <article class="metric">
+          <strong>1,100</strong>
+          <span>Training records analyzed</span>
+        </article>
+        <article class="metric">
+          <strong>20+</strong>
+          <span>Source procedures synthesized</span>
+        </article>
+        <article class="metric">
+          <strong>10+</strong>
+          <span>Aligned lesson plans architected</span>
+        </article>
+        <article class="metric">
+          <strong>8+ hrs</strong>
+          <span>Facilitated curriculum developed</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section section--white">
       <div class="container">
-        <div class="experiments-header reveal">
+        <div class="section-intro section-intro--split reveal">
           <div>
-            <p class="eyebrow">Experiments</p>
-            <h2>Focused builds with a narrow question.</h2>
+            <p class="eyebrow">How I work</p>
+            <h2>I don’t start with the course. I start with the problem.</h2>
           </div>
 
           <p>
-            These aren’t full case studies. Each one isolates a smaller design or development problem
-            so I can test an interaction, technology, accessibility pattern, or visual idea more deeply.
+            The right learning solution starts upstream. I look at the work people need to perform,
+            what is getting in the way, and what evidence will tell us whether the intervention helped.
           </p>
         </div>
 
-        <div class="experiment-grid">
-
-          <article class="experiment-card reveal">
-            <div class="experiment-visual" aria-hidden="true">
-              <div class="lab-window">
-                <div class="lab-window-bar">
-                  <span class="lab-window-dot"></span>
-                  <span class="lab-window-dot"></span>
-                  <span class="lab-window-dot"></span>
-                </div>
-
-                <div class="lab-window-body">
-                  <div class="fake-copy">
-                    <div class="fake-line fake-line--short"></div>
-                    <div class="fake-line fake-line--wide"></div>
-                    <div class="fake-line fake-line--med"></div>
-                    <div class="fake-line fake-line--wide"></div>
-                    <div class="fake-line fake-line--short"></div>
-                  </div>
-
-                  <div class="donut"></div>
-                </div>
-              </div>
+        <div class="process-grid">
+          <article class="process-card reveal">
+            <div class="process-card-top">
+              <span class="process-number">01</span>
+              <span class="process-rule"></span>
             </div>
 
-            <div class="experiment-content">
-              <div class="experiment-number">01</div>
+            <h3>Diagnose</h3>
+            <p>
+              What should people be able to do, and what is preventing them from doing it now?
+            </p>
 
-              <h3>Most Popular Pets in America</h3>
+            <ul class="clean-list">
+              <li>Needs analysis</li>
+              <li>Audience &amp; workflow analysis</li>
+              <li>SME discovery</li>
+              <li>Performance gaps</li>
+            </ul>
+          </article>
 
-              <p>
-                A native-web reconstruction of an Articulate Storyline interaction exploring responsive
-                data visualization, state-based navigation, accessible hover alternatives, and persistent interaction state.
-              </p>
+          <article class="process-card reveal reveal--delay-1">
+            <div class="process-card-top">
+              <span class="process-number">02</span>
+              <span class="process-rule"></span>
+            </div>
 
-              <div class="tag-row" aria-label="Project tags">
-                <span class="tag">Native Web</span>
-                <span class="tag">Data Visualization</span>
-                <span class="tag">Responsive Interaction</span>
-                <span class="tag">Accessibility</span>
+            <h3>Design</h3>
+            <p>
+              What combination of instruction, practice, and performance support will help people get there?
+            </p>
+
+            <ul class="clean-list">
+              <li>Curriculum architecture</li>
+              <li>eLearning &amp; ILT/VILT</li>
+              <li>Scenario practice</li>
+              <li>Performance support</li>
+            </ul>
+          </article>
+
+          <article class="process-card reveal reveal--delay-2">
+            <div class="process-card-top">
+              <span class="process-number">03</span>
+              <span class="process-rule"></span>
+            </div>
+
+            <h3>Measure</h3>
+            <p>
+              What evidence will tell us whether the learning worked, and what should change next?
+            </p>
+
+            <ul class="clean-list">
+              <li>Assessment</li>
+              <li>KPI development</li>
+              <li>Learning analytics</li>
+              <li>Program evaluation</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section class="section section--sage selected-work">
+      <div class="container">
+        <div class="section-intro reveal">
+          <p class="eyebrow">Selected work</p>
+          <h2>Different problems need different kinds of learning.</h2>
+          <p>
+            These projects show how I work across strategy, curriculum, development, and measurement,
+            from reorganizing complex information to building high-stakes instruction and analyzing
+            what happens after training.
+          </p>
+        </div>
+
+        <div class="project-stack">
+
+          <article class="project-card project-card--feature reveal">
+            <div class="project-number">01</div>
+
+            <div class="project-content">
+              <div class="project-meta">
+                <span>Learning Strategy</span>
+                <span>eLearning</span>
+                <span>Needs Analysis</span>
               </div>
 
-              <a class="experiment-link" href="pets.html">
-                Explore the Experiment <span aria-hidden="true">↗</span>
+              <h3>Fleet Foundations</h3>
+              <p class="project-hook">When more content wasn’t the answer.</p>
+
+              <p>
+                Re-architected complex onboarding from disconnected memorization into a scalable
+                conceptual model built around classification, operating environment, and purpose.
+              </p>
+
+              <a class="text-link" href="projects/fleet-foundations.html">
+                Explore Fleet Foundations <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div class="project-visual project-visual--fleet" aria-hidden="true">
+              <div class="visual-label">Classification</div>
+              <div class="visual-line"></div>
+              <div class="visual-label">Environment</div>
+              <div class="visual-line"></div>
+              <div class="visual-label">Purpose</div>
+              <div class="visual-line"></div>
+              <div class="visual-label visual-label--accent">Apply</div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-number">02</div>
+
+            <div class="project-content">
+              <div class="project-meta">
+                <span>ILT</span>
+                <span>Curriculum Architecture</span>
+                <span>Scenario Design</span>
+              </div>
+
+              <h3>Emergency Response Learning System</h3>
+              <p class="project-hook">Turning procedures into decisions under pressure.</p>
+
+              <p>
+                Translated complex procedural source material and SME expertise into an
+                objective-aligned, scenario-driven instructor-led learning system.
+              </p>
+
+              <a class="text-link" href="projects/emergency-response.html">
+                Explore Emergency Response <span aria-hidden="true">↗</span>
               </a>
             </div>
           </article>
 
-          <div class="placeholder-card reveal reveal--delay-1" aria-label="Future experiment placeholder">
-            <div>
-              <p class="eyebrow">More experiments later</p>
-              <h3>This lab is designed to grow without rearranging the portfolio.</h3>
+          <article class="project-card reveal reveal--delay-1">
+            <div class="project-number">03</div>
+
+            <div class="project-content">
+              <div class="project-meta">
+                <span>Excel</span>
+                <span>Learning Analytics</span>
+                <span>Evaluation</span>
+              </div>
+
+              <h3>Workforce Training Analytics</h3>
+              <p class="project-hook">Finding the learning story inside 1,100 records.</p>
+
               <p>
-                Future microlearning, interaction, accessibility, data-storytelling, or front-end learning experiments can drop into this grid as standalone cards.
+                Built a multi-dimensional analytics framework to examine training conditions,
+                placement patterns, retention, and downstream workforce outcomes.
               </p>
+
+              <a class="text-link" href="projects/training-analytics.html">
+                Explore Training Analytics <span aria-hidden="true">↗</span>
+              </a>
             </div>
+          </article>
+
+        </div>
+
+        <!-- INTERACTION LAB -->
+        <div class="lab-teaser reveal">
+          <div>
+            <p class="eyebrow">Interaction Lab</p>
+            <h3>Small builds. Specific experiments.</h3>
+            <p>
+              Smaller experiments in interaction design, Storyline development, learning technology,
+              responsive behavior, and native-web learning experiences.
+            </p>
           </div>
 
+          <a class="button button--secondary" href="lab/index.html">
+            View the Lab <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="lab-footer-cta">
-      <div class="container lab-footer-grid reveal">
+    <!-- FINAL CTA -->
+    <section class="section section--ink closing-cta">
+      <div class="container closing-grid reveal">
         <div>
-          <p class="eyebrow">Back to the larger systems</p>
-          <h2>See how the experiments connect to full learning projects.</h2>
+          <p class="eyebrow eyebrow--light">Learning systems, not content piles</p>
+          <h2>Clarity is the design problem I keep coming back to.</h2>
         </div>
 
-        <a class="button button--primary" href="../work.html">View Case Studies</a>
+        <div>
+          <p>
+            Whether the starting point is a stack of procedures, an expert who knows too much to know
+            where to begin, or a dataset hiding the real performance story, I want to understand the system first.
+          </p>
+
+          <div class="button-row">
+            <a class="button button--light" href="work.html">View Work</a>
+            <a class="button button--ghost-light" href="contact.html">Contact</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -454,15 +377,15 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
-        <a class="footer-brand" href="../index.html">McKena Ullman</a>
+        <a class="footer-brand" href="index.html">McKena Ullman</a>
         <p>Instructional Designer &amp; Learning Experience Designer</p>
       </div>
 
       <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="../work.html">Work</a>
-        <a href="../about.html">About</a>
-        <a href="../resume.html">Résumé</a>
-        <a href="../contact.html">Contact</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Résumé</a>
+        <a href="contact.html">Contact</a>
       </nav>
 
       <div class="footer-note">
