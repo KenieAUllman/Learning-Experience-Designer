@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Fleet Foundations case study by McKena Ullman: a reconstructed learning experience showing how complex onboarding was redesigned around classification, environment, purpose, and application."
+  />
+  <meta name="author" content="McKena Ullman" />
+  <meta name="theme-color" content="#163A2F" />
+
+  <title>Fleet Foundations | McKena Ullman</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <script src="../js/main.js" defer></script>
+  <script src="../js/fleet.js" defer></script>
+
+  <style>
+    .case-hero {
+      padding-top: clamp(4rem, 8vw, 7rem);
+      padding-bottom: clamp(4rem, 8vw, 6rem);
+      background: var(--warm-ivory);
+    }
+
+    .case-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: clamp(3rem, 8vw, 8rem);
+      align-items: end;
+    }
+
+    .case-hero h1 {
+      max-width: none;
+      margin-bottom: 0.6rem;
+      font-size: clamp(3.8rem, 8vw, 7.5rem);
+    }
+
+    .case-subtitle {
+      max-width: 760px;
+      margin-bottom: 1.5rem;
+      color: var(--evergreen);
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .case-summary {
+      max-width: 780px;
+      color: var(--muted-ink);
+      font-size: 1.08rem;
+    }
+
+    .case-meta {
+      display: grid;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1rem;
+    }
+
+    .meta-label {
+      color: var(--muted-ink);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .reconstruction {
+      margin-top: 1.75rem;
+      padding: 1.25rem;
+      border-left: 3px solid var(--warm-brass);
+      background: rgba(180,123,57,0.08);
+    }
+
+    .reconstruction strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--deep-ink);
+    }
+
+    .reconstruction p {
+      margin: 0;
+      color: var(--muted-ink);
+      font-size: 0.9rem;
+    }
+
+    .case-section {
+      padding-block: clamp(4.5rem, 9vw, 7rem);
+    }
+
+    .case-section--white { background: var(--white); }
+    .case-section--sage { background: var(--soft-sage); }
+    .case-section--ivory { background: var(--warm-ivory); }
+    .case-section--ink { background: var(--deep-ink); color: var(--white); }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+      gap: clamp(2.5rem, 7vw, 7rem);
+      align-items: start;
+    }
+
+    .section-label {
+      position: sticky;
+      top: 110px;
+    }
+
+    .section-label .eyebrow {
+      margin-bottom: 0.5rem;
+    }
+
+    .section-label h2 {
+      max-width: 9ch;
+      margin-bottom: 0;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+    }
+
+    .body-copy {
+      max-width: 820px;
+      color: var(--muted-ink);
+      font-size: 1.06rem;
+    }
+
+    .body-copy p:last-child { margin-bottom: 0; }
+
+    .pull-quote {
+      margin: 2.5rem 0 0;
+      padding: 2rem 0 0 2rem;
+      border-top: 1px solid var(--border);
+      border-left: 3px solid var(--warm-brass);
+      color: var(--deep-ink);
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      line-height: 1.28;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .model-panel {
+      padding: clamp(1.5rem, 4vw, 2.6rem);
+      background: var(--warm-ivory);
+    }
+
+    .model-panel--after { background: var(--white); }
+
+    .model-kicker {
+      margin-bottom: 1.2rem;
+      color: var(--muted-ink);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .model-flow {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .model-node {
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.7);
+      font-weight: 800;
+    }
+
+    .model-arrow {
+      margin-left: 1rem;
+      color: var(--warm-brass);
+    }
+
+    .decisions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .decision-card {
+      padding: 1.6rem;
+      background: var(--white);
+    }
+
+    .decision-card:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .decision-number {
+      display: block;
+      margin-bottom: 1rem;
+      color: var(--warm-brass);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .decision-card h3 {
+      font-size: 1.35rem;
+    }
+
+    .decision-card p {
+      margin-bottom: 0;
+      color: var(--muted-ink);
+      font-size: 0.92rem;
+    }
+
+    .demo-shell {
+      margin-top: 2rem;
+      border: 1px solid rgba(20,33,28,0.16);
+      background: var(--warm-ivory);
+    }
+
+    .demo-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.2rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--deep-ink);
+      color: var(--white);
+    }
+
+    .demo-header span:first-child {
+      font-weight: 800;
+    }
+
+    .demo-header span:last-child {
+      color: #C7D3CD;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .demo-content {
+      padding: clamp(1.25rem, 4vw, 2.4rem);
+    }
+
+    .demo-intro {
+      max-width: 780px;
+      margin-bottom: 2rem;
+    }
+
+    .demo-intro h3 {
+      margin-bottom: 0.6rem;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+    }
+
+    .demo-intro p {
+      color: var(--muted-ink);
+    }
+
+    .fleet-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .fleet-tab,
+    .env-button,
+    .quiz-option,
+    .scenario-option,
+    .pattern-option,
+    .assignment-select,
+    .assessment-option {
+      min-height: 44px;
+    }
+
+    .fleet-tab {
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--deep-ink);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .fleet-tab.is-active,
+    .fleet-tab:hover {
+      border-color: var(--evergreen);
+      background: var(--evergreen);
+      color: var(--white);
+    }
+
+    .fleet-detail {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 2rem;
+      min-height: 260px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .fleet-silhouette {
+      min-height: 200px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(180deg, transparent 70%, rgba(22,58,47,0.08) 70%),
+        linear-gradient(135deg, rgba(22,58,47,0.08), transparent);
+    }
+
+    .ship-shape {
+      width: min(85%, 300px);
+      height: 90px;
+      position: relative;
+      border-bottom: 16px solid var(--evergreen);
+    }
+
+    .ship-shape::before {
+      content: "";
+      position: absolute;
+      left: 15%;
+      right: 12%;
+      bottom: 14px;
+      height: 48px;
+      border: 2px solid var(--evergreen);
+      background: rgba(217,228,220,0.65);
+    }
+
+    .ship-shape::after {
+      content: "";
+      position: absolute;
+      right: 4%;
+      bottom: -16px;
+      width: 46%;
+      height: 16px;
+      background: var(--evergreen);
+      clip-path: polygon(0 0,100% 0,78% 100%,10% 100%);
+    }
+
+    .detail-tagline {
+      margin-bottom: 0.7rem;
+      color: var(--evergreen);
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 0.5rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .detail-list li::before {
+      content: "•";
+      margin-right: 0.6rem;
+      color: var(--warm-brass);
+    }
+
+    .interaction-block {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .interaction-block h4 {
+      margin: 0 0 0.45rem;
+      font-size: 1.25rem;
+    }
+
+    .interaction-block > p {
+      color: var(--muted-ink);
+    }
+
+    .pattern-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .pattern-row {
+      display: grid;
+      grid-template-columns: minmax(160px, 0.7fr) minmax(0, 1.3fr);
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .pattern-feature {
+      font-weight: 800;
+    }
+
+    .pattern-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .pattern-option {
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--border);
+      background: var(--warm-ivory);
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .pattern-option.is-selected {
+      border-color: var(--evergreen);
+      background: var(--evergreen);
+      color: var(--white);
+    }
+
+    .feedback {
+      margin-top: 1rem;
+      min-height: 1.5rem;
+      color: var(--evergreen);
+      font-weight: 700;
+    }
+
+    .environment-map {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .map-visual {
+      position: relative;
+      min-height: 380px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 32% 62%, rgba(22,58,47,0.13), transparent 18%),
+        radial-gradient(circle at 62% 35%, rgba(22,58,47,0.1), transparent 22%),
+        linear-gradient(135deg, #eef2ed, #faf8f2);
+    }
+
+    .river-path {
+      position: absolute;
+      left: 23%;
+      top: -20px;
+      width: 60px;
+      height: 440px;
+      border-left: 9px solid rgba(77,121,143,0.55);
+      border-radius: 50%;
+      transform: rotate(18deg);
+    }
+
+    .lake-shape {
+      position: absolute;
+      top: 18%;
+      left: 48%;
+      width: 110px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(77,121,143,0.45);
+      transform: rotate(-12deg);
+    }
+
+    .coast-shape {
+      position: absolute;
+      right: -30px;
+      top: 0;
+      width: 42%;
+      height: 100%;
+      background: rgba(22,58,47,0.08);
+      clip-path: polygon(35% 0,100% 0,100% 100%,20% 100%,42% 76%,28% 60%,46% 44%,30% 26%);
+    }
+
+    .map-marker {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 3px solid var(--white);
+      border-radius: 999px;
+      background: var(--warm-brass);
+      box-shadow: 0 0 0 1px rgba(20,33,28,0.25);
+    }
+
+    .marker-river { left: 25%; top: 56%; }
+    .marker-lake { left: 58%; top: 30%; }
+    .marker-north { right: 17%; top: 18%; }
+    .marker-seaboard { right: 12%; bottom: 18%; }
+
+    .env-list {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .env-button {
+      text-align: left;
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .env-button.is-active {
+      border-color: var(--evergreen);
+      background: var(--evergreen);
+      color: var(--white);
+    }
+
+    .env-detail {
+      margin-top: 1rem;
+      color: var(--muted-ink);
+      font-size: 0.9rem;
+    }
+
+    .questions-model {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 1px;
+      margin-top: 1rem;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .question-card {
+      padding: 1.2rem;
+      background: var(--white);
+    }
+
+    .question-card span {
+      display: block;
+      margin-bottom: 0.7rem;
+      color: var(--warm-brass);
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+
+    .question-card strong {
+      display: block;
+      margin-bottom: 0.55rem;
+    }
+
+    .question-card p {
+      margin-bottom: 0;
+      color: var(--muted-ink);
+      font-size: 0.84rem;
+    }
+
+    .scenario-box {
+      margin-top: 1rem;
+      padding: 1.4rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .scenario-box h5 {
+      margin: 0 0 0.55rem;
+      font-size: 1rem;
+    }
+
+    .scenario-box p {
+      color: var(--muted-ink);
+    }
+
+    .scenario-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 0.5rem;
+    }
+
+    .scenario-option,
+    .quiz-option,
+    .assessment-option {
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      background: var(--warm-ivory);
+      cursor: pointer;
+      text-align: left;
+      font-weight: 700;
+    }
+
+    .scenario-option:hover,
+    .scenario-option:focus-visible,
+    .quiz-option:hover,
+    .quiz-option:focus-visible,
+    .assessment-option:hover,
+    .assessment-option:focus-visible {
+      border-color: var(--evergreen);
+    }
+
+    .scenario-option.is-correct,
+    .assessment-option.is-correct {
+      border-color: var(--evergreen);
+      background: rgba(22,58,47,0.1);
+    }
+
+    .scenario-option.is-wrong,
+    .assessment-option.is-wrong {
+      border-color: #9D5A4A;
+      background: rgba(157,90,74,0.08);
+    }
+
+    .assignment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .assignment-select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--deep-ink);
+    }
+
+    .assignment-result {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-left: 3px solid var(--warm-brass);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .assessment {
+      margin-top: 1rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .assessment-question {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .assessment-question h5 {
+      margin: 0 0 0.8rem;
+      font-size: 1rem;
+    }
+
+    .assessment-options {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .assessment-score {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--evergreen);
+      color: var(--white);
+      font-weight: 800;
+    }
+
+    .measurement-grid {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .mastery-card {
+      padding: 2rem;
+      background: var(--evergreen);
+      color: var(--white);
+    }
+
+    .mastery-card strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1;
+    }
+
+    .mastery-card span {
+      color: #D6E1DA;
+      font-size: 0.85rem;
+    }
+
+    .evaluation-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .evaluation-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .evaluation-row strong {
+      color: var(--evergreen);
+    }
+
+    .reflection-copy {
+      max-width: 900px;
+      color: #D4DED8;
+      font-size: clamp(1.12rem, 2vw, 1.28rem);
+    }
+
+    .reflection-copy p:first-child {
+      color: var(--white);
+      font-family: var(--font-serif);
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+      line-height: 1.3;
+    }
+
+    .case-nav {
+      padding-block: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      background: var(--deep-ink);
+      color: var(--white);
+    }
+
+    .case-nav-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .case-hero-grid,
+      .section-grid,
+      .measurement-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-label {
+        position: static;
+      }
+
+      .before-after,
+      .decisions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .decision-card:last-child {
+        grid-column: auto;
+      }
+
+      .fleet-detail,
+      .environment-map {
+        grid-template-columns: 1fr;
+      }
+
+      .questions-model {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .assignment-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .fleet-tabs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pattern-row {
+        grid-template-columns: 1fr;
+      }
+
+      .scenario-options {
+        grid-template-columns: 1fr;
+      }
+
+      .questions-model {
+        grid-template-columns: 1fr;
+      }
+
+      .evaluation-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="McKena Ullman home">
+        <span class="brand-name">McKena Ullman</span>
+        <span class="brand-title">Instructional Designer &amp; Learning Experience Designer</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open navigation"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
+        <a href="../work.html" aria-current="page">Work</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Résumé</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="case-hero">
+      <div class="container case-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Flagship Case Study</p>
+          <h1>Fleet Foundations</h1>
+          <p class="case-subtitle">Replacing memorization with a scalable mental model.</p>
+          <p class="case-summary">
+            A reconstructed learning experience showing how I reorganized complex onboarding around
+            classification, operating environment, purpose, and application.
+          </p>
+        </div>
+
+        <aside class="reveal reveal--delay-1">
+          <div class="case-meta">
+            <div class="meta-row">
+              <span class="meta-label">Industry</span>
+              <span class="meta-value">Maritime Operations</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Audience</span>
+              <span class="meta-value">Newly hired operational employees</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Role</span>
+              <span class="meta-value">Instructional Designer</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Format</span>
+              <span class="meta-value">Responsive eLearning + custom interactions</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Methods</span>
+              <span class="meta-value">Needs analysis, cognitive load, retrieval practice, application, evaluation</span>
+            </div>
+          </div>
+
+          <div class="reconstruction">
+            <strong>Portfolio Reconstruction</strong>
+            <p>
+              This case study reflects professional work I completed in an employer environment.
+              Proprietary content, identifiable information, branding, and operational details have
+              been removed or recreated. The instructional-design process, methodology, and design
+              decisions reflect my actual work.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="case-section case-section--white">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">01 • Context</p>
+          <h2>The system had grown faster than the learning.</h2>
+        </div>
+
+        <div class="body-copy reveal reveal--delay-1">
+          <p>
+            A growing maritime organization needed new hires to understand an increasingly complex fleet
+            before instructor-led onboarding. Existing training had accumulated around individual vessels,
+            destinations, and operational facts.
+          </p>
+          <p>
+            The content was technically available. The harder question was whether the structure helped
+            learners understand how the information fit together.
+          </p>
+          <p>
+            Learners could encounter dozens of individual facts without first receiving a conceptual
+            framework for organizing them. That made the training harder to retain, harder to apply, and
+            harder to scale as the fleet changed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--ivory">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">02 • Challenge</p>
+          <h2>More information wasn’t the answer.</h2>
+        </div>
+
+        <div class="body-copy reveal reveal--delay-1">
+          <p>
+            The problem was not insufficient content. The existing structure encouraged disconnected
+            memorization. Learners were being asked to remember individual assets and destinations before
+            they had a meaningful way to classify what they were seeing.
+          </p>
+
+          <blockquote class="pull-quote">
+            The problem wasn’t that learners couldn’t memorize enough. The training gave them nothing
+            meaningful to organize the information around.
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--white">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">03 • Diagnosis</p>
+          <h2>Change the architecture, not just the slides.</h2>
+        </div>
+
+        <div class="reveal reveal--delay-1">
+          <div class="before-after" aria-label="Before and after learning architecture">
+            <div class="model-panel">
+              <p class="model-kicker">Before</p>
+              <div class="model-flow">
+                <div class="model-node">Individual Asset</div>
+                <div class="model-arrow">↓</div>
+                <div class="model-node">Details</div>
+                <div class="model-arrow">↓</div>
+                <div class="model-node">Destination</div>
+                <div class="model-arrow">↓</div>
+                <div class="model-node">Memorization</div>
+              </div>
+            </div>
+
+            <div class="model-panel model-panel--after">
+              <p class="model-kicker">After</p>
+              <div class="model-flow">
+                <div class="model-node">Classification</div>
+                <div class="model-arrow">↓</div>
+                <div class="model-node">Environment</div>
+                <div class="model-arrow">↓</div>
+                <div class="model-node">Purpose</div>
+                <div class="model-arrow">↓</div>
+                <div class="model-node">Application</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--sage">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">04 • Design Decisions</p>
+          <h2>Build the mental model first.</h2>
+        </div>
+
+        <div class="decisions-grid reveal reveal--delay-1">
+          <article class="decision-card">
+            <span class="decision-number">01</span>
+            <h3>Teach the schema before the examples.</h3>
+            <p>Give learners a structure that makes later details easier to place and retrieve.</p>
+          </article>
+
+          <article class="decision-card">
+            <span class="decision-number">02</span>
+            <h3>Reduce unnecessary cognitive load.</h3>
+            <p>Prioritize transferable concepts over memorizing every individual asset.</p>
+          </article>
+
+          <article class="decision-card">
+            <span class="decision-number">03</span>
+            <h3>Use active retrieval.</h3>
+            <p>Move from passive exposure into classification, comparison, and decision-making.</p>
+          </article>
+
+          <article class="decision-card">
+            <span class="decision-number">04</span>
+            <h3>Connect content to actual work.</h3>
+            <p>Frame knowledge around the decisions employees need to make and explain.</p>
+          </article>
+
+          <article class="decision-card">
+            <span class="decision-number">05</span>
+            <h3>Design for scalability.</h3>
+            <p>A transferable framework can absorb new assets and operating conditions without rebuilding the learning model from scratch.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--ivory">
+      <div class="container">
+        <div class="section-intro reveal">
+          <p class="eyebrow">05 • Reconstructed Learning Experience</p>
+          <h2>Try the mental model.</h2>
+          <p>
+            The experience below is purpose-built for this portfolio. Vessel classes, environments,
+            scenarios, and operational details are fictional. The instructional logic reflects the
+            professional redesign.
+          </p>
+        </div>
+
+        <div class="demo-shell reveal reveal--delay-1">
+          <div class="demo-header">
+            <span>Fleet Foundations</span>
+            <span>Interactive Portfolio Reconstruction</span>
+          </div>
+
+          <div class="demo-content">
+
+            <div class="demo-intro">
+              <h3>One fleet. Different purposes.</h3>
+              <p>
+                Instead of memorizing every vessel, start with four questions:
+                How is it designed? Where can it operate? What constraints does it face?
+                What kind of experience does it support?
+              </p>
+            </div>
+
+            <div class="interaction-block">
+              <h4>Explore the Fleet</h4>
+              <p>Select a class to see how design connects to operating purpose.</p>
+
+              <div class="fleet-tabs" role="tablist" aria-label="Fictional vessel classes">
+                <button class="fleet-tab is-active" type="button" role="tab" aria-selected="true" data-fleet="river">River Class</button>
+                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="coastal">Coastal Class</button>
+                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="harbor">Harbor Class</button>
+                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="explorer">Explorer Class</button>
+              </div>
+
+              <div class="fleet-detail" data-fleet-detail>
+                <div class="fleet-silhouette" aria-hidden="true">
+                  <div class="ship-shape"></div>
+                </div>
+                <div>
+                  <p class="detail-tagline" data-fleet-tagline>Built to work with the river.</p>
+                  <h4 data-fleet-name>River Class</h4>
+                  <p data-fleet-description>
+                    Designed for interior waterways where depth, channel constraints, and inland access shape the operating decision.
+                  </p>
+                  <ul class="detail-list" data-fleet-features>
+                    <li>Wide profile</li>
+                    <li>Relatively shallow draft</li>
+                    <li>Large viewing areas</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="interaction-block">
+              <h4>Find the Pattern</h4>
+              <p>Choose the class that best matches each feature. Some features can support more than one reasonable interpretation.</p>
+
+              <div class="pattern-grid" data-pattern-grid>
+                <div class="pattern-row" data-pattern-answer="river">
+                  <div class="pattern-feature">Shallow draft</div>
+                  <div class="pattern-options">
+                    <button type="button" class="pattern-option" data-choice="river">River</button>
+                    <button type="button" class="pattern-option" data-choice="coastal">Coastal</button>
+                    <button type="button" class="pattern-option" data-choice="harbor">Harbor</button>
+                    <button type="button" class="pattern-option" data-choice="explorer">Explorer</button>
+                  </div>
+                </div>
+
+                <div class="pattern-row" data-pattern-answer="harbor">
+                  <div class="pattern-feature">High maneuverability</div>
+                  <div class="pattern-options">
+                    <button type="button" class="pattern-option" data-choice="river">River</button>
+                    <button type="button" class="pattern-option" data-choice="coastal">Coastal</button>
+                    <button type="button" class="pattern-option" data-choice="harbor">Harbor</button>
+                    <button type="button" class="pattern-option" data-choice="explorer">Explorer</button>
+                  </div>
+                </div>
+
+                <div class="pattern-row" data-pattern-answer="explorer|coastal">
+                  <div class="pattern-feature">Large observation areas</div>
+                  <div class="pattern-options">
+                    <button type="button" class="pattern-option" data-choice="river">River</button>
+                    <button type="button" class="pattern-option" data-choice="coastal">Coastal</button>
+                    <button type="button" class="pattern-option" data-choice="harbor">Harbor</button>
+                    <button type="button" class="pattern-option" data-choice="explorer">Explorer</button>
+                  </div>
+                </div>
+              </div>
+
+              <p class="feedback" aria-live="polite" data-pattern-feedback></p>
+            </div>
+
+            <div class="interaction-block">
+              <h4>Operating Environment</h4>
+              <p>The environment creates constraints. Vessel design determines how effectively those constraints can be managed.</p>
+
+              <div class="environment-map">
+                <div class="map-visual" aria-hidden="true">
+                  <div class="river-path"></div>
+                  <div class="lake-shape"></div>
+                  <div class="coast-shape"></div>
+                  <span class="map-marker marker-river"></span>
+                  <span class="map-marker marker-lake"></span>
+                  <span class="map-marker marker-north"></span>
+                  <span class="map-marker marker-seaboard"></span>
+                </div>
+
+                <div>
+                  <div class="env-list" role="list">
+                    <button type="button" class="env-button is-active" data-env="river">Interior Rivers</button>
+                    <button type="button" class="env-button" data-env="lakes">Great Inland Lakes</button>
+                    <button type="button" class="env-button" data-env="north">Northern Coast</button>
+                    <button type="button" class="env-button" data-env="seaboard">Historic Seaboard</button>
+                  </div>
+                  <div class="env-detail" data-env-detail aria-live="polite">
+                    Changing depth, narrower channels, inland ports, and seasonal conditions make navigation and draft central considerations.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="interaction-block">
+              <h4>The Four Questions</h4>
+              <p>Before assigning a vessel, ask what the environment and purpose demand.</p>
+
+              <div class="questions-model">
+                <div class="question-card">
+                  <span>01</span>
+                  <strong>Can it navigate here?</strong>
+                  <p>Depth, channel width, draft, maneuverability.</p>
+                </div>
+                <div class="question-card">
+                  <span>02</span>
+                  <strong>Can it operate here?</strong>
+                  <p>Weather, waves, exposure, changing conditions.</p>
+                </div>
+                <div class="question-card">
+                  <span>03</span>
+                  <strong>Can it access the destination?</strong>
+                  <p>Port size, docking restrictions, vessel footprint.</p>
+                </div>
+                <div class="question-card">
+                  <span>04</span>
+                  <strong>Can it deliver the intended experience?</strong>
+                  <p>Viewing, comfort, access, and purpose.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="interaction-block">
+              <h4>Deployment Challenge</h4>
+              <p>Use the framework to make a judgment. Feedback focuses on reasoning, not just a right answer.</p>
+
+              <div class="scenario-box" data-scenario-box>
+                <h5 data-scenario-title>Scenario 1 of 4</h5>
+                <p data-scenario-text>
+                  A new route travels through a shallow inland river with changing seasonal depths. Ports are relatively small, but passengers still expect comfortable viewing spaces.
+                </p>
+
+                <div class="scenario-options" data-scenario-options>
+                  <button type="button" class="scenario-option" data-choice="river">River Class</button>
+                  <button type="button" class="scenario-option" data-choice="coastal">Coastal Class</button>
+                  <button type="button" class="scenario-option" data-choice="harbor">Harbor Class</button>
+                  <button type="button" class="scenario-option" data-choice="explorer">Explorer Class</button>
+                </div>
+
+                <p class="feedback" data-scenario-feedback aria-live="polite"></p>
+
+                <button type="button" class="button button--secondary" data-next-scenario disabled>Next Scenario</button>
+              </div>
+            </div>
+
+            <div class="interaction-block">
+              <h4>Build the Assignment</h4>
+              <p>Combine environment, constraint, and desired experience to see how the model changes the recommendation.</p>
+
+              <div class="assignment-grid">
+                <label>
+                  <span class="meta-label">Environment</span>
+                  <select class="assignment-select" data-assignment-env>
+                    <option value="river">Interior Rivers</option>
+                    <option value="lakes">Great Inland Lakes</option>
+                    <option value="north">Northern Coast</option>
+                    <option value="seaboard">Historic Seaboard</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span class="meta-label">Primary Constraint</span>
+                  <select class="assignment-select" data-assignment-constraint>
+                    <option value="depth">Water depth</option>
+                    <option value="weather">Variable weather</option>
+                    <option value="access">Port access</option>
+                    <option value="maneuverability">Maneuverability</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span class="meta-label">Desired Experience</span>
+                  <select class="assignment-select" data-assignment-experience>
+                    <option value="viewing">Scenic viewing</option>
+                    <option value="comfort">Passenger comfort</option>
+                    <option value="community">Local community access</option>
+                    <option value="flexibility">Operational flexibility</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="assignment-result" data-assignment-result aria-live="polite">
+                <strong>Recommended: River Class</strong>
+                <p>Shallow-water navigation is the dominant constraint, so draft and inland operating suitability take priority.</p>
+              </div>
+            </div>
+
+            <div class="interaction-block">
+              <h4>Check Your Mental Model</h4>
+              <p>Five questions. The mastery target is 80%.</p>
+
+              <form class="assessment" data-assessment>
+                <fieldset class="assessment-question">
+                  <h5>1. A shallow-draft vessel is most likely designed primarily for which constraint?</h5>
+                  <div class="assessment-options">
+                    <label><input type="radio" name="q1" value="a"> Interior waterway navigation</label>
+                    <label><input type="radio" name="q1" value="b"> Entertainment capacity</label>
+                    <label><input type="radio" name="q1" value="c"> Long-distance speed</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="assessment-question">
+                  <h5>2. Which combination provides the strongest basis for classifying vessels?</h5>
+                  <div class="assessment-options">
+                    <label><input type="radio" name="q2" value="a"> Vessel name and launch year</label>
+                    <label><input type="radio" name="q2" value="b"> Design, operating environment, and purpose</label>
+                    <label><input type="radio" name="q2" value="c"> Color and passenger count</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="assessment-question">
+                  <h5>3. A destination has an unusually small harbor. Which consideration becomes most important?</h5>
+                  <div class="assessment-options">
+                    <label><input type="radio" name="q3" value="a"> Port access</label>
+                    <label><input type="radio" name="q3" value="b"> Entertainment</label>
+                    <label><input type="radio" name="q3" value="c"> Vessel age</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="assessment-question">
+                  <h5>4. A scenic northern route prioritizes wildlife viewing but also faces variable open-water conditions. What is the best first judgment?</h5>
+                  <div class="assessment-options">
+                    <label><input type="radio" name="q4" value="a"> Explorer Class, while confirming operational suitability</label>
+                    <label><input type="radio" name="q4" value="b"> Harbor Class regardless of conditions</label>
+                    <label><input type="radio" name="q4" value="c"> Any vessel if viewing areas are large enough</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="assessment-question">
+                  <h5>5. Why is learning classifications more useful than memorizing every individual vessel?</h5>
+                  <div class="assessment-options">
+                    <label><input type="radio" name="q5" value="a"> It creates a mental model that helps learners interpret new situations</label>
+                    <label><input type="radio" name="q5" value="b"> It eliminates the need to learn any details</label>
+                    <label><input type="radio" name="q5" value="c"> It guarantees one correct answer in every operating decision</label>
+                  </div>
+                </fieldset>
+
+                <button type="submit" class="button button--primary">Score Assessment</button>
+                <div class="assessment-score" data-assessment-score hidden aria-live="polite"></div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--white">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">06 • Measurement</p>
+          <h2>Completion isn’t the finish line.</h2>
+        </div>
+
+        <div class="measurement-grid reveal reveal--delay-1">
+          <div class="mastery-card">
+            <strong>80%</strong>
+            <span>Mastery target for the reconstructed assessment</span>
+          </div>
+
+          <div>
+            <p class="body-copy">
+              The measurement plan extends beyond whether someone opened or completed the course.
+              The goal is to check whether the conceptual model transfers into classification,
+              explanation, and application.
+            </p>
+
+            <div class="evaluation-list">
+              <div class="evaluation-row">
+                <strong>Reaction</strong>
+                <span>Was the experience clear, relevant, and usable?</span>
+              </div>
+              <div class="evaluation-row">
+                <strong>Knowledge</strong>
+                <span>Can learners identify the major concepts and distinctions?</span>
+              </div>
+              <div class="evaluation-row">
+                <strong>Application</strong>
+                <span>Can learners use the model in new deployment scenarios?</span>
+              </div>
+              <div class="evaluation-row">
+                <strong>Observation</strong>
+                <span>Do trainers see stronger reasoning and more accurate explanations?</span>
+              </div>
+              <div class="evaluation-row">
+                <strong>Iteration</strong>
+                <span>Where do assessment patterns or trainer feedback show a need to revise the design?</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--ink">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow eyebrow--light">07 • Reflection</p>
+          <h2>What mattered most.</h2>
+        </div>
+
+        <div class="reflection-copy reveal reveal--delay-1">
+          <p>
+            The most important design decision wasn’t choosing an interaction or authoring tool.
+            It was deciding what learners did not need to memorize.
+          </p>
+          <p>
+            Reorganizing the content around transferable concepts created a more scalable model and gave
+            learners a framework they could continue using as the system changed.
+          </p>
+          <p>
+            Reconstructing this project for my portfolio also gave me an opportunity to revisit earlier
+            design decisions. I preserved the original instructional architecture while improving
+            accessibility, feedback, responsive behavior, and the degree of judgment required in
+            application activities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="case-nav" aria-label="Case study navigation">
+      <div class="container case-nav-inner">
+        <a class="button button--ghost-light" href="../work.html">← Back to Work</a>
+        <a class="button button--light" href="emergency-response.html">Next: Emergency Response →</a>
+      </div>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="footer-brand" href="../index.html">McKena Ullman</a>
+        <p>Instructional Designer &amp; Learning Experience Designer</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../work.html">Work</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Résumé</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-note">
+        <p>Designed around clarity. Built for learning.</p>
+        <p>© <span data-current-year></span> McKena Ullman</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
