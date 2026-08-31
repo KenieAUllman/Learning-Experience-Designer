@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Emergency Response Learning System case study by McKena Ullman: a reconstructed instructional systems design project showing SME translation, objective alignment, facilitated learning, scenarios, and performance support."
+  />
+  <meta name="author" content="McKena Ullman" />
+  <meta name="theme-color" content="#163A2F" />
+
+  <title>Emergency Response Learning System | McKena Ullman</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <script src="../js/main.js" defer></script>
+  <script src="../js/emergency.js" defer></script>
+
+  <style>
+    .case-hero {
+      padding-top: clamp(4rem, 8vw, 7rem);
+      padding-bottom: clamp(4rem, 8vw, 6rem);
+      background: var(--warm-ivory);
+    }
+
+    .case-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: clamp(3rem, 8vw, 8rem);
+      align-items: end;
+    }
+
+    .case-hero h1 {
+      max-width: 11ch;
+      margin-bottom: 0.7rem;
+      font-size: clamp(3.3rem, 7vw, 6.8rem);
+    }
+
+    .case-subtitle {
+      max-width: 760px;
+      margin-bottom: 1.4rem;
+      color: var(--evergreen);
+      font-family: var(--font-serif);
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .case-summary {
+      max-width: 760px;
+      color: var(--muted-ink);
+      font-size: 1.06rem;
+    }
+
+    .case-meta {
+      display: grid;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+    }
+
+    .meta-label {
+      color: var(--muted-ink);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .notice-stack {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .notice {
+      padding: 1.15rem 1.2rem;
+      border-left: 3px solid var(--warm-brass);
+      background: rgba(180,123,57,0.08);
+    }
+
+    .notice--safety {
+      border-left-color: var(--evergreen);
+      background: rgba(22,58,47,0.07);
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .notice p {
+      margin: 0;
+      color: var(--muted-ink);
+      font-size: 0.88rem;
+    }
+
+    .case-section {
+      padding-block: clamp(4.5rem, 9vw, 7rem);
+    }
+
+    .case-section--white { background: var(--white); }
+    .case-section--ivory { background: var(--warm-ivory); }
+    .case-section--sage { background: var(--soft-sage); }
+    .case-section--ink { background: var(--deep-ink); color: var(--white); }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+      gap: clamp(2.5rem, 7vw, 7rem);
+      align-items: start;
+    }
+
+    .section-label {
+      position: sticky;
+      top: 110px;
+    }
+
+    .section-label h2 {
+      max-width: 10ch;
+      margin-bottom: 0;
+      font-size: clamp(2.1rem, 4vw, 3.5rem);
+    }
+
+    .body-copy {
+      max-width: 850px;
+      color: var(--muted-ink);
+      font-size: 1.05rem;
+    }
+
+    .scale-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1px;
+      margin-top: 2rem;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .scale-item {
+      padding: 1.4rem;
+      background: var(--white);
+    }
+
+    .scale-item strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--evergreen);
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1;
+    }
+
+    .scale-item span {
+      color: var(--muted-ink);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .diagnosis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .diagnosis-panel {
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      background: var(--warm-ivory);
+    }
+
+    .diagnosis-panel--needed {
+      background: var(--white);
+    }
+
+    .diagnosis-panel h3 {
+      font-size: 1.35rem;
+    }
+
+    .diagnosis-list {
+      display: grid;
+      gap: 0.65rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .diagnosis-list li {
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted-ink);
+      font-weight: 700;
+    }
+
+    .diagnosis-list li::before {
+      content: "↳";
+      margin-right: 0.5rem;
+      color: var(--warm-brass);
+    }
+
+    .architecture {
+      max-width: 680px;
+      margin-inline: auto;
+      display: grid;
+      justify-items: center;
+      gap: 0.4rem;
+    }
+
+    .arch-node {
+      width: min(100%, 430px);
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .arch-node--accent {
+      background: var(--evergreen);
+      color: var(--white);
+      border-color: var(--evergreen);
+    }
+
+    .arch-arrow {
+      color: var(--warm-brass);
+      font-size: 1.2rem;
+    }
+
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 1px;
+      margin-top: 1.5rem;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .scope-card {
+      padding: 1.2rem;
+      background: var(--white);
+    }
+
+    .scope-letter {
+      display: block;
+      margin-bottom: 0.7rem;
+      color: var(--warm-brass);
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .scope-card h3 {
+      margin-bottom: 0.45rem;
+      font-size: 1.15rem;
+    }
+
+    .scope-card p {
+      margin-bottom: 0;
+      color: var(--muted-ink);
+      font-size: 0.82rem;
+    }
+
+    .fiction-note {
+      margin-top: 1rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.55);
+      color: var(--muted-ink);
+      font-size: 0.86rem;
+    }
+
+    .demo-shell {
+      margin-top: 2rem;
+      border: 1px solid var(--border);
+      background: var(--warm-ivory);
+    }
+
+    .demo-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.2rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--deep-ink);
+      color: var(--white);
+    }
+
+    .demo-header span:first-child {
+      font-weight: 800;
+    }
+
+    .demo-header span:last-child {
+      color: #C7D3CD;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .demo-content {
+      padding: clamp(1.25rem, 4vw, 2.4rem);
+    }
+
+    .interaction-block {
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .interaction-block:first-child {
+      padding-top: 0;
+      margin-top: 0;
+      border-top: 0;
+    }
+
+    .interaction-block h3 {
+      margin-bottom: 0.45rem;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .interaction-block > p {
+      color: var(--muted-ink);
+    }
+
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .report-option {
+      min-height: 44px;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      text-align: left;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .report-option.is-selected {
+      border-color: var(--evergreen);
+      background: rgba(22,58,47,0.08);
+    }
+
+    .assembled-report {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-left: 3px solid var(--warm-brass);
+      background: var(--white);
+    }
+
+    .assembled-report dl {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0.55rem 1rem;
+      margin: 0;
+    }
+
+    .assembled-report dt {
+      color: var(--evergreen);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .assembled-report dd {
+      margin: 0;
+      color: var(--muted-ink);
+    }
+
+    .role-grid {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .role-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 0.8fr) minmax(0, 1.2fr);
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .role-task {
+      font-weight: 800;
+    }
+
+    .role-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .role-option,
+    .scenario-option {
+      min-height: 44px;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--border);
+      background: var(--warm-ivory);
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .role-option.is-selected {
+      border-color: var(--evergreen);
+      background: var(--evergreen);
+      color: var(--white);
+    }
+
+    .feedback {
+      margin-top: 1rem;
+      min-height: 1.5rem;
+      color: var(--evergreen);
+      font-weight: 700;
+    }
+
+    .scenario-box {
+      margin-top: 1rem;
+      padding: 1.3rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .scenario-box h4 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    .scenario-box p {
+      color: var(--muted-ink);
+    }
+
+    .scenario-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 0.5rem;
+    }
+
+    .scenario-option {
+      text-align: left;
+    }
+
+    .scenario-option.is-correct {
+      border-color: var(--evergreen);
+      background: rgba(22,58,47,0.09);
+    }
+
+    .scenario-option.is-wrong {
+      border-color: #9D5A4A;
+      background: rgba(157,90,74,0.08);
+    }
+
+    .capstone-progress {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .capstone-chip {
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border);
+      background: var(--warm-ivory);
+      color: var(--muted-ink);
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .capstone-chip.is-earned {
+      border-color: var(--evergreen);
+      background: var(--evergreen);
+      color: var(--white);
+    }
+
+    .guide-preview {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .guide-index {
+      padding: 1.2rem;
+      background: var(--warm-ivory);
+    }
+
+    .guide-index button {
+      width: 100%;
+      min-height: 44px;
+      margin-bottom: 0.5rem;
+      padding: 0.7rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      text-align: left;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .guide-index button.is-active {
+      border-color: var(--evergreen);
+      background: var(--evergreen);
+      color: var(--white);
+    }
+
+    .guide-page {
+      padding: 1.4rem;
+      background: var(--white);
+    }
+
+    .guide-fields {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .guide-field {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .guide-field strong {
+      color: var(--evergreen);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .guide-field span {
+      color: var(--muted-ink);
+    }
+
+    .alignment-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+    }
+
+    .alignment-table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      background: var(--white);
+    }
+
+    .alignment-table th,
+    .alignment-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .alignment-table th {
+      background: var(--evergreen);
+      color: var(--white);
+      font-size: 0.76rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .alignment-table td:first-child {
+      font-weight: 800;
+      color: var(--evergreen);
+    }
+
+    .job-aid {
+      max-width: 760px;
+      margin-inline: auto;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .job-aid h3 {
+      margin-bottom: 0.3rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .job-aid-subtitle {
+      margin-bottom: 1.5rem;
+      color: var(--muted-ink);
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+    }
+
+    .job-aid-list {
+      display: grid;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .job-aid-row {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--warm-ivory);
+    }
+
+    .job-aid-letter {
+      color: var(--warm-brass);
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .job-aid-row strong {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .job-aid-row p {
+      margin: 0;
+      color: var(--muted-ink);
+      font-size: 0.88rem;
+    }
+
+    .job-aid-disclaimer {
+      margin-top: 1rem;
+      color: var(--muted-ink);
+      font-size: 0.8rem;
+    }
+
+    .reflection-copy {
+      max-width: 900px;
+      color: #D4DED8;
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+    }
+
+    .reflection-copy p:first-child {
+      color: var(--white);
+      font-family: var(--font-serif);
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      line-height: 1.3;
+    }
+
+    .case-nav {
+      padding-block: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      background: var(--deep-ink);
+      color: var(--white);
+    }
+
+    .case-nav-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .case-hero-grid,
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-label {
+        position: static;
+      }
+
+      .scope-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .scale-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .guide-preview {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .diagnosis-grid,
+      .report-grid,
+      .scenario-options {
+        grid-template-columns: 1fr;
+      }
+
+      .role-row {
+        grid-template-columns: 1fr;
+      }
+
+      .scope-grid,
+      .scale-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .guide-field {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+      }
+
+      .assembled-report dl {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="McKena Ullman home">
+        <span class="brand-name">McKena Ullman</span>
+        <span class="brand-title">Instructional Designer &amp; Learning Experience Designer</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open navigation"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
+        <a href="../work.html" aria-current="page">Work</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Résumé</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="case-hero">
+      <div class="container case-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Instructional Systems Design Case Study</p>
+          <h1>Emergency Response Learning System</h1>
+          <p class="case-subtitle">Turning complex procedures into decisions people can make under pressure.</p>
+          <p class="case-summary">
+            A reconstructed case study showing how I translated procedural source material and SME expertise
+            into aligned objectives, facilitated practice, scenario-based learning, and performance support.
+          </p>
+        </div>
+
+        <aside class="reveal reveal--delay-1">
+          <div class="case-meta">
+            <div class="meta-row">
+              <span class="meta-label">Industry</span>
+              <span class="meta-value">Safety-Critical Operations</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Audience</span>
+              <span class="meta-value">Newly hired operational leaders</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Role</span>
+              <span class="meta-value">Instructional Designer</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Format</span>
+              <span class="meta-value">ILT + facilitator guide + scenario practice + performance support</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label">Methods</span>
+              <span class="meta-value">SME discovery, TLO/ELO alignment, scenario design, facilitation, performance support</span>
+            </div>
+          </div>
+
+          <div class="notice-stack">
+            <div class="notice">
+              <strong>Portfolio Reconstruction</strong>
+              <p>
+                This case study reflects professional work I completed in an employer environment.
+                Company terminology, procedures, operating rules, scenarios, systems, and proprietary
+                source material have been replaced with fictional equivalents. The instructional
+                architecture and design decisions reflect my actual work.
+              </p>
+            </div>
+
+            <div class="notice notice--safety">
+              <strong>Safety Disclaimer</strong>
+              <p>
+                All operational procedures and scenarios shown here are fictional and are included only
+                to demonstrate instructional-design methodology. They should not be interpreted as real-world safety guidance.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="case-section case-section--white">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">01 • Challenge</p>
+          <h2>The source material existed. The instruction didn’t.</h2>
+        </div>
+
+        <div class="reveal reveal--delay-1">
+          <div class="body-copy">
+            <p>
+              A safety-critical operations team had extensive procedural documentation but no unified
+              learning experience to prepare newly hired operational leaders for organization-specific responsibilities.
+            </p>
+            <p>
+              Subject-matter expertise lived across procedure manuals, operating standards, existing training,
+              and experienced personnel. The design problem was not to summarize all of it. It was to determine
+              what learners already knew, what was unique to the organization, what needed to be remembered,
+              what needed to be practiced, and what belonged outside formal instruction.
+            </p>
+          </div>
+
+          <div class="scale-grid" aria-label="Project scale">
+            <div class="scale-item"><strong>20+</strong><span>Source procedures synthesized</span></div>
+            <div class="scale-item"><strong>2 hrs</strong><span>SME discovery</span></div>
+            <div class="scale-item"><strong>1</strong><span>Terminal learning objective</span></div>
+            <div class="scale-item"><strong>5</strong><span>Aligned enabling objectives</span></div>
+            <div class="scale-item"><strong>23</strong><span>Facilitated segments / slides</span></div>
+            <div class="scale-item"><strong>3</strong><span>Integrated application scenarios</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--ivory">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">02 • Diagnosis</p>
+          <h2>Experienced learners didn’t need another basic emergency course.</h2>
+        </div>
+
+        <div class="diagnosis-grid reveal reveal--delay-1">
+          <div class="diagnosis-panel">
+            <h3>Already known</h3>
+            <ul class="diagnosis-list">
+              <li>Professional fundamentals</li>
+              <li>General safety concepts</li>
+              <li>Basic terminology</li>
+            </ul>
+          </div>
+
+          <div class="diagnosis-panel diagnosis-panel--needed">
+            <h3>Actually needed</h3>
+            <ul class="diagnosis-list">
+              <li>Organizational roles</li>
+              <li>Communication expectations</li>
+              <li>Escalation</li>
+              <li>Coordination</li>
+              <li>Post-event responsibility</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--sage">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">03 • Architecture</p>
+          <h2>Turn source material into an instructional system.</h2>
+        </div>
+
+        <div class="architecture reveal reveal--delay-1" aria-label="Learning architecture">
+          <div class="arch-node">Source Material</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">SME Discovery</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Performance Gap</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node arch-node--accent">TLO</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Five ELOs</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node">Practice + Facilitation</div>
+          <div class="arch-arrow">↓</div>
+          <div class="arch-node arch-node--accent">Scenario Application</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--white">
+      <div class="container">
+        <div class="section-intro reveal">
+          <p class="eyebrow">04 • Fictional Teaching Framework</p>
+          <h2>SCOPE</h2>
+          <p>
+            The public reconstruction uses a fictional organizational-decision framework to demonstrate
+            how complex source material can be turned into a memorable through-line for instruction and practice.
+          </p>
+        </div>
+
+        <div class="scope-grid reveal reveal--delay-1">
+          <article class="scope-card">
+            <span class="scope-letter">S</span>
+            <h3>Scan</h3>
+            <p>What is happening? Separate observed conditions from assumptions.</p>
+          </article>
+
+          <article class="scope-card">
+            <span class="scope-letter">C</span>
+            <h3>Communicate</h3>
+            <p>Who needs accurate information to make a decision?</p>
+          </article>
+
+          <article class="scope-card">
+            <span class="scope-letter">O</span>
+            <h3>Organize</h3>
+            <p>Who owns which responsibility and who holds decision authority?</p>
+          </article>
+
+          <article class="scope-card">
+            <span class="scope-letter">P</span>
+            <h3>Pull in Support</h3>
+            <p>Has the situation exceeded current authority, expertise, or resources?</p>
+          </article>
+
+          <article class="scope-card">
+            <span class="scope-letter">E</span>
+            <h3>Evaluate</h3>
+            <p>What follow-up, documentation, and learning remain after the immediate issue?</p>
+          </article>
+        </div>
+
+        <div class="fiction-note reveal">
+          <strong>SCOPE is fictional.</strong> It was created solely for this portfolio reconstruction and is not an emergency-response protocol.
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--ivory">
+      <div class="container">
+        <div class="section-intro reveal">
+          <p class="eyebrow">05 • Interactive Samples</p>
+          <h2>Practice the thinking, not the procedure.</h2>
+          <p>
+            These interactions demonstrate information quality, role clarity, facilitated reasoning,
+            and integrated decision-making without teaching real emergency procedures.
+          </p>
+        </div>
+
+        <div class="demo-shell reveal reveal--delay-1">
+          <div class="demo-header">
+            <span>Northstar Operations</span>
+            <span>Fictional Portfolio Reconstruction</span>
+          </div>
+
+          <div class="demo-content">
+
+            <div class="interaction-block">
+              <h3>Build a Better Report</h3>
+              <p>Select the details that would help a decision-maker understand the current condition.</p>
+
+              <div class="report-grid" data-report-options>
+                <button type="button" class="report-option" data-key="impact">Production stopped.</button>
+                <button type="button" class="report-option" data-key="location">Zone C.</button>
+                <button type="button" class="report-option" data-key="people">No injuries reported.</button>
+                <button type="button" class="report-option" data-key="observation">Unusual equipment noise occurred first.</button>
+                <button type="button" class="report-option" data-key="action">Supervisor has paused the area.</button>
+                <button type="button" class="report-option" data-key="unknown">Cause unknown.</button>
+              </div>
+
+              <button type="button" class="button button--primary" style="margin-top:1rem;" data-build-report>Assemble Update</button>
+
+              <div class="assembled-report" data-assembled-report hidden aria-live="polite"></div>
+            </div>
+
+            <div class="interaction-block">
+              <h3>Who Owns What?</h3>
+              <p>Match each task to the role that most directly owns it in this fictional organization.</p>
+
+              <div class="role-grid" data-role-grid>
+                <div class="role-row" data-answer="technical">
+                  <div class="role-task">Determine technical cause</div>
+                  <div class="role-options">
+                    <button type="button" class="role-option" data-choice="operations">Operations Lead</button>
+                    <button type="button" class="role-option" data-choice="technical">Technical Specialist</button>
+                    <button type="button" class="role-option" data-choice="manager">Site Manager</button>
+                    <button type="button" class="role-option" data-choice="customer">Customer Lead</button>
+                  </div>
+                </div>
+
+                <div class="role-row" data-answer="operations">
+                  <div class="role-task">Coordinate frontline actions</div>
+                  <div class="role-options">
+                    <button type="button" class="role-option" data-choice="operations">Operations Lead</button>
+                    <button type="button" class="role-option" data-choice="technical">Technical Specialist</button>
+                    <button type="button" class="role-option" data-choice="manager">Site Manager</button>
+                    <button type="button" class="role-option" data-choice="customer">Customer Lead</button>
+                  </div>
+                </div>
+
+                <div class="role-row" data-answer="manager">
+                  <div class="role-task">Approve organization-wide operational changes</div>
+                  <div class="role-options">
+                    <button type="button" class="role-option" data-choice="operations">Operations Lead</button>
+                    <button type="button" class="role-option" data-choice="technical">Technical Specialist</button>
+                    <button type="button" class="role-option" data-choice="manager">Site Manager</button>
+                    <button type="button" class="role-option" data-choice="customer">Customer Lead</button>
+                  </div>
+                </div>
+
+                <div class="role-row" data-answer="customer">
+                  <div class="role-task">Provide consistent customer instructions</div>
+                  <div class="role-options">
+                    <button type="button" class="role-option" data-choice="operations">Operations Lead</button>
+                    <button type="button" class="role-option" data-choice="technical">Technical Specialist</button>
+                    <button type="button" class="role-option" data-choice="manager">Site Manager</button>
+                    <button type="button" class="role-option" data-choice="customer">Customer Lead</button>
+                  </div>
+                </div>
+              </div>
+
+              <p class="feedback" data-role-feedback aria-live="polite"></p>
+            </div>
+
+            <div class="interaction-block">
+              <h3>Scenario Lab</h3>
+              <p>Choose the strongest organizational response. These scenarios intentionally avoid real-world emergency procedures.</p>
+
+              <div class="scenario-box">
+                <h4 data-scenario-title>Scenario 1 of 3</h4>
+                <p data-scenario-text>
+                  A piece of equipment stops unexpectedly during a busy operating period. An employee reports an unusual sound beforehand. No injuries have been reported, but the cause is unknown.
+                </p>
+
+                <div class="scenario-options" data-scenario-options>
+                  <button type="button" class="scenario-option" data-choice="a">Restart it to see whether the issue repeats.</button>
+                  <button type="button" class="scenario-option" data-choice="b">Establish what is known, maintain the operational pause, and communicate the condition.</button>
+                  <button type="button" class="scenario-option" data-choice="c">Wait until the cause is known before communicating.</button>
+                  <button type="button" class="scenario-option" data-choice="d">Send a company-wide update immediately.</button>
+                </div>
+
+                <p class="feedback" data-scenario-feedback aria-live="polite"></p>
+                <button type="button" class="button button--secondary" data-next-scenario disabled>Next Scenario</button>
+              </div>
+            </div>
+
+            <div class="interaction-block">
+              <h3>Capstone</h3>
+              <p>Move through a fictional operating disruption and see which parts of SCOPE your decisions activate.</p>
+
+              <div class="capstone-progress" aria-label="SCOPE progress">
+                <span class="capstone-chip" data-chip="scan">Scan</span>
+                <span class="capstone-chip" data-chip="communicate">Communicate</span>
+                <span class="capstone-chip" data-chip="organize">Organize</span>
+                <span class="capstone-chip" data-chip="support">Pull in Support</span>
+                <span class="capstone-chip" data-chip="evaluate">Evaluate</span>
+              </div>
+
+              <div class="scenario-box" data-capstone-box>
+                <h4 data-capstone-title>Decision 1 of 4</h4>
+                <p data-capstone-text>
+                  A frontline employee reports that a critical work area has unexpectedly stopped operating. Reports conflict about the cause, customers are beginning to ask questions, and your manager is supporting another issue.
+                </p>
+                <div class="scenario-options" data-capstone-options></div>
+                <p class="feedback" data-capstone-feedback aria-live="polite"></p>
+                <button type="button" class="button button--secondary" data-capstone-next disabled>Next Decision</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--white">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">06 • Facilitator Design</p>
+          <h2>The facilitator is part of the learning experience.</h2>
+        </div>
+
+        <div class="guide-preview reveal reveal--delay-1">
+          <div class="guide-index">
+            <button type="button" class="is-active" data-guide="role">Know Your Role</button>
+            <button type="button" data-guide="report">Communicate What Decision-Makers Need</button>
+          </div>
+
+          <div class="guide-page" data-guide-page>
+            <h3>Know Your Role</h3>
+            <div class="guide-fields">
+              <div class="guide-field">
+                <strong>Purpose</strong>
+                <span>Introduce role clarity as the foundation of coordinated response.</span>
+              </div>
+              <div class="guide-field">
+                <strong>Trainer Objective</strong>
+                <span>Learners should understand that effective response depends on people executing defined responsibilities rather than trying to solve every part independently.</span>
+              </div>
+              <div class="guide-field">
+                <strong>Say</strong>
+                <span>High-pressure situations create a strong instinct to jump in. That can help, but it can also create confusion when responsibilities are unclear.</span>
+              </div>
+              <div class="guide-field">
+                <strong>Ask</strong>
+                <span>What problems can happen when several people assume they own the same decision?</span>
+              </div>
+              <div class="guide-field">
+                <strong>Listen For</strong>
+                <span>Conflicting instructions, duplicate work, missed responsibilities, poor accountability, delayed decisions.</span>
+              </div>
+              <div class="guide-field">
+                <strong>Apply</strong>
+                <span>Three supervisors begin giving different instructions to the same frontline team. What problem exists before we even discuss the disruption itself?</span>
+              </div>
+              <div class="guide-field">
+                <strong>Reinforce</strong>
+                <span>A coordinated response is not everyone doing everything. It is everyone understanding what they own.</span>
+              </div>
+              <div class="guide-field">
+                <strong>Trainer Notes</strong>
+                <span>Keep the discussion focused on organizational role clarity, not real-world emergency procedure.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--sage">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">07 • Alignment</p>
+          <h2>Every objective connects to practice and assessment.</h2>
+        </div>
+
+        <div class="alignment-wrap reveal reveal--delay-1">
+          <table class="alignment-table">
+            <thead>
+              <tr>
+                <th>Objective</th>
+                <th>Instruction</th>
+                <th>Practice</th>
+                <th>Assessment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Roles &amp; Response Structure</td>
+                <td>Facilitated discussion</td>
+                <td>Role matching</td>
+                <td>Scenario application</td>
+              </tr>
+              <tr>
+                <td>Recognition &amp; Communication</td>
+                <td>Example analysis</td>
+                <td>Build a Better Report</td>
+                <td>Scenario application</td>
+              </tr>
+              <tr>
+                <td>Team Coordination</td>
+                <td>Guided discussion</td>
+                <td>Role activity</td>
+                <td>Capstone</td>
+              </tr>
+              <tr>
+                <td>Escalation &amp; Decision Support</td>
+                <td>SCOPE framework</td>
+                <td>Branch decision</td>
+                <td>Capstone</td>
+              </tr>
+              <tr>
+                <td>Recovery &amp; Improvement</td>
+                <td>Guided instruction</td>
+                <td>Follow-up scenario</td>
+                <td>Knowledge check</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--ivory">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow">08 • Performance Support</p>
+          <h2>Not everything belongs in memory.</h2>
+        </div>
+
+        <div class="job-aid reveal reveal--delay-1">
+          <h3>SCOPE</h3>
+          <p class="job-aid-subtitle">Operational Coordination Quick Reference</p>
+
+          <div class="job-aid-list">
+            <div class="job-aid-row">
+              <div class="job-aid-letter">S</div>
+              <div><strong>Scan</strong><p>What is known? What changed? Who or what is affected?</p></div>
+            </div>
+            <div class="job-aid-row">
+              <div class="job-aid-letter">C</div>
+              <div><strong>Communicate</strong><p>Who needs the information? What do they need to decide? What remains uncertain?</p></div>
+            </div>
+            <div class="job-aid-row">
+              <div class="job-aid-letter">O</div>
+              <div><strong>Organize</strong><p>Who owns each responsibility? Who holds decision authority?</p></div>
+            </div>
+            <div class="job-aid-row">
+              <div class="job-aid-letter">P</div>
+              <div><strong>Pull in Support</strong><p>Do we need additional expertise, authority, or resources?</p></div>
+            </div>
+            <div class="job-aid-row">
+              <div class="job-aid-letter">E</div>
+              <div><strong>Evaluate</strong><p>What follow-up, documentation, or improvement remains?</p></div>
+            </div>
+          </div>
+
+          <p class="job-aid-disclaimer">
+            Portfolio demonstration only. SCOPE is a fictional instructional framework and is not an emergency-response procedure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section case-section--ink">
+      <div class="container section-grid">
+        <div class="section-label reveal">
+          <p class="eyebrow eyebrow--light">09 • Reflection</p>
+          <h2>What the project reinforced.</h2>
+        </div>
+
+        <div class="reflection-copy reveal reveal--delay-1">
+          <p>High-stakes subject matter creates a strong temptation to teach everything.</p>
+          <p>This project reinforced the opposite lesson.</p>
+          <p>
+            Effective instructional design requires defining the boundaries of instruction as deliberately
+            as the content itself. Experienced learners didn’t need every foundational concept repeated.
+            They needed organization-specific expectations, opportunities to reason through realistic situations,
+            and a facilitator prepared to guide those conversations.
+          </p>
+          <p>
+            The value of the finished program wasn’t the number of procedures summarized or slides produced.
+            It was the instructional structure connecting source material to decisions learners needed to make.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="case-nav" aria-label="Case study navigation">
+      <div class="container case-nav-inner">
+        <a class="button button--ghost-light" href="fleet-foundations.html">← Fleet Foundations</a>
+        <a class="button button--light" href="training-analytics.html">Next: Training Analytics →</a>
+      </div>
+    </nav>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="footer-brand" href="../index.html">McKena Ullman</a>
+        <p>Instructional Designer &amp; Learning Experience Designer</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../work.html">Work</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Résumé</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-note">
+        <p>Designed around clarity. Built for learning.</p>
+        <p>© <span data-current-year></span> McKena Ullman</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
