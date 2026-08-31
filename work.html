@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Explore McKena Ullman's instructional design portfolio across learning strategy, curriculum architecture, eLearning, facilitated learning, and performance analytics."
+  />
+  <meta name="author" content="McKena Ullman" />
+  <meta name="theme-color" content="#163A2F" />
+
+  <title>Work | McKena Ullman</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <script src="js/main.js" defer></script>
+
+  <style>
+    .work-hero {
+      padding-top: clamp(4rem, 8vw, 7rem);
+      padding-bottom: clamp(4rem, 8vw, 6rem);
+    }
+
+    .work-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+      gap: clamp(3rem, 8vw, 8rem);
+      align-items: end;
+    }
+
+    .work-hero h1 {
+      margin-bottom: 0;
+      max-width: none;
+      font-size: clamp(4.5rem, 12vw, 9rem);
+    }
+
+    .work-intro {
+      max-width: 760px;
+      margin-bottom: 0;
+      color: var(--muted-ink);
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+    }
+
+    .work-index {
+      border-top: 1px solid var(--border);
+    }
+
+    .work-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 70px minmax(0, 1.2fr) minmax(250px, 0.8fr);
+      gap: clamp(1.25rem, 4vw, 3rem);
+      padding: clamp(2rem, 5vw, 4rem) 0;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+
+    .work-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 calc(var(--page-padding) * -0.5);
+      z-index: 0;
+      background: transparent;
+      transition: background var(--transition);
+      pointer-events: none;
+    }
+
+    .work-card:hover::before {
+      background: rgba(255,255,255,0.38);
+    }
+
+    .work-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .work-card-number {
+      padding-top: 0.25rem;
+      color: var(--warm-brass);
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+    }
+
+    .work-card-main h2 {
+      max-width: none;
+      margin-bottom: 0.7rem;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+    }
+
+    .work-card-hook {
+      margin-bottom: 1rem;
+      color: var(--evergreen);
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      font-weight: 600;
+    }
+
+    .work-card-main > p:not(.work-card-hook) {
+      max-width: 690px;
+      color: var(--muted-ink);
+    }
+
+    .work-card-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      min-width: 0;
+    }
+
+    .work-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .work-card-tags span {
+      padding: 0.3rem 0.55rem;
+      border: 1px solid var(--border);
+      color: var(--muted-ink);
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .work-arrow {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--evergreen);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .work-arrow span {
+      transition: transform var(--transition);
+    }
+
+    .work-card:hover .work-arrow span {
+      transform: translate(2px, -2px);
+    }
+
+    .lab-section {
+      padding-block: clamp(4rem, 8vw, 6rem);
+    }
+
+    .lab-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 2rem;
+      align-items: end;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .lab-card h2 {
+      margin-bottom: 0.7rem;
+      max-width: none;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+
+    .lab-card p:not(.eyebrow) {
+      max-width: 690px;
+      margin-bottom: 0;
+      color: var(--muted-ink);
+    }
+
+    .work-footer-cta {
+      padding-block: clamp(4rem, 8vw, 6rem);
+    }
+
+    .work-footer-cta-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .work-footer-cta h2 {
+      margin-bottom: 0;
+      max-width: 16ch;
+    }
+
+    @media (max-width: 900px) {
+      .work-hero-grid,
+      .work-card {
+        grid-template-columns: 1fr;
+      }
+
+      .work-card {
+        gap: 1rem;
+      }
+
+      .work-card-side {
+        gap: 1rem;
+      }
+
+      .lab-card,
+      .work-footer-cta-grid {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .work-hero h1 {
+        font-size: clamp(3.6rem, 20vw, 6rem);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="McKena Ullman home">
+        <span class="brand-name">McKena Ullman</span>
+        <span class="brand-title">Instructional Designer &amp; Learning Experience Designer</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open navigation"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Résumé</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="work-hero section--ivory">
+      <div class="container work-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Portfolio</p>
+          <h1>Work</h1>
+        </div>
+
+        <p class="work-intro reveal reveal--delay-1">
+          Different problems require different kinds of learning. These projects show how I work across
+          strategy, curriculum, development, and measurement, from reorganizing complex information to
+          building high-stakes instruction and analyzing what happens after training.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--white">
+      <div class="container">
+        <div class="work-index">
+
+          <article class="work-card reveal">
+            <div class="work-card-number">01</div>
+
+            <div class="work-card-main">
+              <h2>Fleet Foundations</h2>
+              <p class="work-card-hook">When more content wasn’t the answer.</p>
+              <p>
+                Re-architected complex onboarding from disconnected memorization into a scalable
+                conceptual model built around classification, operating environment, and purpose.
+              </p>
+            </div>
+
+            <div class="work-card-side">
+              <div class="work-card-tags" aria-label="Fleet Foundations skills">
+                <span>Learning Strategy</span>
+                <span>eLearning</span>
+                <span>Needs Analysis</span>
+                <span>Cognitive Load</span>
+              </div>
+
+              <a class="work-arrow" href="projects/fleet-foundations.html">
+                Explore Fleet Foundations <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="work-card reveal">
+            <div class="work-card-number">02</div>
+
+            <div class="work-card-main">
+              <h2>Emergency Response Learning System</h2>
+              <p class="work-card-hook">Turning procedures into decisions under pressure.</p>
+              <p>
+                Translated complex procedural source material and SME expertise into an
+                objective-aligned, scenario-driven instructor-led learning system designed around
+                judgment, facilitation, and application.
+              </p>
+            </div>
+
+            <div class="work-card-side">
+              <div class="work-card-tags" aria-label="Emergency Response skills">
+                <span>ILT</span>
+                <span>Curriculum Architecture</span>
+                <span>SME Collaboration</span>
+                <span>Scenario Design</span>
+              </div>
+
+              <a class="work-arrow" href="projects/emergency-response.html">
+                Explore Emergency Response <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="work-card reveal">
+            <div class="work-card-number">03</div>
+
+            <div class="work-card-main">
+              <h2>Workforce Training Analytics</h2>
+              <p class="work-card-hook">Finding the learning story inside 1,100 records.</p>
+              <p>
+                Built a multi-dimensional analytics framework to examine training conditions,
+                placement patterns, retention, cohort maturity, and downstream workforce outcomes.
+              </p>
+            </div>
+
+            <div class="work-card-side">
+              <div class="work-card-tags" aria-label="Training Analytics skills">
+                <span>Excel</span>
+                <span>Learning Analytics</span>
+                <span>KPI Design</span>
+                <span>Program Evaluation</span>
+              </div>
+
+              <a class="work-arrow" href="projects/training-analytics.html">
+                Explore Training Analytics <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-section section--sage">
+      <div class="container">
+        <div class="lab-card reveal">
+          <div>
+            <p class="eyebrow">Interaction Lab</p>
+            <h2>Small builds. Specific experiments.</h2>
+            <p>
+              The Interaction Lab is where I test learning technologies, interaction patterns,
+              responsive behavior, data storytelling, and development techniques outside larger projects.
+            </p>
+          </div>
+
+          <a class="button button--secondary" href="lab/index.html">
+            View the Lab <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-footer-cta section--ink">
+      <div class="container work-footer-cta-grid reveal">
+        <div>
+          <p class="eyebrow eyebrow--light">See the thinking behind the work</p>
+          <h2>Each project starts with a different kind of problem.</h2>
+        </div>
+
+        <a class="button button--light" href="contact.html">Contact</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="footer-brand" href="index.html">McKena Ullman</a>
+        <p>Instructional Designer &amp; Learning Experience Designer</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="resume.html">Résumé</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-note">
+        <p>Designed around clarity. Built for learning.</p>
+        <p>© <span data-current-year></span> McKena Ullman</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
