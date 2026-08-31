@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Most Popular Pets in America: a native-web reconstruction of a Storyline interaction by McKena Ullman, featuring responsive data visualization, state-based navigation, accessible hover alternatives, and pet profile interactions."
+  />
+  <meta name="author" content="McKena Ullman" />
+  <meta name="theme-color" content="#163A2F" />
+
+  <title>Most Popular Pets in America | McKena Ullman</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <script src="../js/main.js" defer></script>
+  <script src="../js/pets.js" defer></script>
+
+  <style>
+    .pet-experience {
+      min-height: calc(100vh - 78px);
+      background: var(--warm-ivory);
+    }
+
+    .experience-bar {
+      border-bottom: 1px solid var(--border);
+      background: rgba(247,244,236,0.96);
+    }
+
+    .experience-bar-inner {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .experience-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .experience-title strong {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+    }
+
+    .experience-title span {
+      color: var(--muted-ink);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .experience-menu-wrap {
+      position: relative;
+    }
+
+    .experience-menu-toggle {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--deep-ink);
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .experience-menu-toggle::after {
+      content: "▾";
+      color: var(--warm-brass);
+    }
+
+    .experience-menu {
+      position: absolute;
+      z-index: 20;
+      top: calc(100% + 0.5rem);
+      right: 0;
+      min-width: 190px;
+      padding: 0.4rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      box-shadow: 0 16px 40px rgba(20,33,28,0.12);
+    }
+
+    .experience-menu[hidden] {
+      display: none;
+    }
+
+    .experience-menu button {
+      width: 100%;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0.65rem 0.75rem;
+      border: 0;
+      background: transparent;
+      color: var(--deep-ink);
+      cursor: pointer;
+      text-align: left;
+      font-weight: 700;
+    }
+
+    .experience-menu button:hover,
+    .experience-menu button:focus-visible,
+    .experience-menu button.is-active {
+      background: var(--soft-sage);
+    }
+
+    .experience-state {
+      padding-block: clamp(4rem, 8vw, 7rem);
+    }
+
+    .experience-state[hidden] {
+      display: none;
+    }
+
+    .welcome-grid,
+    .pet-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: center;
+    }
+
+    .experience-state h1 {
+      max-width: 11ch;
+      margin-bottom: 1rem;
+      font-size: clamp(3.5rem, 7vw, 6.6rem);
+    }
+
+    .state-lede {
+      max-width: 650px;
+      color: var(--muted-ink);
+      font-size: clamp(1.05rem, 2vw, 1.22rem);
+    }
+
+    .source-note {
+      margin-top: 1.3rem;
+      color: var(--muted-ink);
+      font-size: 0.78rem;
+    }
+
+    .source-note a,
+    .sources a {
+      color: var(--evergreen);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .chart-card {
+      padding: clamp(1.3rem, 3vw, 2rem);
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .chart-card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: end;
+      margin-bottom: 1.5rem;
+    }
+
+    .chart-card-header h2 {
+      max-width: none;
+      margin-bottom: 0.2rem;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+    }
+
+    .chart-card-header p {
+      margin: 0;
+      color: var(--muted-ink);
+      font-size: 0.8rem;
+    }
+
+    .chart-layout {
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) minmax(180px, 0.65fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .donut-wrap {
+      position: relative;
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+    }
+
+    .donut-svg {
+      width: min(100%, 360px);
+      height: auto;
+      overflow: visible;
+    }
+
+    .donut-slice {
+      cursor: pointer;
+      transform-box: fill-box;
+      transform-origin: center;
+      transition:
+        opacity var(--transition),
+        transform 220ms ease;
+    }
+
+    .donut-slice:hover,
+    .donut-slice:focus-visible,
+    .donut-slice.is-active {
+      transform: scale(1.045);
+      outline: none;
+    }
+
+    .donut-svg.has-active .donut-slice:not(.is-active) {
+      opacity: 0.35;
+    }
+
+    .donut-center {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .donut-center strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+    }
+
+    .donut-center span {
+      display: block;
+      max-width: 100px;
+      margin-top: 0.35rem;
+      color: var(--muted-ink);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .chart-legend {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .legend-button {
+      min-height: 44px;
+      display: grid;
+      grid-template-columns: 12px 1fr auto;
+      gap: 0.65rem;
+      align-items: center;
+      padding: 0.7rem;
+      border: 1px solid var(--border);
+      background: var(--warm-ivory);
+      color: var(--deep-ink);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .legend-button:hover,
+    .legend-button:focus-visible,
+    .legend-button.is-active {
+      border-color: var(--evergreen);
+      background: var(--soft-sage);
+    }
+
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--swatch);
+    }
+
+    .legend-name {
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .legend-value {
+      color: var(--muted-ink);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .chart-caveat {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      border-left: 3px solid var(--warm-brass);
+      background: rgba(180,123,57,0.07);
+      color: var(--muted-ink);
+      font-size: 0.78rem;
+    }
+
+    .pet-copy .eyebrow {
+      margin-bottom: 0.9rem;
+    }
+
+    .pet-copy h1 {
+      margin-bottom: 0.8rem;
+    }
+
+    .pet-copy > p {
+      max-width: 620px;
+      color: var(--muted-ink);
+    }
+
+    .reason-list {
+      display: grid;
+      gap: 1px;
+      margin: 1.5rem 0;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .reason {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 0.8rem;
+      padding: 1rem;
+      background: var(--white);
+    }
+
+    .reason-number {
+      color: var(--warm-brass);
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+    }
+
+    .reason strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .reason p {
+      margin: 0;
+      color: var(--muted-ink);
+      font-size: 0.86rem;
+    }
+
+    .pet-visual {
+      position: relative;
+      min-height: clamp(430px, 58vw, 620px);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--soft-sage);
+    }
+
+    .pet-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+    }
+
+    .fact-trigger {
+      position: absolute;
+      inset: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .fact-trigger:focus-visible {
+      outline: 4px solid var(--warm-brass);
+      outline-offset: -8px;
+    }
+
+    .speech-bubble {
+      position: absolute;
+      z-index: 5;
+      right: clamp(1rem, 4vw, 2.5rem);
+      bottom: clamp(1rem, 4vw, 2.5rem);
+      max-width: 290px;
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(20,33,28,0.18);
+      border-radius: 1rem;
+      background: rgba(247,244,236,0.96);
+      color: var(--deep-ink);
+      box-shadow: 0 16px 40px rgba(20,33,28,0.15);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition:
+        opacity var(--transition),
+        transform var(--transition);
+    }
+
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      right: 32px;
+      bottom: -12px;
+      width: 22px;
+      height: 22px;
+      border-right: 1px solid rgba(20,33,28,0.18);
+      border-bottom: 1px solid rgba(20,33,28,0.18);
+      background: var(--warm-ivory);
+      transform: rotate(45deg);
+    }
+
+    .speech-bubble strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: var(--evergreen);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .speech-bubble p {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+
+    .pet-visual:hover .speech-bubble,
+    .pet-visual:focus-within .speech-bubble,
+    .pet-visual.is-fact-open .speech-bubble {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-hint {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 4;
+      padding: 0.45rem 0.6rem;
+      background: rgba(20,33,28,0.76);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      pointer-events: none;
+    }
+
+    .sources {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted-ink);
+      font-size: 0.78rem;
+    }
+
+    .sources strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--deep-ink);
+    }
+
+    .sources ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    .experiment-footer {
+      padding-block: 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .experiment-footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 940px) {
+      .welcome-grid,
+      .pet-grid,
+      .chart-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .chart-layout {
+        gap: 0.5rem;
+      }
+
+      .chart-legend {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .experience-title span {
+        display: none;
+      }
+
+      .chart-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .chart-legend {
+        grid-template-columns: 1fr;
+      }
+
+      .donut-wrap {
+        min-height: 300px;
+      }
+
+      .pet-visual {
+        min-height: 420px;
+      }
+
+      .speech-bubble {
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
+      }
+    }
+
+    @media (hover: none) {
+      .pet-visual:hover .speech-bubble {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      .pet-visual.is-fact-open .speech-bubble,
+      .pet-visual:focus-within .speech-bubble {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .donut-slice,
+      .speech-bubble {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="McKena Ullman home">
+        <span class="brand-name">McKena Ullman</span>
+        <span class="brand-title">Instructional Designer &amp; Learning Experience Designer</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open navigation"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
+        <a href="../work.html">Work</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Résumé</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="pet-experience">
+
+    <div class="experience-bar">
+      <div class="container experience-bar-inner">
+        <div class="experience-title">
+          <strong>Most Popular Pets in America</strong>
+          <span>Native Web Interaction</span>
+        </div>
+
+        <div class="experience-menu-wrap">
+          <button
+            type="button"
+            class="experience-menu-toggle"
+            aria-expanded="false"
+            aria-controls="pet-experience-menu"
+            data-experience-menu-toggle
+          >
+            <span data-current-state-label>Welcome</span>
+          </button>
+
+          <div class="experience-menu" id="pet-experience-menu" hidden data-experience-menu>
+            <button type="button" class="is-active" data-state-target="welcome">Welcome</button>
+            <button type="button" data-state-target="dogs">Dogs</button>
+            <button type="button" data-state-target="cats">Cats</button>
+            <button type="button" data-state-target="fish">Fish</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WELCOME -->
+    <section class="experience-state" data-state="welcome">
+      <div class="container welcome-grid">
+        <div class="reveal">
+          <p class="eyebrow">Interaction Lab • Data Storytelling</p>
+          <h1>Who owns America’s pets?</h1>
+
+          <p class="state-lede">
+            Pet ownership spans generations, but the mix is changing. This reconstruction preserves
+            the original Storyline interaction model while rebuilding it for the responsive web with
+            keyboard controls, touch behavior, persistent state, and accessible alternatives.
+          </p>
+
+          <p class="source-note">
+            Chart data uses a published 2024 generational share of U.S. pet owners reported by Forbes Advisor
+            from APPA data. The four displayed generations total 95%, with the remaining share not represented
+            in the source breakdown shown here.
+            <a href="https://www.forbes.com/advisor/pet-insurance/pet-ownership-statistics/" target="_blank" rel="noopener noreferrer">View source</a>.
+          </p>
+        </div>
+
+        <div class="chart-card reveal reveal--delay-1">
+          <div class="chart-card-header">
+            <div>
+              <p class="eyebrow">Share of current pet owners</p>
+              <h2>Pet ownership by generation</h2>
+            </div>
+            <p>Hover, focus, or select a generation.</p>
+          </div>
+
+          <div class="chart-layout">
+            <div class="donut-wrap">
+              <svg
+                class="donut-svg"
+                viewBox="0 0 240 240"
+                role="group"
+                aria-label="Interactive donut chart of pet ownership share by generation"
+                data-donut
+              >
+                <circle cx="120" cy="120" r="82" fill="none" stroke="rgba(20,33,28,.08)" stroke-width="42"></circle>
+
+                <circle
+                  class="donut-slice"
+                  data-generation="genz"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Gen Z, 13 percent"
+                  cx="120" cy="120" r="82"
+                  fill="none"
+                  stroke="#B47B39"
+                  stroke-width="42"
+                  stroke-linecap="butt"
+                  pathLength="100"
+                  stroke-dasharray="13 87"
+                  stroke-dashoffset="0"
+                  transform="rotate(-90 120 120)"
+                ></circle>
+
+                <circle
+                  class="donut-slice"
+                  data-generation="millennials"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Millennials, 33 percent"
+                  cx="120" cy="120" r="82"
+                  fill="none"
+                  stroke="#163A2F"
+                  stroke-width="42"
+                  pathLength="100"
+                  stroke-dasharray="33 67"
+                  stroke-dashoffset="-13"
+                  transform="rotate(-90 120 120)"
+                ></circle>
+
+                <circle
+                  class="donut-slice"
+                  data-generation="genx"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Gen X, 25 percent"
+                  cx="120" cy="120" r="82"
+                  fill="none"
+                  stroke="#668477"
+                  stroke-width="42"
+                  pathLength="100"
+                  stroke-dasharray="25 75"
+                  stroke-dashoffset="-46"
+                  transform="rotate(-90 120 120)"
+                ></circle>
+
+                <circle
+                  class="donut-slice"
+                  data-generation="boomers"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Baby Boomers, 24 percent"
+                  cx="120" cy="120" r="82"
+                  fill="none"
+                  stroke="#9AA9A0"
+                  stroke-width="42"
+                  pathLength="100"
+                  stroke-dasharray="24 76"
+                  stroke-dashoffset="-71"
+                  transform="rotate(-90 120 120)"
+                ></circle>
+              </svg>
+
+              <div class="donut-center" aria-live="polite">
+                <strong data-donut-value>95%</strong>
+                <span data-donut-label>shown across four generations</span>
+              </div>
+            </div>
+
+            <div class="chart-legend" aria-label="Generation controls">
+              <button type="button" class="legend-button" data-generation-control="genz" style="--swatch:#B47B39;">
+                <span class="legend-swatch"></span>
+                <span class="legend-name">Gen Z</span>
+                <span class="legend-value">13%</span>
+              </button>
+
+              <button type="button" class="legend-button" data-generation-control="millennials" style="--swatch:#163A2F;">
+                <span class="legend-swatch"></span>
+                <span class="legend-name">Millennials</span>
+                <span class="legend-value">33%</span>
+              </button>
+
+              <button type="button" class="legend-button" data-generation-control="genx" style="--swatch:#668477;">
+                <span class="legend-swatch"></span>
+                <span class="legend-name">Gen X</span>
+                <span class="legend-value">25%</span>
+              </button>
+
+              <button type="button" class="legend-button" data-generation-control="boomers" style="--swatch:#9AA9A0;">
+                <span class="legend-swatch"></span>
+                <span class="legend-name">Boomers</span>
+                <span class="legend-value">24%</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="chart-caveat">
+            This visualization demonstrates interaction design rather than current-market reporting.
+            Source figures are displayed as published and are not normalized to 100%.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOGS -->
+    <section class="experience-state" data-state="dogs" hidden>
+      <div class="container pet-grid">
+        <div class="pet-copy">
+          <p class="eyebrow">01 • Dogs</p>
+          <h1>Dogs</h1>
+          <p>
+            Dogs remain the most widely owned pet category in the United States. Their popularity crosses
+            household types because the category includes enormous variation in size, temperament, activity
+            level, and the ways owners integrate dogs into daily life.
+          </p>
+
+          <div class="reason-list">
+            <div class="reason">
+              <span class="reason-number">01</span>
+              <div>
+                <strong>Companionship</strong>
+                <p>Dogs are often deeply integrated into routines, recreation, travel, and family life.</p>
+              </div>
+            </div>
+
+            <div class="reason">
+              <span class="reason-number">02</span>
+              <div>
+                <strong>Trainability</strong>
+                <p>Many owners value the ability to build routines, communication, and shared activities through training.</p>
+              </div>
+            </div>
+
+            <div class="reason">
+              <span class="reason-number">03</span>
+              <div>
+                <strong>Variety</strong>
+                <p>The category spans a wide range of body sizes, energy levels, coat types, and temperaments.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sources">
+            <strong>Sources</strong>
+            <ul>
+              <li><a href="https://americanpetproducts.org/news/u.s.-pet-industry-reaches-158-billion-in-2025-poised-for-continued-growth-in-2026" target="_blank" rel="noopener noreferrer">APPA 2026 State of the Industry release</a></li>
+              <li><a href="https://americanpetproducts.org/news/the-american-pet-products-association-appa-releases-2025-dog-cat-report" target="_blank" rel="noopener noreferrer">APPA 2025 Dog &amp; Cat Report release</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pet-visual" data-fact-container>
+          <img
+            src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1200&q=85"
+            alt="Golden retriever outdoors"
+          />
+
+          <button
+            type="button"
+            class="fact-trigger"
+            aria-expanded="false"
+            aria-label="Reveal dog fact"
+            data-fact-trigger
+          ></button>
+
+          <span class="image-hint">Hover, focus, or tap for a fact</span>
+
+          <div class="speech-bubble" aria-live="polite">
+            <strong>Dog fact</strong>
+            <p>APPA reported that 53% of U.S. households owned a dog in 2025, representing about 71 million households.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATS -->
+    <section class="experience-state" data-state="cats" hidden>
+      <div class="container pet-grid">
+        <div class="pet-copy">
+          <p class="eyebrow">02 • Cats</p>
+          <h1>Cats</h1>
+          <p>
+            Cats combine companionship with routines that can work well across many household types.
+            Recent APPA reporting also shows cat ownership continuing to grow, particularly among younger owners.
+          </p>
+
+          <div class="reason-list">
+            <div class="reason">
+              <span class="reason-number">01</span>
+              <div>
+                <strong>Adaptable living</strong>
+                <p>Cats can fit into a wide range of home sizes and indoor living arrangements.</p>
+              </div>
+            </div>
+
+            <div class="reason">
+              <span class="reason-number">02</span>
+              <div>
+                <strong>Independent routines</strong>
+                <p>Owners can build companionship around a pet that does not require the same outdoor routine as many dogs.</p>
+              </div>
+            </div>
+
+            <div class="reason">
+              <span class="reason-number">03</span>
+              <div>
+                <strong>Companionship</strong>
+                <p>Modern cat ownership increasingly emphasizes interaction, enrichment, training, and shared time.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sources">
+            <strong>Sources</strong>
+            <ul>
+              <li><a href="https://americanpetproducts.org/news/u.s.-pet-industry-reaches-158-billion-in-2025-poised-for-continued-growth-in-2026" target="_blank" rel="noopener noreferrer">APPA 2026 State of the Industry release</a></li>
+              <li><a href="https://americanpetproducts.org/news/the-american-pet-products-association-appa-releases-2025-dog-cat-report" target="_blank" rel="noopener noreferrer">APPA 2025 Dog &amp; Cat Report release</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pet-visual" data-fact-container>
+          <img
+            src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=1200&q=85"
+            alt="Cat resting indoors"
+          />
+
+          <button
+            type="button"
+            class="fact-trigger"
+            aria-expanded="false"
+            aria-label="Reveal cat fact"
+            data-fact-trigger
+          ></button>
+
+          <span class="image-hint">Hover, focus, or tap for a fact</span>
+
+          <div class="speech-bubble" aria-live="polite">
+            <strong>Cat fact</strong>
+            <p>APPA reported 53 million U.S. households owning a cat in 2025, up 5% year over year.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FISH -->
+    <section class="experience-state" data-state="fish" hidden>
+      <div class="container pet-grid">
+        <div class="pet-copy">
+          <p class="eyebrow">03 • Fish</p>
+          <h1>Fish</h1>
+          <p>
+            Fish occupy a different corner of pet ownership: compact habitats, visual interest, enormous
+            species variety, and care systems built around a controlled aquatic environment rather than a roaming companion animal.
+          </p>
+
+          <div class="reason-list">
+            <div class="reason">
+              <span class="reason-number">01</span>
+              <div>
+                <strong>Compact footprint</strong>
+                <p>An aquarium creates a defined habitat rather than requiring free movement throughout a home.</p>
+              </div>
+            </div>
+
+            <div class="reason">
+              <span class="reason-number">02</span>
+              <div>
+                <strong>Visual appeal</strong>
+                <p>Aquariums combine animal care with movement, color, habitat design, and environmental observation.</p>
+              </div>
+            </div>
+
+            <div class="reason">
+              <span class="reason-number">03</span>
+              <div>
+                <strong>Species variety</strong>
+                <p>Freshwater and saltwater keeping can involve dramatically different species, habitats, and care requirements.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sources">
+            <strong>Sources</strong>
+            <ul>
+              <li><a href="https://americanpetproducts.org/blog/what-you-need-to-know-about-appas-fish-reptile-report" target="_blank" rel="noopener noreferrer">APPA Fish &amp; Reptile Report overview</a></li>
+              <li><a href="https://americanpetproducts.org/news/from-bigger-tanks-to-stronger-bonds-fish-reptile-ownership-evolves-in-2025" target="_blank" rel="noopener noreferrer">APPA 2025 Fish &amp; Reptile Report release</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pet-visual" data-fact-container>
+          <img
+            src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=1200&q=85"
+            alt="Colorful fish in an aquarium"
+          />
+
+          <button
+            type="button"
+            class="fact-trigger"
+            aria-expanded="false"
+            aria-label="Reveal fish fact"
+            data-fact-trigger
+          ></button>
+
+          <span class="image-hint">Hover, focus, or tap for a fact</span>
+
+          <div class="speech-bubble" aria-live="polite">
+            <strong>Fish fact</strong>
+            <p>APPA’s 2024 Fish &amp; Reptile report overview said 8% of U.S. households owned fish.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="experiment-footer">
+      <div class="container experiment-footer-inner">
+        <a class="button button--secondary" href="index.html">← Back to Interaction Lab</a>
+        <a class="button button--primary" href="../work.html">View Case Studies</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="footer-brand" href="../index.html">McKena Ullman</a>
+        <p>Instructional Designer &amp; Learning Experience Designer</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../work.html">Work</a>
+        <a href="../about.html">About</a>
+        <a href="../resume.html">Résumé</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-note">
+        <p>Designed around clarity. Built for learning.</p>
+        <p>© <span data-current-year></span> McKena Ullman</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
