@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="Learning analytics case study by McKena Ullman using training data to evaluate outcomes, retention, cohort maturity, and program effectiveness." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
     content="Workforce Training Analytics case study by McKena Ullman: a synthetic workforce-learning analytics project demonstrating KPI design, cohort maturity, placement analysis, survival analysis, and program evaluation."
@@ -588,6 +588,57 @@
         transition: none;
       }
     }
+  
+    .workbook-embed-shell {
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      box-shadow: 0 18px 45px rgba(20,33,28,0.07);
+    }
+
+    .workbook-embed-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--deep-ink);
+      color: var(--white);
+    }
+
+    .workbook-embed-toolbar span {
+      color: #C7D3CD;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .workbook-embed-toolbar a {
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 0.2rem;
+    }
+
+    .workbook-embed {
+      display: block;
+      width: 100%;
+      min-height: 880px;
+      border: 0;
+      background: var(--warm-ivory);
+    }
+
+    @media (max-width: 720px) {
+      .workbook-embed-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .workbook-embed {
+        min-height: 760px;
+      }
+    }
   </style>
 </head>
 
@@ -692,371 +743,19 @@
     </section>
 
     <section class="case-section case-section--sage">
-      <div class="container section-grid">
-        <div class="section-label reveal">
-          <p class="eyebrow">02 • Process</p>
-          <h2>Build the measurement structure before interpreting the story.</h2>
-        </div>
-
-        <div class="process-flow reveal reveal--delay-1" aria-label="Analytics process">
-          <div class="process-node">Raw Data</div>
-          <div class="process-arrow">↓</div>
-          <div class="process-node">Clean + Normalize</div>
-          <div class="process-arrow">↓</div>
-          <div class="process-node">Define Outcomes</div>
-          <div class="process-arrow">↓</div>
-          <div class="process-node">Build Cohorts</div>
-          <div class="process-arrow">↓</div>
-          <div class="process-node">Compare Variables</div>
-          <div class="process-arrow">↓</div>
-          <div class="process-node process-node--accent">Create KPIs</div>
-          <div class="process-arrow">↓</div>
-          <div class="process-node">Interpret Limitations</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-section case-section--ivory">
-      <div class="container">
-        <div class="section-intro reveal">
-          <p class="eyebrow">03 • Interactive Dashboard</p>
-          <h2>From completion data to program evaluation.</h2>
-          <p>
-            The dashboard below uses synthetic portfolio data. Use the tabs to explore the public-facing
-            views I would surface for decision-makers.
-          </p>
-        </div>
-
-        <div class="dashboard-shell reveal reveal--delay-1">
-          <div class="dashboard-header">
-            <strong>Workforce Training Analytics</strong>
-            <span>Synthetic Portfolio Dashboard</span>
-          </div>
-
-          <div class="dashboard-content">
-            <div class="dashboard-nav" role="tablist" aria-label="Analytics dashboard sections">
-              <button type="button" class="dashboard-tab is-active" role="tab" aria-selected="true" data-panel-target="overview">Executive Overview</button>
-              <button type="button" class="dashboard-tab" role="tab" aria-selected="false" data-panel-target="outcomes">Outcome Distribution</button>
-              <button type="button" class="dashboard-tab" role="tab" aria-selected="false" data-panel-target="placement">Placement Timing</button>
-              <button type="button" class="dashboard-tab" role="tab" aria-selected="false" data-panel-target="maturity">Cohort Maturity</button>
-              <button type="button" class="dashboard-tab" role="tab" aria-selected="false" data-panel-target="survival">Survival Analysis</button>
-            </div>
-
-            <section class="dashboard-panel" data-panel="overview">
-              <div class="metric-grid-analytics">
-                <div class="analytics-metric">
-                  <strong>1,050</strong>
-                  <span>Synthetic trainees</span>
-                </div>
-                <div class="analytics-metric">
-                  <strong>69.6%</strong>
-                  <span>Synthetic success condition</span>
-                </div>
-                <div class="analytics-metric">
-                  <strong>43.4%</strong>
-                  <span>Active in current snapshot</span>
-                </div>
-                <div class="analytics-metric">
-                  <strong>52.3%</strong>
-                  <span>Ever promoted in synthetic data</span>
-                </div>
-              </div>
-
-              <div class="metric-definition">
-                <strong>Metric definition matters.</strong>
-                Success is defined here as active, promoted, or retained at least 121 days. Those conditions
-                can overlap, so this metric should not be read as a mutually exclusive outcome category.
-              </div>
-
-              <div class="chart-card">
-                <h3>What the overview is for</h3>
-                <p>
-                  The executive layer provides orientation, not a conclusion. It tells decision-makers where
-                  to look next, while the deeper views test whether apparent patterns hold across cohorts and
-                  account for incomplete observation windows.
-                </p>
-              </div>
-            </section>
-
-            <section class="dashboard-panel" data-panel="outcomes" hidden>
-              <div class="chart-card">
-                <h3>Mutually Exclusive Outcome Distribution</h3>
-                <p>Illustrative synthetic categories for this portfolio reconstruction.</p>
-
-                <div class="bar-chart" data-outcome-chart>
-                  <div class="bar-row">
-                    <span class="bar-label">Active</span>
-                    <div class="bar-track"><div class="bar-fill" data-width="43.4"></div></div>
-                    <span class="bar-value">43.4%</span>
-                  </div>
-                  <div class="bar-row">
-                    <span class="bar-label">Promoted</span>
-                    <div class="bar-track"><div class="bar-fill" data-width="18.8"></div></div>
-                    <span class="bar-value">18.8%</span>
-                  </div>
-                  <div class="bar-row">
-                    <span class="bar-label">Complete</span>
-                    <div class="bar-track"><div class="bar-fill" data-width="13.5"></div></div>
-                    <span class="bar-value">13.5%</span>
-                  </div>
-                  <div class="bar-row">
-                    <span class="bar-label">Voluntary Exit</span>
-                    <div class="bar-track"><div class="bar-fill" data-width="11.2"></div></div>
-                    <span class="bar-value">11.2%</span>
-                  </div>
-                  <div class="bar-row">
-                    <span class="bar-label">Terminated</span>
-                    <div class="bar-track"><div class="bar-fill" data-width="9.7"></div></div>
-                    <span class="bar-value">9.7%</span>
-                  </div>
-                  <div class="bar-row">
-                    <span class="bar-label">Leave</span>
-                    <div class="bar-track"><div class="bar-fill" data-width="3.4"></div></div>
-                    <span class="bar-value">3.4%</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="dashboard-panel" data-panel="placement" hidden>
-              <div class="placement-grid">
-                <div class="chart-card" style="margin-top:0;">
-                  <h3>Placement Timing</h3>
-                  <p>Synthetic success-condition rates by time-to-placement bucket.</p>
-
-                  <div class="bar-chart">
-                    <div class="bar-row">
-                      <span class="bar-label">Existing Employee</span>
-                      <div class="bar-track"><div class="bar-fill" data-width="69.8"></div></div>
-                      <span class="bar-value">69.8%</span>
-                    </div>
-                    <div class="bar-row">
-                      <span class="bar-label">0 Days</span>
-                      <div class="bar-track"><div class="bar-fill" data-width="68.8"></div></div>
-                      <span class="bar-value">68.8%</span>
-                    </div>
-                    <div class="bar-row">
-                      <span class="bar-label">1–7 Days</span>
-                      <div class="bar-track"><div class="bar-fill" data-width="69.2"></div></div>
-                      <span class="bar-value">69.2%</span>
-                    </div>
-                    <div class="bar-row">
-                      <span class="bar-label">8–14 Days</span>
-                      <div class="bar-track"><div class="bar-fill" data-width="64.0"></div></div>
-                      <span class="bar-value">64.0%</span>
-                    </div>
-                    <div class="bar-row">
-                      <span class="bar-label">15–21 Days</span>
-                      <div class="bar-track"><div class="bar-fill" data-width="62.5"></div></div>
-                      <span class="bar-value">62.5%</span>
-                    </div>
-                    <div class="bar-row">
-                      <span class="bar-label">21+ Days</span>
-                      <div class="bar-track"><div class="bar-fill" data-width="84.7"></div></div>
-                      <span class="bar-value">84.7%</span>
-                    </div>
-                  </div>
-                </div>
-
-                <aside class="interpretation-card">
-                  <strong>Interpretation</strong>
-                  <p>
-                    Placement timing showed meaningful variation, but not a simple linear relationship.
-                    The analysis became a prompt for deeper investigation rather than proof that faster
-                    or slower placement caused a particular outcome.
-                  </p>
-                </aside>
-              </div>
-            </section>
-
-            <section class="dashboard-panel" data-panel="maturity" hidden>
-              <div class="chart-card" style="margin-top:0;">
-                <h3>Cohort Maturity</h3>
-                <p>
-                  Recent cohorts should not be treated as if they have had the same amount of time to reach
-                  long-term milestones.
-                </p>
-
-                <div class="heatmap-wrap">
-                  <div class="heatmap" aria-label="Synthetic cohort maturity heatmap">
-                    <div class="heatmap-cell heatmap-header">Cohort</div>
-                    <div class="heatmap-cell heatmap-header">30 Day</div>
-                    <div class="heatmap-cell heatmap-header">60 Day</div>
-                    <div class="heatmap-cell heatmap-header">90 Day</div>
-                    <div class="heatmap-cell heatmap-header">121 Day</div>
-
-                    <div class="heatmap-cell heatmap-rowlabel">Jan 2026</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.26">87%</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.22">80%</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.19">75%</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.17">70%</div>
-
-                    <div class="heatmap-cell heatmap-rowlabel">Feb 2026</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.25">86%</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.21">79%</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.18">74%</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.16">69%</div>
-
-                    <div class="heatmap-cell heatmap-rowlabel">Mar 2026</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.24">85%</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.20">78%</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.18">73%</div>
-                    <div class="heatmap-cell heatmap-immature">Not yet mature</div>
-
-                    <div class="heatmap-cell heatmap-rowlabel">Apr 2026</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.24">84%</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.20">77%</div>
-                    <div class="heatmap-cell heatmap-immature">Not yet mature</div>
-                    <div class="heatmap-cell heatmap-immature">Not yet mature</div>
-
-                    <div class="heatmap-cell heatmap-rowlabel">May 2026</div>
-                    <div class="heatmap-cell heatmap-rate" style="--alpha:.23">83%</div>
-                    <div class="heatmap-cell heatmap-immature">Not yet mature</div>
-                    <div class="heatmap-cell heatmap-immature">Not yet mature</div>
-                    <div class="heatmap-cell heatmap-immature">Not yet mature</div>
-                  </div>
-                </div>
-
-                <div class="metric-definition">
-                  Cohorts are evaluated only against milestones they have had enough time to reach.
-                  “Not yet mature” is intentionally different from 0%.
-                </div>
-              </div>
-            </section>
-
-            <section class="dashboard-panel" data-panel="survival" hidden>
-              <div class="chart-card" style="margin-top:0;">
-                <h3>Kaplan-Meier Style Retention View</h3>
-                <p>
-                  Active employees are treated as right-censored rather than as exits, allowing the analysis
-                  to account for employees whose final tenure is not yet observable.
-                </p>
-
-                <div class="survival-chart">
-                  <svg class="survival-svg" viewBox="0 0 760 360" role="img" aria-label="Synthetic survival curve showing probability of remaining employed over 365 days">
-                    <line x1="60" y1="20" x2="60" y2="310" class="grid-line" />
-                    <line x1="60" y1="310" x2="735" y2="310" class="grid-line" />
-
-                    <line x1="60" y1="78" x2="735" y2="78" class="grid-line" />
-                    <line x1="60" y1="136" x2="735" y2="136" class="grid-line" />
-                    <line x1="60" y1="194" x2="735" y2="194" class="grid-line" />
-                    <line x1="60" y1="252" x2="735" y2="252" class="grid-line" />
-
-                    <text x="22" y="26" class="axis-label">100%</text>
-                    <text x="28" y="84" class="axis-label">80%</text>
-                    <text x="28" y="142" class="axis-label">60%</text>
-                    <text x="28" y="200" class="axis-label">40%</text>
-                    <text x="28" y="258" class="axis-label">20%</text>
-
-                    <text x="60" y="336" class="axis-label">0</text>
-                    <text x="112" y="336" class="axis-label">30</text>
-                    <text x="168" y="336" class="axis-label">60</text>
-                    <text x="224" y="336" class="axis-label">90</text>
-                    <text x="282" y="336" class="axis-label">121</text>
-                    <text x="393" y="336" class="axis-label">180</text>
-                    <text x="704" y="336" class="axis-label">365</text>
-
-                    <path
-                      class="survival-line"
-                      d="M60 20
-                         L60 59
-                         L115 59
-                         L115 80
-                         L171 80
-                         L171 94
-                         L226 94
-                         L226 106
-                         L283 106
-                         L283 126
-                         L394 126
-                         L394 146
-                         L735 146
-                         L735 152"
-                    />
-
-                    <circle cx="115" cy="59" r="6" class="survival-point" />
-                    <circle cx="171" cy="80" r="6" class="survival-point" />
-                    <circle cx="226" cy="94" r="6" class="survival-point" />
-                    <circle cx="283" cy="106" r="6" class="survival-point" />
-                    <circle cx="394" cy="126" r="6" class="survival-point" />
-                    <circle cx="735" cy="152" r="6" class="survival-point" />
-                  </svg>
-                </div>
-
-                <div class="milestone-list">
-                  <div class="milestone"><strong>86.5%</strong><span>30 days</span></div>
-                  <div class="milestone"><strong>79.2%</strong><span>60 days</span></div>
-                  <div class="milestone"><strong>74.5%</strong><span>90 days</span></div>
-                  <div class="milestone"><strong>69.9%</strong><span>121 days</span></div>
-                  <div class="milestone"><strong>63.6%</strong><span>180 days</span></div>
-                  <div class="milestone"><strong>54.5%</strong><span>365 days</span></div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-section case-section--white">
-      <div class="container section-grid">
-        <div class="section-label reveal">
-          <p class="eyebrow">04 • Methodology</p>
-          <h2>What the data could tell me. And what it couldn’t.</h2>
-        </div>
-
-        <div class="method-grid reveal reveal--delay-1">
-          <article class="method-card">
-            <h3>Right-Censoring</h3>
-            <p>Active employees have not yet produced a final tenure outcome, so they should not be treated as exits or completed observations.</p>
-          </article>
-
-          <article class="method-card">
-            <h3>Cohort Maturity</h3>
-            <p>Recent cohorts have had less time to reach long-term milestones, so direct comparisons can be misleading without maturity controls.</p>
-          </article>
-
-          <article class="method-card">
-            <h3>Correlation ≠ Causation</h3>
-            <p>Differences between variables can identify patterns worth investigating, but they do not prove that one variable caused the outcome.</p>
-          </article>
-
-          <article class="method-card">
-            <h3>Overlapping Metrics</h3>
-            <p>Some KPI definitions intentionally overlap. Every executive metric needs a clear denominator and definition before it can support a decision.</p>
-          </article>
-
-          <article class="method-card">
-            <h3>Operational Context</h3>
-            <p>Training exists inside a larger system. Recruiting, placement, management, labor conditions, and operating context can all interact with outcomes.</p>
-          </article>
-
-          <article class="method-card">
-            <h3>Small-Cohort Caution</h3>
-            <p>Large percentage differences in small groups may reflect noise. Cohort size and confidence should be considered before ranking or acting on apparent differences.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-section case-section--sage">
       <div class="container">
         <div class="download-card reveal">
           <div>
             <p class="eyebrow">Synthetic Workbook</p>
-            <h3>Explore the reconstructed Excel model.</h3>
+            <h3>Want a larger workspace?</h3>
             <p>
-              The downloadable workbook contains only synthetic data and is designed to demonstrate
-              the analytical structure behind this portfolio case study.
+              Open the interactive workbook in its own tab to inspect the analysis without the surrounding case-study content.
+              The source data and every result shown in this public version are synthetic.
             </p>
           </div>
 
-          <a
-            class="button button--primary"
-            href="../assets/downloads/WorkforceTrainingAnalytics_Portfolio.xlsx"
-            download
-          >
-            Download Synthetic Workbook
+          <a class="button button--primary" href="workforce-workbook.html" target="_blank" rel="noopener">
+            Open Interactive Workbook
           </a>
         </div>
       </div>
