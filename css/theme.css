@@ -1,0 +1,89 @@
+/* =====================================================================
+   THEME: the one file that controls McKena's brand on every page.
+
+   Change a value here, commit, and every page updates within a minute
+   or two. You don't need to touch any other file to change colors or
+   fonts.
+
+   Colors are hex codes (#RRGGBB). A color picker such as
+   https://htmlcolorcodes.com gives you the code to paste.
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1. FONTS
+   This line loads the fonts from Google Fonts. To switch fonts:
+   a) Pick fonts at https://fonts.google.com
+   b) Click "Get font", then "Get embed code", and copy the link that
+      starts with https://fonts.googleapis.com/css2?...
+   c) Paste it between the quotes below.
+   d) Update the font names in section 3 to match.
+   --------------------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap");
+
+
+:root {
+  /* -------------------------------------------------------------------
+     2. COLORS
+
+     Dark colors: the home page, plus the header and footer on every page.
+     ------------------------------------------------------------------- */
+  --color-dark: #131a11;            /* main dark background (deep forest) */
+  --color-dark-alt: #1b2418;        /* alternating dark sections (moss) */
+  --color-dark-raised: #2a3825;     /* frames and tracks on dark (fern) */
+  --color-gold: #b8ac6c;            /* big headlines and fine lines (olive gold) */
+  --color-accent: #e8a281;          /* italic words and main buttons (peach) */
+  --color-text-light: #ede6d3;      /* text on dark backgrounds (bone) */
+  --color-text-light-soft: #a2aa93; /* quieter text on dark (lichen) */
+
+  /* Light colors: the inner pages (projects, résumé, about, contact)
+     and the certificate on the home page. */
+  --color-paper: #efe8d5;           /* main page background (cream paper) */
+  --color-paper-bright: #f8f4ea;    /* cards and panels on paper */
+  --color-paper-tint: #e2e1cc;      /* tinted sections on paper (pale sage) */
+  --color-ink: #1c2617;             /* text on paper */
+  --color-ink-soft: #55604c;        /* quieter text on paper */
+  --color-ink-green: #2c4127;       /* buttons and active states on paper */
+  --color-accent-deep: #a65a3b;     /* accent text on paper (deep peach) */
+  --color-gold-deep: #8e7f3e;       /* gold details on paper */
+
+
+  /* -------------------------------------------------------------------
+     3. FONTS (names must match the fonts loaded in section 1)
+     The names after the first one are backups if the first doesn't load.
+     ------------------------------------------------------------------- */
+  --font-display: "Italiana", "Didot", "Bodoni 72", Georgia, serif;           /* big all-caps headlines */
+  --font-accent: "Cormorant Garamond", "Garamond", Georgia, serif;            /* italic words, project titles */
+  --font-body: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif; /* paragraphs, labels, buttons */
+
+
+  /* -------------------------------------------------------------------
+     4. WORKED OUT AUTOMATICALLY. No need to edit below this line.
+     These tints are mixed from the colors above, so they follow along
+     when you change a color.
+     ------------------------------------------------------------------- */
+  --line: color-mix(in srgb, var(--color-gold) 24%, transparent);
+  --ghost: color-mix(in srgb, var(--color-gold) 8.5%, transparent);
+  --glass: color-mix(in srgb, var(--color-dark) 90%, transparent);
+  --accent-wash: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  --shadow-block: color-mix(in srgb, var(--color-dark) 70%, black);
+  --scrim: color-mix(in srgb, black 60%, transparent);
+  --line-ink: color-mix(in srgb, var(--color-ink) 16%, transparent);
+}
+
+
+/* =====================================================================
+   WANT A DIFFERENT LOOK? Here's a second palette to try.
+   To use it, copy the lines inside the comment and paste them over the
+   matching lines in section 2 above. Keep a copy of the originals so
+   you can switch back.
+
+   Deep teal and brass:
+   --color-dark: #0f1c1f;
+   --color-dark-alt: #16282b;
+   --color-dark-raised: #22393c;
+   --color-gold: #c9b37a;
+   --color-accent: #f0a58a;
+   --color-text-light: #eee7d6;
+   --color-text-light-soft: #9fb0ab;
+   ===================================================================== */
