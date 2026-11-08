@@ -711,3 +711,117 @@ button, input { font: inherit; color: inherit; }
 }
 .skip-link:focus { transform: none; }
 .foot-nav { display: flex; flex-wrap: wrap; gap: 0.8rem 1.6rem; }
+
+
+/* ---------- hero gallery v2: ordered image row ---------- */
+@media (min-width: 1081px) {
+  .hero-stage {
+    display: block;
+    min-height: 0;
+    padding: clamp(3.5rem, 6vw, 5.5rem) 0 clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .hero-center {
+    margin-inline: auto;
+    padding-block: 0;
+    max-width: 44rem;
+  }
+
+  .hero-pins {
+    position: relative;
+    inset: auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 1.8vw, 1.6rem);
+    max-width: 1500px;
+    margin: clamp(3rem, 5vw, 4.25rem) auto 0;
+    padding-inline: clamp(2rem, 4vw, 4.5rem);
+    pointer-events: auto;
+    z-index: 3;
+  }
+
+  .pin,
+  .pin--fleet,
+  .pin--work,
+  .pin--er,
+  .pin--me {
+    position: relative;
+    inset: auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: auto;
+    margin: 0;
+    justify-self: stretch;
+    align-self: start;
+    background: var(--color-dark-alt);
+    box-shadow: 10px 10px 0 var(--shadow-block);
+  }
+
+  .pin img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    object-position: center;
+    background: var(--color-paper);
+  }
+
+  .pin--me img {
+    object-fit: cover;
+    object-position: center 18%;
+    background: var(--color-dark-raised);
+  }
+
+  .pin figcaption,
+  .pin--me figcaption {
+    position: static;
+    display: block;
+    margin-top: 0.75rem;
+    padding: 0 0.15rem;
+    font-size: 0.96rem;
+    line-height: 1.25;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .ridge {
+    height: 40%;
+  }
+}
+
+/* Tablet and phone: keep the same ordered gallery, two columns instead of floating. */
+@media (max-width: 1080px) {
+  .hero-pins {
+    align-items: start;
+  }
+
+  .pin img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    object-position: center;
+    background: var(--color-paper);
+  }
+
+  .pin--me {
+    width: auto;
+    justify-self: stretch;
+  }
+
+  .pin--me img {
+    object-fit: cover;
+    object-position: center 18%;
+    background: var(--color-dark-raised);
+  }
+
+  .pin figcaption,
+  .pin--me figcaption {
+    position: static;
+    display: block;
+    margin-top: 0.7rem;
+    padding: 0 0.1rem;
+    text-align: left;
+    white-space: normal;
+  }
+}
