@@ -195,3 +195,282 @@ h3,
   font-family: var(--font-accent) !important;
   font-weight: 600;
 }
+
+
+/* ---------- 7. Case study brand alignment ---------- */
+
+/* The case studies are chapters of the same dark editorial portfolio.
+   Content demos stay light for readability; the page framing follows the home page. */
+
+body:has(.case-hero) {
+  background: var(--color-dark);
+}
+
+.case-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--color-gold) 9%, transparent), transparent 26%),
+    linear-gradient(180deg, var(--color-dark), var(--color-dark-alt)) !important;
+  color: var(--color-text-light);
+  border-bottom: 1px solid var(--line);
+}
+
+.case-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 92px,
+      color-mix(in srgb, var(--color-gold) 4%, transparent) 93px
+    );
+  opacity: .55;
+}
+
+.case-hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.case-hero .eyebrow {
+  color: var(--color-text-light-soft) !important;
+}
+
+.case-hero h1 {
+  color: var(--color-text-light) !important;
+  text-shadow: 0 12px 32px rgba(0,0,0,.16);
+}
+
+.case-hero .case-subtitle {
+  color: var(--color-accent) !important;
+  font-family: var(--font-accent) !important;
+  font-style: italic;
+  font-weight: 500 !important;
+}
+
+.case-hero .case-summary {
+  color: color-mix(in srgb, var(--color-text-light) 82%, transparent) !important;
+}
+
+.case-hero .case-meta {
+  border-color: var(--line) !important;
+}
+
+.case-hero .meta-label {
+  color: var(--color-gold) !important;
+  font-family: var(--font-body);
+  font-weight: 500 !important;
+  letter-spacing: .18em !important;
+}
+
+.case-hero .meta-value {
+  color: var(--color-text-light) !important;
+  font-family: var(--font-body);
+  font-weight: 400 !important;
+}
+
+.case-hero .reconstruction,
+.case-hero .notice {
+  border-left-color: var(--color-accent) !important;
+  background: color-mix(in srgb, var(--color-dark-raised) 82%, transparent) !important;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.case-hero .reconstruction strong,
+.case-hero .notice strong {
+  color: var(--color-text-light) !important;
+}
+
+.case-hero .reconstruction p,
+.case-hero .notice p {
+  color: var(--color-text-light-soft) !important;
+}
+
+/* Inner sections use the same "paper inside a dark book" treatment. */
+.case-section {
+  position: relative;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+}
+
+.case-section--white {
+  background: var(--color-paper-bright) !important;
+}
+
+.case-section--ivory {
+  background: var(--color-paper) !important;
+}
+
+.case-section--sage {
+  background: var(--color-paper-tint) !important;
+}
+
+.case-section .eyebrow {
+  color: var(--color-accent-deep) !important;
+}
+
+.case-section .section-label h2,
+.case-section .section-intro h2 {
+  color: var(--color-ink);
+  font-family: var(--font-accent) !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+}
+
+.case-section .body-copy,
+.case-section .section-intro > p:not(.eyebrow) {
+  color: var(--color-ink-soft) !important;
+}
+
+/* Make project artifacts feel framed rather than dropped into the page. */
+.demo-shell,
+.dashboard-shell,
+.workbook-embed-shell,
+.before-after,
+.decisions-grid,
+.method-grid,
+.download-card,
+.chart-card,
+.fleet-detail,
+.scenario-card,
+.assessment-card,
+.process-node,
+.decision-card {
+  border-color: var(--line-ink) !important;
+  box-shadow: 0 20px 50px rgba(19,26,17,.06);
+}
+
+.demo-header,
+.dashboard-header,
+.workbook-embed-toolbar {
+  background: var(--color-dark) !important;
+  border-bottom-color: var(--line) !important;
+}
+
+.demo-header span:first-child,
+.dashboard-header strong {
+  font-family: var(--font-accent);
+  font-weight: 600 !important;
+  color: var(--color-text-light);
+}
+
+.demo-header span:last-child,
+.dashboard-header span,
+.workbook-embed-toolbar span {
+  color: var(--color-text-light-soft) !important;
+  font-family: var(--font-body);
+  letter-spacing: .14em !important;
+}
+
+/* Controls inherit the portfolio palette instead of the old green system. */
+.fleet-tab.is-active,
+.fleet-tab:hover,
+.env-button.is-active,
+.env-button:hover,
+.dashboard-tab.is-active,
+.process-node--accent {
+  background: var(--color-ink-green) !important;
+  border-color: var(--color-ink-green) !important;
+  color: var(--color-paper-bright) !important;
+}
+
+.decision-number,
+.model-arrow,
+.process-arrow {
+  color: var(--color-accent-deep) !important;
+}
+
+.pull-quote {
+  border-top-color: var(--line-ink) !important;
+  border-left-color: var(--color-accent-deep) !important;
+  color: var(--color-ink) !important;
+  font-family: var(--font-accent) !important;
+  font-style: italic;
+}
+
+/* Reflection and navigation return to the dark editorial world. */
+.case-section--ink {
+  background:
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--color-gold) 8%, transparent), transparent 28%),
+    var(--color-dark-alt) !important;
+  border-top-color: var(--line);
+}
+
+.case-section--ink .eyebrow {
+  color: var(--color-gold) !important;
+}
+
+.case-section--ink h2,
+.case-section--ink .section-label h2 {
+  color: var(--color-text-light) !important;
+}
+
+.case-section--ink .reflection-copy,
+.case-section--ink .body-copy {
+  color: var(--color-text-light-soft) !important;
+}
+
+.case-section--ink .reflection-copy p:first-child {
+  color: var(--color-text-light) !important;
+  font-family: var(--font-accent) !important;
+  font-style: italic;
+}
+
+.case-nav {
+  background: var(--color-dark) !important;
+  border-top: 1px solid var(--line) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+
+/* Mobile: reduce the visual density and keep headings from feeling oversized. */
+@media (max-width: 720px) {
+  .case-hero {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .case-hero-grid {
+    gap: 2rem !important;
+  }
+
+  .case-hero h1 {
+    font-size: clamp(2.6rem, 13vw, 4rem) !important;
+    line-height: .98 !important;
+  }
+
+  .case-subtitle {
+    font-size: 1.35rem !important;
+  }
+
+  .case-meta {
+    padding: 1rem 0 !important;
+  }
+
+  .meta-row {
+    grid-template-columns: 92px 1fr !important;
+    gap: .75rem !important;
+  }
+
+  .case-section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  .section-label h2,
+  .section-intro h2 {
+    max-width: 16ch !important;
+    font-size: clamp(2rem, 10vw, 3rem) !important;
+  }
+
+  .case-nav-inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .case-nav .button {
+    width: 100%;
+  }
+}
