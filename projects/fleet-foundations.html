@@ -808,6 +808,77 @@
         grid-template-columns: 1fr;
       }
     }
+  
+    .case-feature-visual {
+      margin: 0 0 clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .case-feature-visual img {
+      display: block;
+      width: 100%;
+      max-height: 680px;
+      object-fit: contain;
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: 18px 18px 0 rgba(20,33,28,0.08);
+    }
+
+    .case-feature-visual figcaption {
+      margin-top: 0.85rem;
+      color: var(--muted-ink);
+      font-family: var(--font-serif);
+      font-style: italic;
+    }
+
+    .decisions-grid--three {
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+
+    .decisions-grid--three .decision-card:last-child {
+      grid-column: auto;
+    }
+
+    .interaction-block--secondary {
+      display: none;
+    }
+
+    .measure-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1px;
+      margin-top: 1.5rem;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .measure-strip > div {
+      padding: 1.25rem;
+      background: var(--white);
+    }
+
+    .measure-strip strong,
+    .measure-strip span {
+      display: block;
+    }
+
+    .measure-strip strong {
+      margin-bottom: 0.35rem;
+      color: var(--evergreen);
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+    }
+
+    .measure-strip span {
+      color: var(--muted-ink);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 850px) {
+      .decisions-grid--three,
+      .measure-strip {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -875,7 +946,7 @@
             </div>
             <div class="meta-row">
               <span class="meta-label">Methods</span>
-              <span class="meta-value">Needs analysis, cognitive load, retrieval practice, application, evaluation</span>
+              <span class="meta-value">Needs analysis, content architecture, practice, assessment</span>
             </div>
           </div>
 
@@ -895,444 +966,18 @@
     <section class="case-section case-section--white">
       <div class="container section-grid">
         <div class="section-label reveal">
-          <p class="eyebrow">01 • Context</p>
-          <h2>The fleet kept growing. The training needed a better structure.</h2>
-        </div>
-
-        <div class="body-copy reveal reveal--delay-1">
-          <p>
-            New hires needed to understand a growing fleet before instructor-led onboarding. Over time, the training had accumulated around individual vessels, destinations, and operational facts.
-          </p>
-          <p>
-            The information was there. The problem was that learners had to figure out for themselves how the pieces fit together.
-          </p>
-          <p>
-            Learners could encounter dozens of facts before they had a useful way to organize them. That made the content harder to remember, harder to apply, and harder to update as the fleet changed.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-section case-section--ivory">
-      <div class="container section-grid">
-        <div class="section-label reveal">
-          <p class="eyebrow">02 • Challenge</p>
-          <h2>The issue wasn’t a lack of information. It was how the information was organized.</h2>
-        </div>
-
-        <div class="body-copy reveal reveal--delay-1">
-          <p>
-            The original structure encouraged learners to memorize vessels and destinations as separate facts. I wanted them to see the patterns first, then use those patterns to make sense of the details.
-          </p>
-
-          <blockquote class="pull-quote">
-            The problem wasn’t that learners couldn’t memorize enough. The training gave them nothing
-            meaningful to organize the information around.
-          </blockquote>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-section case-section--white">
-      <div class="container section-grid">
-        <div class="section-label reveal">
-          <p class="eyebrow">03 • Diagnosis</p>
-          <h2>Reorganize the learning before redesigning the screens.</h2>
+          <p class="eyebrow">04 • Measure</p>
+          <h2>Completion isn’t enough.</h2>
         </div>
 
         <div class="reveal reveal--delay-1">
-          <div class="before-after" aria-label="Before and after learning architecture">
-            <div class="model-panel">
-              <p class="model-kicker">Before</p>
-              <div class="model-flow">
-                <div class="model-node">Individual Asset</div>
-                <div class="model-arrow">↓</div>
-                <div class="model-node">Details</div>
-                <div class="model-arrow">↓</div>
-                <div class="model-node">Destination</div>
-                <div class="model-arrow">↓</div>
-                <div class="model-node">Memorization</div>
-              </div>
-            </div>
-
-            <div class="model-panel model-panel--after">
-              <p class="model-kicker">After</p>
-              <div class="model-flow">
-                <div class="model-node">Classification</div>
-                <div class="model-arrow">↓</div>
-                <div class="model-node">Environment</div>
-                <div class="model-arrow">↓</div>
-                <div class="model-node">Purpose</div>
-                <div class="model-arrow">↓</div>
-                <div class="model-node">Application</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-section case-section--sage">
-      <div class="container section-grid">
-        <div class="section-label reveal">
-          <p class="eyebrow">04 • Design Decisions</p>
-          <h2>Start with the model, then add the examples.</h2>
-        </div>
-
-        <div class="decisions-grid reveal reveal--delay-1">
-          <article class="decision-card">
-            <span class="decision-number">01</span>
-            <h3>Give learners the framework before the details.</h3>
-            <p>Give learners a structure they can use to sort and retrieve new information.</p>
-          </article>
-
-          <article class="decision-card">
-            <span class="decision-number">02</span>
-            <h3>Ask learners to remember less.</h3>
-            <p>Prioritize patterns they can reuse instead of asking them to memorize every vessel.</p>
-          </article>
-
-          <article class="decision-card">
-            <span class="decision-number">03</span>
-            <h3>Make learners use the model.</h3>
-            <p>Replace passive review with classification, comparison, and decision-making.</p>
-          </article>
-
-          <article class="decision-card">
-            <span class="decision-number">04</span>
-            <h3>Connect the content to the decisions people make.</h3>
-            <p>Organize knowledge around what employees need to recognize, explain, and decide.</p>
-          </article>
-
-          <article class="decision-card">
-            <span class="decision-number">05</span>
-            <h3>Make the framework easy to extend.</h3>
-            <p>New vessels or operating conditions can be added without rebuilding the entire learning structure.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-section case-section--ivory">
-      <div class="container">
-        <div class="section-intro reveal">
-          <p class="eyebrow">05 • Reconstructed Learning Experience</p>
-          <h2>Try the mental model.</h2>
-          <p>
-            The experience below is purpose-built for this portfolio. Vessel classes, environments,
-            scenarios, and operational details are fictional. The instructional logic reflects the
-            professional redesign.
+          <p class="body-copy">
+            The useful question is whether learners can recognize the pattern and apply it to something new.
           </p>
-        </div>
-
-        <div class="demo-shell reveal reveal--delay-1">
-          <div class="demo-header">
-            <span>Fleet Foundations</span>
-            <span>Interactive Portfolio Reconstruction</span>
-          </div>
-
-          <div class="demo-content">
-
-            <div class="demo-intro">
-              <h3>One fleet. Different purposes.</h3>
-              <p>
-                Instead of memorizing every vessel, start with four questions:
-                How is it designed? Where can it operate? What constraints does it face?
-                What kind of experience does it support?
-              </p>
-            </div>
-
-            <div class="interaction-block">
-              <h4>Explore the Fleet</h4>
-              <p>Select a class to see how design connects to operating purpose.</p>
-
-              <div class="fleet-tabs" role="tablist" aria-label="Fictional vessel classes">
-                <button class="fleet-tab is-active" type="button" role="tab" aria-selected="true" data-fleet="river">River Class</button>
-                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="coastal">Coastal Class</button>
-                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="harbor">Harbor Class</button>
-                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="explorer">Explorer Class</button>
-              </div>
-
-              <div class="fleet-detail" data-fleet-detail>
-                <div class="fleet-silhouette" aria-hidden="true">
-                  <div class="ship-shape"></div>
-                </div>
-                <div>
-                  <p class="detail-tagline" data-fleet-tagline>Built to work with the river.</p>
-                  <h4 data-fleet-name>River Class</h4>
-                  <p data-fleet-description>
-                    Designed for interior waterways where depth, channel constraints, and inland access shape the operating decision.
-                  </p>
-                  <ul class="detail-list" data-fleet-features>
-                    <li>Wide profile</li>
-                    <li>Relatively shallow draft</li>
-                    <li>Large viewing areas</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="interaction-block">
-              <h4>Find the Pattern</h4>
-              <p>Choose the class that best matches each feature. Some features can support more than one reasonable interpretation.</p>
-
-              <div class="pattern-grid" data-pattern-grid>
-                <div class="pattern-row" data-pattern-answer="river">
-                  <div class="pattern-feature">Shallow draft</div>
-                  <div class="pattern-options">
-                    <button type="button" class="pattern-option" data-choice="river">River</button>
-                    <button type="button" class="pattern-option" data-choice="coastal">Coastal</button>
-                    <button type="button" class="pattern-option" data-choice="harbor">Harbor</button>
-                    <button type="button" class="pattern-option" data-choice="explorer">Explorer</button>
-                  </div>
-                </div>
-
-                <div class="pattern-row" data-pattern-answer="harbor">
-                  <div class="pattern-feature">High maneuverability</div>
-                  <div class="pattern-options">
-                    <button type="button" class="pattern-option" data-choice="river">River</button>
-                    <button type="button" class="pattern-option" data-choice="coastal">Coastal</button>
-                    <button type="button" class="pattern-option" data-choice="harbor">Harbor</button>
-                    <button type="button" class="pattern-option" data-choice="explorer">Explorer</button>
-                  </div>
-                </div>
-
-                <div class="pattern-row" data-pattern-answer="explorer|coastal">
-                  <div class="pattern-feature">Large observation areas</div>
-                  <div class="pattern-options">
-                    <button type="button" class="pattern-option" data-choice="river">River</button>
-                    <button type="button" class="pattern-option" data-choice="coastal">Coastal</button>
-                    <button type="button" class="pattern-option" data-choice="harbor">Harbor</button>
-                    <button type="button" class="pattern-option" data-choice="explorer">Explorer</button>
-                  </div>
-                </div>
-              </div>
-
-              <p class="feedback" aria-live="polite" data-pattern-feedback></p>
-            </div>
-
-            <div class="interaction-block">
-              <h4>Operating Environment</h4>
-              <p>The environment creates constraints. Vessel design determines how effectively those constraints can be managed.</p>
-
-              <div class="environment-map">
-                <div class="map-visual" aria-hidden="true">
-                  <div class="river-path"></div>
-                  <div class="lake-shape"></div>
-                  <div class="coast-shape"></div>
-                  <span class="map-marker marker-river"></span>
-                  <span class="map-marker marker-lake"></span>
-                  <span class="map-marker marker-north"></span>
-                  <span class="map-marker marker-seaboard"></span>
-                </div>
-
-                <div>
-                  <div class="env-list" role="list">
-                    <button type="button" class="env-button is-active" data-env="river">Interior Rivers</button>
-                    <button type="button" class="env-button" data-env="lakes">Great Inland Lakes</button>
-                    <button type="button" class="env-button" data-env="north">Northern Coast</button>
-                    <button type="button" class="env-button" data-env="seaboard">Historic Seaboard</button>
-                  </div>
-                  <div class="env-detail" data-env-detail aria-live="polite">
-                    Changing depth, narrower channels, inland ports, and seasonal conditions make navigation and draft central considerations.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="interaction-block">
-              <h4>The Four Questions</h4>
-              <p>Before assigning a vessel, ask what the environment and purpose demand.</p>
-
-              <div class="questions-model">
-                <div class="question-card">
-                  <span>01</span>
-                  <strong>Can it navigate here?</strong>
-                  <p>Depth, channel width, draft, maneuverability.</p>
-                </div>
-                <div class="question-card">
-                  <span>02</span>
-                  <strong>Can it operate here?</strong>
-                  <p>Weather, waves, exposure, changing conditions.</p>
-                </div>
-                <div class="question-card">
-                  <span>03</span>
-                  <strong>Can it access the destination?</strong>
-                  <p>Port size, docking restrictions, vessel footprint.</p>
-                </div>
-                <div class="question-card">
-                  <span>04</span>
-                  <strong>Can it deliver the intended experience?</strong>
-                  <p>Viewing, comfort, access, and purpose.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="interaction-block">
-              <h4>Deployment Challenge</h4>
-              <p>Use the framework to make a judgment. Feedback focuses on reasoning, not just a right answer.</p>
-
-              <div class="scenario-box" data-scenario-box>
-                <h5 data-scenario-title>Scenario 1 of 4</h5>
-                <p data-scenario-text>
-                  A new route travels through a shallow inland river with changing seasonal depths. Ports are relatively small, but passengers still expect comfortable viewing spaces.
-                </p>
-
-                <div class="scenario-options" data-scenario-options>
-                  <button type="button" class="scenario-option" data-choice="river">River Class</button>
-                  <button type="button" class="scenario-option" data-choice="coastal">Coastal Class</button>
-                  <button type="button" class="scenario-option" data-choice="harbor">Harbor Class</button>
-                  <button type="button" class="scenario-option" data-choice="explorer">Explorer Class</button>
-                </div>
-
-                <p class="feedback" data-scenario-feedback aria-live="polite"></p>
-
-                <button type="button" class="button button--secondary" data-next-scenario disabled>Next Scenario</button>
-              </div>
-            </div>
-
-            <div class="interaction-block">
-              <h4>Build the Assignment</h4>
-              <p>Combine environment, constraint, and desired experience to see how the model changes the recommendation.</p>
-
-              <div class="assignment-grid">
-                <label>
-                  <span class="meta-label">Environment</span>
-                  <select class="assignment-select" data-assignment-env>
-                    <option value="river">Interior Rivers</option>
-                    <option value="lakes">Great Inland Lakes</option>
-                    <option value="north">Northern Coast</option>
-                    <option value="seaboard">Historic Seaboard</option>
-                  </select>
-                </label>
-
-                <label>
-                  <span class="meta-label">Primary Constraint</span>
-                  <select class="assignment-select" data-assignment-constraint>
-                    <option value="depth">Water depth</option>
-                    <option value="weather">Variable weather</option>
-                    <option value="access">Port access</option>
-                    <option value="maneuverability">Maneuverability</option>
-                  </select>
-                </label>
-
-                <label>
-                  <span class="meta-label">Desired Experience</span>
-                  <select class="assignment-select" data-assignment-experience>
-                    <option value="viewing">Scenic viewing</option>
-                    <option value="comfort">Passenger comfort</option>
-                    <option value="community">Local community access</option>
-                    <option value="flexibility">Operational flexibility</option>
-                  </select>
-                </label>
-              </div>
-
-              <div class="assignment-result" data-assignment-result aria-live="polite">
-                <strong>Recommended: River Class</strong>
-                <p>Shallow-water navigation is the dominant constraint, so draft and inland operating suitability take priority.</p>
-              </div>
-            </div>
-
-            <div class="interaction-block">
-              <h4>Check Your Mental Model</h4>
-              <p>Five questions. The mastery target is 80%.</p>
-
-              <form class="assessment" data-assessment>
-                <fieldset class="assessment-question">
-                  <h5>1. A shallow-draft vessel is most likely designed primarily for which constraint?</h5>
-                  <div class="assessment-options">
-                    <label><input type="radio" name="q1" value="a"> Interior waterway navigation</label>
-                    <label><input type="radio" name="q1" value="b"> Entertainment capacity</label>
-                    <label><input type="radio" name="q1" value="c"> Long-distance speed</label>
-                  </div>
-                </fieldset>
-
-                <fieldset class="assessment-question">
-                  <h5>2. Which combination provides the strongest basis for classifying vessels?</h5>
-                  <div class="assessment-options">
-                    <label><input type="radio" name="q2" value="a"> Vessel name and launch year</label>
-                    <label><input type="radio" name="q2" value="b"> Design, operating environment, and purpose</label>
-                    <label><input type="radio" name="q2" value="c"> Color and passenger count</label>
-                  </div>
-                </fieldset>
-
-                <fieldset class="assessment-question">
-                  <h5>3. A destination has an unusually small harbor. Which consideration becomes most important?</h5>
-                  <div class="assessment-options">
-                    <label><input type="radio" name="q3" value="a"> Port access</label>
-                    <label><input type="radio" name="q3" value="b"> Entertainment</label>
-                    <label><input type="radio" name="q3" value="c"> Vessel age</label>
-                  </div>
-                </fieldset>
-
-                <fieldset class="assessment-question">
-                  <h5>4. A scenic northern route prioritizes wildlife viewing but also faces variable open-water conditions. What is the best first judgment?</h5>
-                  <div class="assessment-options">
-                    <label><input type="radio" name="q4" value="a"> Explorer Class, while confirming operational suitability</label>
-                    <label><input type="radio" name="q4" value="b"> Harbor Class regardless of conditions</label>
-                    <label><input type="radio" name="q4" value="c"> Any vessel if viewing areas are large enough</label>
-                  </div>
-                </fieldset>
-
-                <fieldset class="assessment-question">
-                  <h5>5. Why is learning classifications more useful than memorizing every individual vessel?</h5>
-                  <div class="assessment-options">
-                    <label><input type="radio" name="q5" value="a"> It creates a mental model that helps learners interpret new situations</label>
-                    <label><input type="radio" name="q5" value="b"> It eliminates the need to learn any details</label>
-                    <label><input type="radio" name="q5" value="c"> It guarantees one correct answer in every operating decision</label>
-                  </div>
-                </fieldset>
-
-                <button type="submit" class="button button--primary">Score Assessment</button>
-                <div class="assessment-score" data-assessment-score hidden aria-live="polite"></div>
-              </form>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-section case-section--white">
-      <div class="container section-grid">
-        <div class="section-label reveal">
-          <p class="eyebrow">06 • Measurement</p>
-          <h2>I wanted to know more than whether learners finished.</h2>
-        </div>
-
-        <div class="measurement-grid reveal reveal--delay-1">
-          <div class="mastery-card">
-            <strong>80%</strong>
-            <span>Mastery target for the reconstructed assessment</span>
-          </div>
-
-          <div>
-            <p class="body-copy">
-              The measurement plan looks beyond completion. The real question is whether learners can use the model to classify, explain, and apply what they learned.
-            </p>
-
-            <div class="evaluation-list">
-              <div class="evaluation-row">
-                <strong>Reaction</strong>
-                <span>Was the experience clear, relevant, and usable?</span>
-              </div>
-              <div class="evaluation-row">
-                <strong>Knowledge</strong>
-                <span>Can learners identify the major concepts and distinctions?</span>
-              </div>
-              <div class="evaluation-row">
-                <strong>Application</strong>
-                <span>Can learners use the model in new deployment scenarios?</span>
-              </div>
-              <div class="evaluation-row">
-                <strong>Observation</strong>
-                <span>Do trainers see stronger reasoning and more accurate explanations?</span>
-              </div>
-              <div class="evaluation-row">
-                <strong>Iteration</strong>
-                <span>Where do assessment patterns or trainer feedback show a need to revise the design?</span>
-              </div>
-            </div>
+          <div class="measure-strip">
+            <div><strong>Recognize</strong><span>Identify the major distinctions.</span></div>
+            <div><strong>Explain</strong><span>Connect design to operating purpose.</span></div>
+            <div><strong>Apply</strong><span>Use the model in a new scenario.</span></div>
           </div>
         </div>
       </div>
@@ -1341,19 +986,13 @@
     <section class="case-section case-section--ink">
       <div class="container section-grid">
         <div class="section-label reveal">
-          <p class="eyebrow eyebrow--light">07 • Reflection</p>
-          <h2>The biggest design decision was what not to make people memorize.</h2>
+          <p class="eyebrow eyebrow--light">Takeaway</p>
+          <h2>Teach the pattern, not the inventory.</h2>
         </div>
 
         <div class="reflection-copy reveal reveal--delay-1">
           <p>
-            The most important decision wasn’t the interaction or authoring tool. It was deciding what learners did not need to memorize.
-          </p>
-          <p>
-            Organizing the content around reusable concepts gave learners a framework they could keep using as the fleet changed.
-          </p>
-          <p>
-            For this portfolio reconstruction, I kept the original instructional logic but rebuilt the examples, interactions, and details for public display. I also used the rebuild to improve accessibility, feedback, and responsive behavior.
+            The biggest improvement came from deciding what learners did not need to memorize.
           </p>
         </div>
       </div>
