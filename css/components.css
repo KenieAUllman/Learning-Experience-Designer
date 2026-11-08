@@ -1,0 +1,197 @@
+/* =====================================================================
+   COMPONENTS: brings the inner pages (projects, lab, résumé, about,
+   contact, work) into the brand set in theme.css.
+
+   Every inner page already loads this file after styles.css, so the
+   rules here win. To change colors or fonts, edit theme.css, not this
+   file.
+   ===================================================================== */
+
+@import url("theme.css");
+
+/* ---------- 1. Point the older color and font names at the theme ---------- */
+:root {
+  --evergreen: var(--color-ink-green);
+  --deep-ink: var(--color-ink);
+  --warm-ivory: var(--color-paper);
+  --white: var(--color-paper-bright);
+  --soft-sage: var(--color-paper-tint);
+  --warm-brass: var(--color-accent-deep);
+  --muted-ink: var(--color-ink-soft);
+  --border: var(--line-ink);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-accent);
+  --type-body: 1.0625rem;
+}
+
+::selection { background: var(--color-accent); color: var(--color-dark); }
+:focus-visible { outline: 2px solid var(--color-accent-deep); outline-offset: 3px; }
+
+/* ---------- 2. Headings ---------- */
+h1,
+.hero h1,
+.simple-hero h1,
+.page-hero h1,
+.about-simple h1,
+.resume-simple h1,
+.contact-simple h1,
+.contact-copy h1 {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.01em !important;
+  line-height: 0.98 !important;
+  max-width: 16ch !important;
+  font-size: clamp(2.5rem, 6vw, 4.6rem) !important;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+h2,
+.work-card-main h2,
+.lab-card h2 {
+  font-family: var(--font-accent) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.06 !important;
+  font-size: calc(var(--type-h2) * 1.2) !important;
+  text-wrap: balance;
+}
+
+h3,
+.project-card h3,
+.project-simple h3,
+.experience-body h3,
+.exp h3,
+.focus-card h3 {
+  font-family: var(--font-accent) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.12 !important;
+  font-size: calc(var(--type-h3) * 1.2) !important;
+}
+
+/* Small uppercase labels */
+.eyebrow,
+.system-kicker {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.22em !important;
+}
+
+/* ---------- 3. Header (dark, matching the home page) ---------- */
+.site-header {
+  background: var(--glass) !important;
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: none !important;
+}
+.site-header .brand-name,
+.footer-brand {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+.site-header .brand-title {
+  font-family: var(--font-accent) !important;
+  font-style: italic;
+  font-size: 0.98rem !important;
+  color: var(--color-accent) !important;
+}
+.primary-nav a,
+.footer-nav a {
+  font-family: var(--font-body) !important;
+  font-size: 0.74rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-light-soft);
+}
+.primary-nav a:hover,
+.footer-nav a:hover { color: var(--color-text-light); }
+.primary-nav a[aria-current="page"] { color: var(--color-accent); }
+.menu-toggle { color: var(--color-text-light) !important; }
+
+@media (max-width: 720px) {
+  .primary-nav {
+    background: var(--color-dark) !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+  .primary-nav a { border-top-color: var(--line) !important; }
+}
+
+/* ---------- 4. Footer ---------- */
+.site-footer {
+  background: var(--color-dark) !important;
+  color: var(--color-text-light);
+  border-top: 1px solid var(--line);
+}
+.footer-grid p {
+  font-family: var(--font-accent) !important;
+  font-style: italic;
+  font-size: 1.05rem !important;
+  color: var(--color-text-light-soft) !important;
+}
+
+/* ---------- 5. Buttons and links ---------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 0.95em 1.5em;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--color-ink);
+  color: var(--color-ink);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+.button--primary {
+  background: var(--color-ink-green);
+  border-color: var(--color-ink-green);
+  color: var(--color-paper-bright);
+}
+.button--primary:hover { background: var(--color-ink); border-color: var(--color-ink); }
+.button--secondary:hover { background: var(--color-ink); color: var(--color-paper-bright); }
+.button--light { border-color: var(--color-gold); color: var(--color-text-light); }
+.button--light:hover { background: var(--color-gold); color: var(--color-dark); }
+.button--ghost-light { border-color: var(--line); color: var(--color-text-light-soft); }
+.button--ghost-light:hover { border-color: var(--color-gold); color: var(--color-text-light); }
+
+.text-link {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-deep);
+}
+
+/* ---------- 6. Dark bands inside inner pages ---------- */
+.section--ink,
+.case-section--ink,
+.case-nav,
+.demo-header {
+  background: var(--color-dark) !important;
+}
+.section--ink h2,
+.case-section--ink h2 { color: var(--color-text-light); }
+
+/* Serif numbers and quotes */
+.serif-emphasis,
+.project-hook,
+.metric strong,
+.project-number,
+.work-card-number,
+.num {
+  font-family: var(--font-accent) !important;
+  font-weight: 600;
+}
