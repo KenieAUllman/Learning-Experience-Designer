@@ -4,25 +4,37 @@
       name: "River Class",
       tagline: "Built to work with the river.",
       description: "Designed for interior waterways where depth, channel constraints, and inland access shape the operating decision.",
-      features: ["Wide profile", "Relatively shallow draft", "Large viewing areas"]
+      features: ["Wide profile", "Relatively shallow draft", "Large viewing areas"],
+      photo: "https://images.pexels.com/photos/37490421/pexels-photo-37490421.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      photoAlt: "Passenger ferry at a quiet riverbank, used as a fictional River Class environment reference.",
+      photoPage: "https://www.pexels.com/photo/passenger-ferry-docked-at-riverside-shore-37490421/"
     },
     coastal: {
       name: "Coastal Class",
       tagline: "Built for changing conditions.",
       description: "Designed for more exposed coastal operations where weather, waves, and passenger comfort can matter more.",
-      features: ["Deeper hull", "Higher freeboard", "Enclosed passenger spaces"]
+      features: ["Deeper hull", "Higher freeboard", "Enclosed passenger spaces"],
+      photo: "https://images.pexels.com/photos/19683534/pexels-photo-19683534.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      photoAlt: "Passenger ferry crossing open water at dusk, used as a fictional Coastal Class environment reference.",
+      photoPage: "https://www.pexels.com/photo/ferry-boat-on-the-sea-19683534/"
     },
     harbor: {
       name: "Harbor Class",
       tagline: "Built for access.",
       description: "Designed for constrained ports and smaller harbors where maneuverability and footprint shape what is possible.",
-      features: ["Compact footprint", "High maneuverability", "Smaller capacity"]
+      features: ["Compact footprint", "High maneuverability", "Smaller capacity"],
+      photo: "https://images.pexels.com/photos/15194859/pexels-photo-15194859.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      photoAlt: "Passenger ship maneuvering in a busy harbor, used as a fictional Harbor Class environment reference.",
+      photoPage: "https://www.pexels.com/photo/ship-sailing-off-from-harbor-15194859/"
     },
     explorer: {
       name: "Explorer Class",
       tagline: "Built for the view.",
       description: "Designed for scenic operating environments where observation, environmental versatility, and the destination experience are central.",
-      features: ["Panoramic viewing", "Outdoor observation areas", "Environmental versatility"]
+      features: ["Panoramic viewing", "Outdoor observation areas", "Environmental versatility"],
+      photo: "https://images.pexels.com/photos/17892479/pexels-photo-17892479.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      photoAlt: "Small passenger vessel navigating icy water beneath a glacier, used as a fictional Explorer Class environment reference.",
+      photoPage: "https://www.pexels.com/photo/ship-on-cold-frosty-sea-17892479/"
     }
   };
 
@@ -31,6 +43,8 @@
   const detailTagline = document.querySelector("[data-fleet-tagline]");
   const detailDescription = document.querySelector("[data-fleet-description]");
   const detailFeatures = document.querySelector("[data-fleet-features]");
+  const detailPhoto = document.querySelector("[data-fleet-photo]");
+  const detailPhotoLink = document.querySelector("[data-fleet-photo-link]");
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -46,6 +60,21 @@
       detailTagline.textContent = item.tagline;
       detailDescription.textContent = item.description;
       detailFeatures.innerHTML = item.features.map((feature) => `<li>${feature}</li>`).join("");
+
+      if (detailPhoto) {
+        detailPhoto.style.opacity = "0.18";
+        detailPhoto.src = item.photo;
+        detailPhoto.alt = item.photoAlt;
+        requestAnimationFrame(() => {
+          window.setTimeout(() => {
+            detailPhoto.style.opacity = "1";
+          }, 90);
+        });
+      }
+
+      if (detailPhotoLink) {
+        detailPhotoLink.href = item.photoPage;
+      }
     });
   });
 
