@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/home.css">
-  <script src="js/home.js" defer></script>
+  <script src="js/home.js?v=20261108-2" defer></script>
 
   <script type="application/ld+json">
   {
@@ -148,6 +148,10 @@
             <span class="choice-num">10<small>min</small></span>
             <span class="choice-name">Full tour</span>
           </button>
+          <button class="choice" type="button" data-path="30" aria-pressed="false">
+            <span class="choice-num">30<small>min</small></span>
+            <span class="choice-name">Deep dive</span>
+          </button>
         </div>
 
         <div class="path" id="path-panel" hidden>
@@ -186,7 +190,14 @@
 
         <div class="ask">
           <p class="ask-prompt">You get one meeting with Dana. Which three questions do you ask?</p>
-          <ul class="qs" id="qs"></ul>
+          <ul class="qs" id="qs">
+            <li><button class="q" type="button" data-q="doing" aria-pressed="false"><span class="q-box" aria-hidden="true"></span><span>What are new managers doing now that you’d like them to do differently?</span></button></li>
+            <li><button class="q" type="button" data-q="success" aria-pressed="false"><span class="q-box" aria-hidden="true"></span><span>If this worked, what would we see in the branches 90 days from now?</span></button></li>
+            <li><button class="q" type="button" data-q="after" aria-pressed="false"><span class="q-box" aria-hidden="true"></span><span>When a manager does give feedback today, what happens next?</span></button></li>
+            <li><button class="q" type="button" data-q="bright" aria-pressed="false"><span class="q-box" aria-hidden="true"></span><span>Who already does this well, and what do they do differently?</span></button></li>
+            <li><button class="q" type="button" data-q="tool" aria-pressed="false"><span class="q-box" aria-hidden="true"></span><span>Should I build it in Storyline or Rise?</span></button></li>
+            <li><button class="q" type="button" data-q="modules" aria-pressed="false"><span class="q-box" aria-hidden="true"></span><span>How many modules should it have?</span></button></li>
+          </ul>
           <div class="ask-foot">
             <p class="ask-count" id="ask-count" aria-live="polite">0 of 3 chosen</p>
             <button class="btn btn--solid" id="meet-btn" type="button" disabled>Hold the meeting</button>
