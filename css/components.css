@@ -474,3 +474,258 @@ body:has(.case-hero) {
     width: 100%;
   }
 }
+
+
+/* ---------- 8. Editorial consistency sweep ----------
+   Page framing is dark. Light surfaces are reserved for artifacts:
+   documents, spreadsheets, browser mockups, and reconstructed learning objects.
+   -------------------------------------------------------------------------- */
+
+body {
+  background: var(--color-dark) !important;
+}
+
+/* Primary actions use the portfolio accent, not the legacy green. */
+.button--primary {
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-dark) !important;
+}
+.button--primary:hover,
+.button--primary:focus-visible {
+  background: var(--color-gold) !important;
+  border-color: var(--color-gold) !important;
+  color: var(--color-dark) !important;
+}
+.button--secondary {
+  border-color: var(--line) !important;
+  color: var(--color-text-light) !important;
+  background: transparent !important;
+}
+.button--secondary:hover,
+.button--secondary:focus-visible {
+  border-color: var(--color-accent) !important;
+  background: var(--accent-wash) !important;
+  color: var(--color-text-light) !important;
+}
+
+/* Generic inner-page framing. */
+.page-hero,
+.about-simple,
+.contact-simple,
+.lab-hero {
+  background:
+    radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--color-gold) 8%, transparent), transparent 27%),
+    linear-gradient(180deg, var(--color-dark), var(--color-dark-alt)) !important;
+  color: var(--color-text-light) !important;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero .eyebrow,
+.about-simple .eyebrow,
+.contact-simple .eyebrow,
+.lab-hero .eyebrow {
+  color: var(--color-gold) !important;
+}
+
+.page-hero h1,
+.about-simple h1,
+.contact-simple h1,
+.lab-hero h1 {
+  color: var(--color-text-light) !important;
+}
+
+.page-hero p,
+.about-copy-simple p,
+.contact-simple p,
+.lab-intro {
+  color: var(--color-text-light-soft) !important;
+}
+
+.contact-email a {
+  color: var(--color-accent) !important;
+}
+
+/* Old white/sage content bands become alternating dark chapters. */
+.section--white,
+.section--sage,
+.experiments-section,
+.lab-footer-cta {
+  background: var(--color-dark-alt) !important;
+  color: var(--color-text-light) !important;
+  border-top: 1px solid var(--line);
+}
+
+.section--sage,
+.lab-footer-cta {
+  background:
+    radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--color-gold) 6%, transparent), transparent 28%),
+    var(--color-dark) !important;
+}
+
+.section--white .eyebrow,
+.section--sage .eyebrow,
+.experiments-section .eyebrow,
+.lab-footer-cta .eyebrow {
+  color: var(--color-gold) !important;
+}
+
+.section--white h2,
+.section--white h3,
+.section--sage h2,
+.section--sage h3,
+.experiments-section h2,
+.experiments-section h3,
+.lab-footer-cta h2 {
+  color: var(--color-text-light) !important;
+}
+
+.section--white p,
+.section--sage p,
+.experiments-section p,
+.lab-footer-cta p {
+  color: var(--color-text-light-soft) !important;
+}
+
+/* About: typography and rules instead of a cream card. */
+.focus-card {
+  padding: 1.5rem 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--line) !important;
+  border-bottom: 1px solid var(--line) !important;
+  background: transparent !important;
+}
+.focus-card .eyebrow { color: var(--color-gold) !important; }
+.focus-card ul { color: var(--color-text-light-soft) !important; }
+
+/* Work index: simple editorial rows. */
+.work-list-simple {
+  border-top-color: var(--line) !important;
+}
+.work-row-simple {
+  border-bottom-color: var(--line) !important;
+}
+.work-row-simple h2 {
+  color: var(--color-text-light) !important;
+}
+.work-row-simple p {
+  color: var(--color-text-light-soft) !important;
+}
+.work-row-simple .num {
+  color: var(--color-accent) !important;
+}
+.work-row-simple .text-link {
+  color: var(--color-accent) !important;
+}
+
+/* Interaction Lab: dark cards; only the fake browser itself stays light. */
+.experiments-header p {
+  color: var(--color-text-light-soft) !important;
+}
+.experiment-card {
+  border-color: var(--line) !important;
+  background: var(--color-dark-alt) !important;
+  box-shadow: none !important;
+}
+.experiment-card:hover {
+  background: var(--color-dark-raised) !important;
+  border-color: var(--color-gold) !important;
+}
+.experiment-visual {
+  border-bottom-color: var(--line) !important;
+  background:
+    linear-gradient(color-mix(in srgb, var(--color-gold) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-gold) 5%, transparent) 1px, transparent 1px),
+    var(--color-dark) !important;
+  background-size: 28px 28px !important;
+}
+.experiment-number {
+  color: var(--color-accent) !important;
+}
+.experiment-content h3 {
+  color: var(--color-text-light) !important;
+}
+.experiment-content > p {
+  color: var(--color-text-light-soft) !important;
+}
+.tag {
+  border-color: var(--line) !important;
+  color: var(--color-text-light-soft) !important;
+}
+.experiment-link {
+  color: var(--color-accent) !important;
+}
+.placeholder-card {
+  border-color: var(--line) !important;
+  background: color-mix(in srgb, var(--color-dark-raised) 52%, transparent) !important;
+}
+.placeholder-card h3 { color: var(--color-text-light) !important; }
+.placeholder-card p { color: var(--color-text-light-soft) !important; }
+
+/* Case-study chapters: no random cream page bands.
+   Individual artifacts inside may remain paper/light for legibility. */
+.case-section--white,
+.case-section--ivory,
+.case-section--sage {
+  background: var(--color-dark-alt) !important;
+  color: var(--color-text-light) !important;
+  border-top-color: var(--line) !important;
+}
+.case-section--ivory {
+  background: var(--color-dark) !important;
+}
+.case-section--sage {
+  background:
+    radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--color-gold) 6%, transparent), transparent 28%),
+    var(--color-dark-alt) !important;
+}
+
+.case-section--white .eyebrow,
+.case-section--ivory .eyebrow,
+.case-section--sage .eyebrow {
+  color: var(--color-gold) !important;
+}
+
+.case-section--white .section-label h2,
+.case-section--ivory .section-label h2,
+.case-section--sage .section-label h2,
+.case-section--white .section-intro h2,
+.case-section--ivory .section-intro h2,
+.case-section--sage .section-intro h2 {
+  color: var(--color-text-light) !important;
+}
+
+.case-section--white .body-copy,
+.case-section--ivory .body-copy,
+.case-section--sage .body-copy,
+.case-section--white .section-intro > p:not(.eyebrow),
+.case-section--ivory .section-intro > p:not(.eyebrow),
+.case-section--sage .section-intro > p:not(.eyebrow) {
+  color: var(--color-text-light-soft) !important;
+}
+
+/* Legacy process/control greens become editorial rules and accents. */
+.dashboard-tab.is-active,
+.process-node--accent {
+  background: transparent !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent) !important;
+  box-shadow: inset 0 -2px 0 var(--color-accent);
+}
+
+/* 404 follows the same visual world. */
+.notfound {
+  background:
+    radial-gradient(circle at 50% 20%, color-mix(in srgb, var(--color-gold) 8%, transparent), transparent 30%),
+    var(--color-dark) !important;
+}
+.notfound-card {
+  border-color: var(--line) !important;
+  background: color-mix(in srgb, var(--color-dark-alt) 86%, transparent) !important;
+  box-shadow: none !important;
+}
+.notfound-code { color: var(--color-gold) !important; }
+.notfound-card .eyebrow { color: var(--color-accent) !important; }
+.notfound h1 { color: var(--color-text-light) !important; }
+.notfound p { color: var(--color-text-light-soft) !important; }
+
