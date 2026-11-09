@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="About McKena Ullman, a learning experience designer with experience in curriculum architecture, eLearning, instructor-led training, assessment design, and learning analytics." />
   <meta name="author" content="McKena Ullman" />
-  <meta name="theme-color" content="#163A2F" />
-  <!-- SEO -->
+  <meta name="theme-color" content="#131a11" />
   <link rel="canonical" href="https://kenieaullman.github.io/Learning-Experience-Designer/about.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="About McKena Ullman | Learning Experience Designer" />
@@ -14,73 +13,233 @@
   <meta property="og:url" content="https://kenieaullman.github.io/Learning-Experience-Designer/about.html" />
   <meta property="og:site_name" content="McKena Ullman Learning Design Portfolio" />
   <meta name="twitter:card" content="summary" />
-  <!-- /SEO -->
   <title>About McKena Ullman | Learning Experience Designer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/components.css" />
   <script src="js/main.js" defer></script>
+
   <style>
-    .about-simple{padding:clamp(4.5rem,9vw,7rem) 0;background:var(--warm-ivory)}
-    .about-grid-simple{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(3rem,8vw,7rem);align-items:start}
-    .about-simple h1{max-width:12ch;font-size:clamp(3rem,6vw,5rem)}
-    .about-copy-simple p{color:var(--muted-ink)}
-    .focus-card{padding:1.5rem;border:1px solid var(--border);background:var(--white)}
-    .focus-card ul{margin:0;padding-left:1.1rem;color:var(--muted-ink)}
-    .focus-card li+li{margin-top:.55rem}
-    @media(max-width:850px){.about-grid-simple{grid-template-columns:1fr}}
+    body { background: var(--color-dark); }
+
+    .about-hero {
+      padding: clamp(5rem, 9vw, 8rem) 0 clamp(4rem, 8vw, 7rem);
+      background:
+        radial-gradient(circle at 82% 16%, color-mix(in srgb, var(--color-gold) 8%, transparent), transparent 28%),
+        linear-gradient(180deg, var(--color-dark), var(--color-dark-alt));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.15fr) minmax(280px,.65fr);
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: center;
+    }
+
+    .about-hero .eyebrow { color: var(--color-gold) !important; }
+
+    .about-hero h1 {
+      max-width: 12ch !important;
+      margin-bottom: 1.4rem;
+      color: var(--color-text-light) !important;
+      font-family: var(--font-display) !important;
+      font-size: clamp(3.3rem, 7vw, 5.9rem) !important;
+      font-weight: 400 !important;
+      line-height: .98 !important;
+      text-transform: uppercase;
+    }
+
+    .about-copy {
+      max-width: 42rem;
+      color: var(--color-text-light-soft);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    .portrait-frame {
+      position: relative;
+      width: min(100%, 390px);
+      justify-self: end;
+    }
+
+    .portrait-frame::after {
+      content: "";
+      position: absolute;
+      inset: 14px -14px -14px 14px;
+      z-index: 0;
+      border: 1px solid var(--line);
+    }
+
+    .portrait-frame img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      border: 1px solid var(--line);
+      filter: saturate(.88) contrast(1.02);
+    }
+
+    .about-focus {
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+      background: var(--color-dark-alt);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: minmax(180px,.34fr) minmax(0,1fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: start;
+    }
+
+    .focus-grid .eyebrow { color: var(--color-gold) !important; }
+
+    .focus-grid h2 {
+      max-width: 8ch !important;
+      margin: 0;
+      color: var(--color-text-light) !important;
+      font-family: var(--font-accent) !important;
+      font-size: clamp(2.4rem, 5vw, 4rem) !important;
+      font-weight: 600 !important;
+    }
+
+    .focus-list {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      border-top: 1px solid var(--line);
+    }
+
+    .focus-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--color-text-light-soft);
+      font-family: var(--font-accent);
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+    }
+
+    .focus-item:nth-child(odd) {
+      padding-right: 2rem;
+    }
+
+    .focus-item:nth-child(even) {
+      padding-left: 2rem;
+      border-left: 1px solid var(--line);
+    }
+
+    .tools-band {
+      padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+      background:
+        radial-gradient(circle at 16% 50%, color-mix(in srgb, var(--color-gold) 6%, transparent), transparent 30%),
+        var(--color-dark);
+    }
+
+    .tools-band .eyebrow { color: var(--color-gold) !important; }
+
+    .tools-line {
+      max-width: 65rem;
+      margin: 0;
+      color: var(--color-text-light-soft);
+      font-family: var(--font-accent);
+      font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+      line-height: 1.7;
+    }
+
+    .tools-line strong {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 850px) {
+      .about-grid,
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+      .portrait-frame {
+        justify-self: start;
+        width: min(78vw, 380px);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .focus-list { grid-template-columns: 1fr; }
+      .focus-item:nth-child(odd),
+      .focus-item:nth-child(even) {
+        padding: 1rem 0;
+        border-left: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="site-header" data-header>
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="McKena Ullman home">
-        <span class="brand-name">McKena Ullman</span><span class="brand-title">Learning Designer</span>
+        <span class="brand-name">McKena Ullman</span>
+        <span class="brand-title">Learning Designer</span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span><span></span></button>
       <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
-        <a href="work.html">Work</a><a href="about.html" aria-current="page">About</a><a href="resume.html">Résumé</a><a href="contact.html">Contact</a>
+        <a href="work.html">Work</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="resume.html">Résumé</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="about-simple">
-      <div class="container about-grid-simple">
+    <section class="about-hero">
+      <div class="container about-grid">
         <div class="reveal">
           <p class="eyebrow">About</p>
           <h1>I like making complicated things easier to learn.</h1>
-          <div class="about-copy-simple">
+          <div class="about-copy">
             <p>I started in education and moved into corporate learning, consulting, and instructional design.</p>
-            <p>Most of my work begins with complex source material, technical processes, or SME knowledge that needs a clearer structure.</p>
-            <p>I design the learning around what people need to understand, practice, and do.</p>
+            <p>Most of my work starts with complex source material, technical processes, or SME knowledge that needs a clearer structure.</p>
+            <p>I design around what people need to understand, practice, and do.</p>
           </div>
         </div>
 
-        <aside class="focus-card reveal reveal--delay-1">
-          <p class="eyebrow">Learning Design Focus</p>
-          <ul>
-            <li>Curriculum architecture</li>
-            <li>eLearning development</li>
-            <li>ILT / VILT</li>
-            <li>Scenario design</li>
-            <li>Assessment design</li>
-            <li>Facilitator guides &amp; job aids</li>
-            <li>Learning analytics</li>
-            <li>SME collaboration</li>
-          </ul>
-        </aside>
+        <figure class="portrait-frame reveal reveal--delay-1">
+          <img src="assets/images/profile/mckena-ullman.webp" alt="McKena Ullman" />
+        </figure>
       </div>
     </section>
 
-    <section class="section section--white">
+    <section class="about-focus">
+      <div class="container focus-grid">
+        <div class="reveal">
+          <p class="eyebrow">Learning Design Focus</p>
+          <h2>What I build.</h2>
+        </div>
+
+        <div class="focus-list reveal reveal--delay-1">
+          <div class="focus-item">Curriculum architecture</div>
+          <div class="focus-item">eLearning development</div>
+          <div class="focus-item">ILT / VILT</div>
+          <div class="focus-item">Scenario design</div>
+          <div class="focus-item">Assessment design</div>
+          <div class="focus-item">Facilitator guides &amp; job aids</div>
+          <div class="focus-item">Learning analytics</div>
+          <div class="focus-item">SME collaboration</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tools-band">
       <div class="container reveal">
         <p class="eyebrow">Tools &amp; Methods</p>
-        <h2>From analysis to delivery.</h2>
-        <p>Articulate Storyline · Rise 360 · LMS · Excel · ADDIE · SAM · Action Mapping · Storyboarding · Facilitation · Evaluation</p>
+        <p class="tools-line">
+          <strong>Articulate Storyline · Rise 360 · Excel</strong> · LMS · ADDIE · SAM · Action Mapping · Storyboarding · Facilitation · Evaluation
+        </p>
       </div>
     </section>
   </main>
