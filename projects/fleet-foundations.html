@@ -836,6 +836,393 @@
     @media (max-width: 850px) {
       .decisions-grid--three, .measure-strip { grid-template-columns: 1fr; }
     }
+  
+    /* Editorial Fleet interaction v3 */
+    .interaction-block--fleet-editorial,
+    .interaction-block--scenario-editorial {
+      margin-top: clamp(2.5rem, 6vw, 4.5rem);
+      padding-top: clamp(2rem, 5vw, 3.5rem);
+      border-top: 1px solid var(--border);
+    }
+
+    .fleet-editorial-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .65fr);
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: end;
+      margin-bottom: 1.75rem;
+    }
+
+    .fleet-editorial-head h4,
+    .interaction-block--scenario-editorial > h4 {
+      margin: .25rem 0 0;
+      color: var(--deep-ink);
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.05;
+    }
+
+    .fleet-editorial-head > p,
+    .interaction-block--scenario-editorial > p:not(.fleet-editorial-kicker) {
+      margin: 0;
+      color: var(--muted-ink);
+    }
+
+    .fleet-editorial-kicker {
+      margin: 0 !important;
+      color: var(--warm-brass) !important;
+      font-family: var(--font-sans);
+      font-size: .7rem !important;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .fleet-tabs--editorial {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 0;
+      margin: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fleet-tabs--editorial .fleet-tab {
+      position: relative;
+      min-height: 0;
+      display: grid;
+      gap: .18rem;
+      padding: 1rem .85rem .9rem;
+      border: 0;
+      border-right: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted-ink);
+      text-align: left;
+      cursor: pointer;
+      transition: color 160ms ease, background 160ms ease;
+    }
+
+    .fleet-tabs--editorial .fleet-tab:last-child {
+      border-right: 0;
+    }
+
+    .fleet-tabs--editorial .fleet-tab::after {
+      content: "";
+      position: absolute;
+      right: .85rem;
+      bottom: -1px;
+      left: .85rem;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: var(--warm-brass);
+      transition: transform 180ms ease;
+    }
+
+    .fleet-tabs--editorial .fleet-tab:hover,
+    .fleet-tabs--editorial .fleet-tab.is-active {
+      border-color: var(--border);
+      background: rgba(255,255,255,.2);
+      color: var(--deep-ink);
+    }
+
+    .fleet-tabs--editorial .fleet-tab.is-active::after {
+      transform: scaleX(1);
+      background: var(--warm-brass);
+    }
+
+    .fleet-tab-num {
+      color: var(--warm-brass);
+      font-family: var(--font-sans);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    .fleet-tab-name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+      font-weight: 600;
+    }
+
+    .fleet-detail--editorial {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: stretch;
+      min-height: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none !important;
+    }
+
+    .fleet-photo-frame {
+      margin: 0;
+      min-width: 0;
+    }
+
+    .fleet-photo-crop {
+      position: relative;
+      min-height: 430px;
+      height: 100%;
+      overflow: hidden;
+      background: var(--deep-ink);
+    }
+
+    .fleet-photo-crop::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(19,26,17,.03), rgba(19,26,17,.22)),
+        color-mix(in srgb, var(--evergreen) 8%, transparent);
+      mix-blend-mode: multiply;
+    }
+
+    .fleet-photo-crop img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.72) contrast(1.04) brightness(.92);
+      transition: opacity 180ms ease, transform 500ms ease;
+    }
+
+    .fleet-photo-frame figcaption {
+      margin-top: .75rem;
+      color: var(--muted-ink);
+      font-family: var(--font-serif);
+      font-size: .88rem;
+      font-style: italic;
+    }
+
+    .fleet-photo-frame figcaption a {
+      color: var(--warm-brass);
+      text-underline-offset: .18em;
+    }
+
+    .fleet-editorial-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-block: 1.5rem;
+    }
+
+    .fleet-editorial-copy .detail-tagline {
+      margin: 0 0 .45rem;
+      color: var(--warm-brass);
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .fleet-editorial-copy h4 {
+      margin: 0 0 1rem;
+      color: var(--deep-ink);
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 400;
+      letter-spacing: .02em;
+      line-height: .95;
+      text-transform: uppercase;
+    }
+
+    .fleet-editorial-copy > p:not(.detail-tagline):not(.fleet-feature-label) {
+      color: var(--muted-ink);
+      font-size: 1rem;
+    }
+
+    .fleet-feature-label {
+      margin: 1.5rem 0 .55rem;
+      color: var(--deep-ink) !important;
+      font-family: var(--font-sans);
+      font-size: .66rem !important;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .fleet-editorial-copy .detail-list {
+      gap: 0;
+      margin: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .fleet-editorial-copy .detail-list li {
+      position: relative;
+      padding: .68rem 0 .68rem 1.15rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--deep-ink);
+      font-family: var(--font-serif);
+      font-size: 1.02rem;
+    }
+
+    .fleet-editorial-copy .detail-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.05rem;
+      width: 5px;
+      height: 5px;
+      margin: 0;
+      transform: rotate(45deg);
+      background: var(--warm-brass);
+    }
+
+    .scenario-box--editorial,
+    .interaction-block--scenario-editorial .scenario-box {
+      margin-top: 1.25rem;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none !important;
+    }
+
+    .interaction-block--scenario-editorial .scenario-box h5 {
+      margin: 0 0 .75rem;
+      color: var(--warm-brass);
+      font-family: var(--font-sans);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .interaction-block--scenario-editorial .scenario-box > p {
+      max-width: 52rem;
+      margin: 0 0 1.5rem;
+      color: var(--deep-ink);
+      font-family: var(--font-serif);
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      line-height: 1.28;
+    }
+
+    .interaction-block--scenario-editorial .scenario-options {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .interaction-block--scenario-editorial .scenario-option {
+      position: relative;
+      min-height: 0;
+      display: grid;
+      gap: .25rem;
+      padding: 1rem .9rem;
+      border: 0;
+      border-right: 1px solid var(--border);
+      background: transparent;
+      color: var(--deep-ink);
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .interaction-block--scenario-editorial .scenario-option:last-child {
+      border-right: 0;
+    }
+
+    .interaction-block--scenario-editorial .scenario-option span {
+      color: var(--warm-brass);
+      font-family: var(--font-sans);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    .interaction-block--scenario-editorial .scenario-option:hover,
+    .interaction-block--scenario-editorial .scenario-option:focus-visible {
+      border-color: var(--border);
+      background: rgba(255,255,255,.28);
+    }
+
+    .interaction-block--scenario-editorial .scenario-option.is-correct {
+      background: rgba(142,127,62,.10);
+      box-shadow: inset 0 -2px 0 var(--warm-brass);
+    }
+
+    .interaction-block--scenario-editorial .scenario-option.is-wrong {
+      background: rgba(166,90,59,.08);
+      box-shadow: inset 0 -2px 0 var(--warm-brass);
+    }
+
+    .interaction-block--scenario-editorial .feedback {
+      max-width: 52rem;
+      min-height: 0;
+      margin: 1.25rem 0 0;
+      padding-left: 1rem;
+      border-left: 2px solid var(--warm-brass);
+      color: var(--muted-ink);
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .interaction-block--scenario-editorial .scenario-next {
+      margin-top: 1rem;
+      padding: .4rem 0;
+      border: 0;
+      border-bottom: 1px solid var(--warm-brass);
+      background: transparent;
+      color: var(--warm-brass);
+      font-family: var(--font-sans);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .interaction-block--scenario-editorial .scenario-next:hover {
+      background: transparent;
+      color: var(--deep-ink);
+      border-bottom-color: var(--deep-ink);
+    }
+
+    @media (max-width: 900px) {
+      .fleet-editorial-head,
+      .fleet-detail--editorial {
+        grid-template-columns: 1fr;
+      }
+
+      .fleet-photo-crop,
+      .fleet-photo-crop img {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .fleet-tabs--editorial,
+      .interaction-block--scenario-editorial .scenario-options {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .fleet-tabs--editorial .fleet-tab:nth-child(2),
+      .interaction-block--scenario-editorial .scenario-option:nth-child(2) {
+        border-right: 0;
+      }
+
+      .fleet-tabs--editorial .fleet-tab:nth-child(-n+2),
+      .interaction-block--scenario-editorial .scenario-option:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .fleet-photo-crop,
+      .fleet-photo-crop img {
+        min-height: 280px;
+      }
+    }
   </style>
 </head>
 
@@ -1028,27 +1415,57 @@
               <p>Explore a class, then use the same model to make a deployment decision.</p>
             </div>
 
-            <div class="interaction-block">
-              <h4>Explore the Fleet</h4>
-              <p>Select a class to see how design connects to operating purpose.</p>
-
-              <div class="fleet-tabs" role="tablist" aria-label="Fictional vessel classes">
-                <button class="fleet-tab is-active" type="button" role="tab" aria-selected="true" data-fleet="river">River Class</button>
-                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="coastal">Coastal Class</button>
-                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="harbor">Harbor Class</button>
-                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="explorer">Explorer Class</button>
+            <div class="interaction-block interaction-block--fleet-editorial">
+              <div class="fleet-editorial-head">
+                <div>
+                  <p class="fleet-editorial-kicker">Explore the fleet</p>
+                  <h4>Read the environment before the specifications.</h4>
+                </div>
+                <p>
+                  Each fictional class represents a different operating pattern. Select one to see how
+                  environment, design, and purpose connect.
+                </p>
               </div>
 
-              <div class="fleet-detail" data-fleet-detail>
-                <div class="fleet-silhouette" aria-hidden="true">
-                  <div class="ship-shape"></div>
-                </div>
-                <div>
+              <div class="fleet-tabs fleet-tabs--editorial" role="tablist" aria-label="Fictional vessel classes">
+                <button class="fleet-tab is-active" type="button" role="tab" aria-selected="true" data-fleet="river">
+                  <span class="fleet-tab-num">01</span><span class="fleet-tab-name">River</span>
+                </button>
+                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="coastal">
+                  <span class="fleet-tab-num">02</span><span class="fleet-tab-name">Coastal</span>
+                </button>
+                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="harbor">
+                  <span class="fleet-tab-num">03</span><span class="fleet-tab-name">Harbor</span>
+                </button>
+                <button class="fleet-tab" type="button" role="tab" aria-selected="false" data-fleet="explorer">
+                  <span class="fleet-tab-num">04</span><span class="fleet-tab-name">Explorer</span>
+                </button>
+              </div>
+
+              <div class="fleet-detail fleet-detail--editorial" data-fleet-detail>
+                <figure class="fleet-photo-frame">
+                  <div class="fleet-photo-crop">
+                    <img
+                      data-fleet-photo
+                      src="https://images.pexels.com/photos/37490421/pexels-photo-37490421.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600"
+                      alt="Passenger ferry at a quiet riverbank, used as a fictional River Class environment reference."
+                      loading="lazy"
+                    />
+                  </div>
+                  <figcaption>
+                    Public-domain-style portfolio reference photography sourced from
+                    <a data-fleet-photo-link href="https://www.pexels.com/photo/passenger-ferry-docked-at-riverside-shore-37490421/" target="_blank" rel="noopener">Pexels</a>.
+                  </figcaption>
+                </figure>
+
+                <div class="fleet-editorial-copy">
                   <p class="detail-tagline" data-fleet-tagline>Built to work with the river.</p>
                   <h4 data-fleet-name>River Class</h4>
                   <p data-fleet-description>
                     Designed for interior waterways where depth, channel constraints, and inland access shape the operating decision.
                   </p>
+
+                  <p class="fleet-feature-label">Design signals</p>
                   <ul class="detail-list" data-fleet-features>
                     <li>Wide profile</li>
                     <li>Relatively shallow draft</li>
@@ -1154,7 +1571,8 @@
               </div>
             </div>
 
-            <div class="interaction-block">
+            <div class="interaction-block interaction-block--scenario-editorial">
+              <p class="fleet-editorial-kicker">Apply the model</p>
               <h4>Deployment Challenge</h4>
               <p>Choose the strongest fit, then see the reasoning behind the feedback.</p>
 
@@ -1165,15 +1583,15 @@
                 </p>
 
                 <div class="scenario-options" data-scenario-options>
-                  <button type="button" class="scenario-option" data-choice="river">River Class</button>
-                  <button type="button" class="scenario-option" data-choice="coastal">Coastal Class</button>
-                  <button type="button" class="scenario-option" data-choice="harbor">Harbor Class</button>
-                  <button type="button" class="scenario-option" data-choice="explorer">Explorer Class</button>
+                  <button type="button" class="scenario-option" data-choice="river"><span>01</span>River</button>
+                  <button type="button" class="scenario-option" data-choice="coastal"><span>02</span>Coastal</button>
+                  <button type="button" class="scenario-option" data-choice="harbor"><span>03</span>Harbor</button>
+                  <button type="button" class="scenario-option" data-choice="explorer"><span>04</span>Explorer</button>
                 </div>
 
                 <p class="feedback" data-scenario-feedback aria-live="polite"></p>
 
-                <button type="button" class="button button--secondary" data-next-scenario disabled>Next Scenario</button>
+                <button type="button" class="button button--secondary scenario-next" data-next-scenario disabled>Next Scenario</button>
               </div>
             </div>
 
