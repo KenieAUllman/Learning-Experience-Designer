@@ -105,7 +105,7 @@
         </svg>
         <h1 class="hero-name">McKena<br>Ullman</h1>
         <p class="hero-role">Learning Experience Designer</p>
-        <p class="label hero-tags">eLearning · Instructor-led learning · Curriculum · Assessment · Analytics</p>
+        <p class="label hero-tags">eLearning · ILT · Curriculum · Analytics</p>
       </div>
 
       <div class="hero-pins">
@@ -127,52 +127,37 @@
         </figure>
       </div>
     </div>
-    <div class="hero-foot">
-      <div class="wrap">
-        <p>Pleasant Grove, Utah</p>
-        <a class="link" href="#welcome">Start the tour &darr;</a>
-      </div>
-    </div>
   </section>
 
   <!-- WELCOME + PATH -->
-  <section class="band" id="welcome" aria-labelledby="welcome-h">
+  <section class="band welcome-band" id="welcome" aria-labelledby="welcome-h">
     <div class="wrap"><div class="inset">
-      <div class="welcome-grid">
-        <h2 class="display" id="welcome-h">This portfolio works like a <em>course.</em></h2>
-        <div class="welcome-side">
-          <blockquote class="pull">“The request is usually the starting point, not the whole problem.”<cite>A rule I work by</cite></blockquote>
-          <p class="kicker">Here’s how it works…</p>
-          <div class="prose">
-            <p>I design learning for work, so I built this portfolio to be explored the same way: start with a question, make a few choices, and go as deep as you have time for. Pick a path below and the site will keep track as you go.</p>
-            <p class="muted">And yes, there’s a tiny certificate at the end.</p>
-          </div>
-        </div>
+      <div class="welcome-simple">
+        <p class="label">Choose a path</p>
+        <h2 class="display" id="welcome-h">Explore at your <em>pace.</em></h2>
+        <p class="welcome-lede">Start with the highlights or go deeper.</p>
       </div>
 
-      <div class="chooser">
-        <h3 class="chooser-q">How much time do you have?</h3>
+      <div class="chooser chooser--simple">
         <div class="choices" role="group" aria-label="Choose a path">
           <button class="choice" type="button" data-path="2" aria-pressed="false">
             <span class="choice-num">2<small>min</small></span>
-            <span class="choice-name">The highlights</span>
-            <span class="choice-desc">See the consulting scenario and three featured projects.</span>
+            <span class="choice-name">Highlights</span>
           </button>
           <button class="choice" type="button" data-path="10" aria-pressed="false">
             <span class="choice-num">10<small>min</small></span>
-            <span class="choice-name">The full tour</span>
-            <span class="choice-desc">Add my process and a quick introduction.</span>
+            <span class="choice-name">Full tour</span>
           </button>
           <button class="choice" type="button" data-path="30" aria-pressed="false">
             <span class="choice-num">30<small>min</small></span>
-            <span class="choice-name">The deep dive</span>
-            <span class="choice-desc">Explore the full page, then open the case studies.</span>
+            <span class="choice-name">Deep dive</span>
           </button>
         </div>
-        <div class="path">
+
+        <div class="path" id="path-panel" hidden>
           <div class="path-head">
-            <p class="path-title" id="path-title">Suggested: The full tour, about 10 minutes</p>
-            <p class="label" id="path-count">0 of 4 stops complete</p>
+            <p class="path-title" id="path-title"></p>
+            <p class="label" id="path-count"></p>
           </div>
           <ol class="path-list" id="path-list"></ol>
         </div>
