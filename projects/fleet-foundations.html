@@ -1604,6 +1604,66 @@
         border-top: 1px solid var(--line);
       }
     }
+  
+    /* Fleet hero visual v5 */
+    .case-hero {
+      padding-top: clamp(4.75rem, 8vw, 7rem) !important;
+      padding-bottom: clamp(4.5rem, 8vw, 6rem) !important;
+    }
+
+    .case-hero-grid {
+      align-items: center !important;
+    }
+
+    .case-hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: clamp(1.5rem, 4vw, 3.5rem);
+    }
+
+    .hero-vessel {
+      width: min(100%, 430px);
+      margin: 0 0 clamp(1.75rem, 3vw, 2.4rem);
+      position: relative;
+    }
+
+    .hero-vessel::after {
+      content: "";
+      position: absolute;
+      inset: 12px -12px -12px 12px;
+      z-index: -1;
+      border: 1px solid var(--line);
+    }
+
+    .hero-vessel img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center;
+      border: 1px solid var(--line);
+      filter: saturate(.72) contrast(1.04) brightness(.88);
+    }
+
+    .case-hero-copy .eyebrow {
+      margin-top: 0;
+    }
+
+    .case-hero-copy .case-subtitle {
+      max-width: 34rem;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 960px) {
+      .case-hero-copy {
+        padding-top: 0;
+      }
+
+      .hero-vessel {
+        width: min(100%, 560px);
+      }
+    }
   </style>
 </head>
 
@@ -1642,13 +1702,18 @@
 
     <section class="case-hero">
       <div class="container case-hero-grid">
-        <div class="reveal">
+        <div class="reveal case-hero-copy">
+          <figure class="hero-vessel">
+            <img
+              src="https://images.pexels.com/photos/37490421/pexels-photo-37490421.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"
+              alt="Passenger vessel on calm water, used as a visual reference for Fleet Foundations."
+              loading="eager"
+            />
+          </figure>
+
           <p class="eyebrow">Flagship Case Study</p>
           <h1>Fleet Foundations</h1>
           <p class="case-subtitle">Turning a growing body of fleet information into a framework new hires could actually use.</p>
-          <p class="case-summary">
-            A reconstructed case study showing how I reorganized complex onboarding around classification, operating environment, purpose, and application.
-          </p>
         </div>
 
         <aside class="reveal reveal--delay-1">
