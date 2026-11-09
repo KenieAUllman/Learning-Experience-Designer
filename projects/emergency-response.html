@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/components.css" />
   <script src="../js/main.js" defer></script>
-  <script src="../js/emergency.js" defer></script>
+  <script src="../js/emergency.js?v=20261108-2" defer></script>
 
   <style>
     .case-hero {
@@ -1060,6 +1060,120 @@
       .scope-card { border-right:0; border-bottom:1px solid var(--line); }
       .report-grid { grid-template-columns:1fr !important; }
     }
+  
+    /* Emergency practice clarity v3 */
+    .interaction-block--incident {
+      max-width: 920px;
+      margin-inline: auto;
+    }
+
+    .practice-step {
+      margin: 0 0 .55rem !important;
+      color: var(--color-accent) !important;
+      font-family: var(--font-body);
+      font-size: .66rem !important;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .incident-brief {
+      max-width: 52rem;
+      margin-bottom: 1.25rem !important;
+      color: var(--color-text-light-soft) !important;
+      font-family: var(--font-accent);
+      font-size: 1.08rem;
+    }
+
+    .incident-brief strong {
+      color: var(--color-text-light);
+      font-weight: 600;
+    }
+
+    .report-grid--decision {
+      grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    }
+
+    .report-grid--decision .report-option {
+      position: relative;
+      padding-left: 2.4rem !important;
+      min-height: 68px;
+    }
+
+    .report-grid--decision .report-option::before {
+      content: "";
+      position: absolute;
+      left: .9rem;
+      top: 50%;
+      width: 11px;
+      height: 11px;
+      transform: translateY(-50%);
+      border: 1px solid var(--color-gold);
+    }
+
+    .report-grid--decision .report-option.is-selected::before {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      box-shadow: inset 0 0 0 2px var(--color-dark-alt);
+    }
+
+    .practice-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .practice-count {
+      color: var(--color-text-light-soft);
+      font-family: var(--font-accent);
+      font-style: italic;
+    }
+
+    .practice-action-row .button {
+      margin: 0 !important;
+      border: 0 !important;
+      border-bottom: 1px solid var(--color-accent) !important;
+      background: transparent !important;
+      color: var(--color-accent) !important;
+      padding: .45rem 0 !important;
+    }
+
+    .practice-action-row .button:disabled {
+      opacity: .35;
+      cursor: default;
+    }
+
+    .scenario-box--single {
+      margin-top: 1rem !important;
+    }
+
+    .scenario-box--single > p:first-child {
+      max-width: 52rem;
+      color: var(--color-text-light) !important;
+      font-family: var(--font-accent);
+      font-size: clamp(1.3rem,2.4vw,1.8rem);
+      line-height: 1.35;
+    }
+
+    .scenario-options--single {
+      grid-template-columns: 1fr !important;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .scenario-options--single .scenario-option {
+      min-height: 58px;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    @media (max-width:720px){
+      .report-grid--decision { grid-template-columns:1fr !important; }
+      .practice-action-row { align-items:flex-start; flex-direction:column; }
+    }
   </style>
 </head>
 
@@ -1283,32 +1397,37 @@
       <div class="container">
         <div class="section-intro reveal">
           <p class="eyebrow">03 • Practice</p>
-          <h2>Practice the decisions.</h2>
-          <p>Public reconstruction using fictional content.</p>
+          <h2>One incident. Two decisions.</h2>
         </div>
 
         <div class="demo-shell reveal reveal--delay-1">
           <div class="demo-header">
-            <span>Northstar Operations</span>
-            <span>Fictional Portfolio Reconstruction</span>
+            <span>Practice Reconstruction</span>
+            <span>Fictional Content</span>
           </div>
 
           <div class="demo-content">
 
-            <div class="interaction-block">
-              <h3>Build a Better Report</h3>
-              <p>Select the details a decision-maker actually needs.</p>
+            <div class="interaction-block interaction-block--incident">
+              <p class="practice-step">01 · Build the update</p>
+              <h3>What does the decision-maker need first?</h3>
+              <p class="incident-brief">
+                A work area has stopped unexpectedly. Select the <strong>four details</strong> that belong in the first operational update.
+              </p>
 
-              <div class="report-grid" data-report-options>
-                <button type="button" class="report-option" data-key="impact">Production stopped.</button>
-                <button type="button" class="report-option" data-key="location">Zone C.</button>
-                <button type="button" class="report-option" data-key="people">No injuries reported.</button>
-                <button type="button" class="report-option" data-key="observation">Unusual equipment noise occurred first.</button>
-                <button type="button" class="report-option" data-key="action">Supervisor has paused the area.</button>
-                <button type="button" class="report-option" data-key="unknown">Cause unknown.</button>
+              <div class="report-grid report-grid--decision" data-report-options>
+                <button type="button" class="report-option" data-key="impact">Work in Zone C has stopped.</button>
+                <button type="button" class="report-option" data-key="people">No injuries have been reported.</button>
+                <button type="button" class="report-option" data-key="action">The supervisor has paused the area.</button>
+                <button type="button" class="report-option" data-key="unknown">The cause is not yet known.</button>
+                <button type="button" class="report-option report-option--distractor" data-key="history">An employee says the equipment sounded louder yesterday.</button>
+                <button type="button" class="report-option report-option--distractor" data-key="schedule">Preventive maintenance is scheduled next week.</button>
               </div>
 
-              <button type="button" class="button button--primary" style="margin-top:1rem;" data-build-report>Assemble Update</button>
+              <div class="practice-action-row">
+                <span class="practice-count" data-report-count>0 of 4 selected</span>
+                <button type="button" class="button button--primary" data-build-report disabled>Check Update</button>
+              </div>
 
               <div class="assembled-report" data-assembled-report hidden aria-live="polite"></div>
             </div>
@@ -1362,25 +1481,24 @@
               <p class="feedback" data-role-feedback aria-live="polite"></p>
             </div>
 
-            <div class="interaction-block">
-              <h3>Scenario Lab</h3>
-              <p>Choose the strongest organizational response.</p>
+            <div class="interaction-block interaction-block--incident">
+              <p class="practice-step">02 · Choose the response</p>
+              <h3>What should happen next?</h3>
 
-              <div class="scenario-box">
-                <h4 data-scenario-title>Scenario 1 of 3</h4>
+              <div class="scenario-box scenario-box--single">
                 <p data-scenario-text>
-                  A piece of equipment stops unexpectedly during a busy operating period. An employee reports an unusual sound beforehand. No injuries have been reported, but the cause is unknown.
+                  The work area is paused, no injuries have been reported, and the cause is still unknown. Which response best supports coordinated decision-making?
                 </p>
 
-                <div class="scenario-options" data-scenario-options>
-                  <button type="button" class="scenario-option" data-choice="a">Restart it to see whether the issue repeats.</button>
-                  <button type="button" class="scenario-option" data-choice="b">Establish what is known, maintain the operational pause, and communicate the condition.</button>
-                  <button type="button" class="scenario-option" data-choice="c">Wait until the cause is known before communicating.</button>
-                  <button type="button" class="scenario-option" data-choice="d">Send a company-wide update immediately.</button>
+                <div class="scenario-options scenario-options--single" data-scenario-options>
+                  <button type="button" class="scenario-option" data-choice="a">Restart the equipment to see whether the issue repeats.</button>
+                  <button type="button" class="scenario-option" data-choice="b">Keep the area paused, confirm what is known, and communicate the current condition.</button>
+                  <button type="button" class="scenario-option" data-choice="c">Wait to communicate until the cause is fully known.</button>
                 </div>
 
                 <p class="feedback" data-scenario-feedback aria-live="polite"></p>
-                <button type="button" class="button button--secondary" data-next-scenario disabled>Next Scenario</button>
+                <button type="button" data-next-scenario hidden disabled></button>
+                <span data-scenario-title hidden></span>
               </div>
             </div>
 
