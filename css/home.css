@@ -825,3 +825,95 @@ button, input { font: inherit; color: inherit; }
     white-space: normal;
   }
 }
+
+
+/* ---------- homepage simplification v3 ---------- */
+.welcome-band {
+  padding-block: clamp(4rem, 7vw, 6rem);
+}
+
+.welcome-simple {
+  max-width: 46rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.welcome-simple .display {
+  font-size: clamp(3rem, 6.2vw, 5.4rem);
+}
+
+.welcome-lede {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--color-text-light-soft);
+  font-family: var(--font-accent);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.chooser--simple {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  gap: 1.4rem;
+}
+
+.chooser--simple .choices {
+  gap: clamp(1.2rem, 3vw, 2.25rem);
+}
+
+.chooser--simple .choice {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  min-height: 0;
+  padding: 1rem 0 0.95rem;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+}
+
+.chooser--simple .choice:hover {
+  border-top-color: var(--color-gold);
+  background: transparent;
+}
+
+.chooser--simple .choice[aria-pressed="true"] {
+  border-top-color: var(--color-accent);
+  background: transparent;
+}
+
+.chooser--simple .choice-num {
+  font-size: clamp(2.6rem, 4vw, 3.4rem);
+  line-height: 0.9;
+}
+
+.chooser--simple .choice-num small {
+  font-size: 0.95rem;
+}
+
+.chooser--simple .choice-name {
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+}
+
+.chooser--simple .path {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 760px) {
+  .welcome-band {
+    padding-block: 3.5rem;
+  }
+
+  .welcome-simple .display {
+    font-size: clamp(2.8rem, 13vw, 4rem);
+  }
+
+  .chooser--simple .choices {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .chooser--simple .choice {
+    justify-content: space-between;
+  }
+}
