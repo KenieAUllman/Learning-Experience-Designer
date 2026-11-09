@@ -24,6 +24,7 @@
   var PATHS = {
     "2": { name: "The highlights", minutes: 2, stops: ["request", "work"] },
     "10": { name: "The full tour", minutes: 10, stops: ["request", "work", "approach", "about"] },
+    "30": { name: "The deep dive", minutes: 30, stops: ["request", "work", "approach", "about"] }
   };
   var QUESTIONS = [
     { id: "doing", good: true, tag: "Finds the behavior", short: "What are they doing now?",
@@ -103,10 +104,7 @@
   }
 
   /* ---------- path + progress ---------- */
-  function pathKey() {
-    if (state.path === "30") state.path = "10";
-    return state.path || "10";
-  }
+  function pathKey() { return state.path || "10"; }
   function progress() {
     var p = PATHS[pathKey()];
     var done = p.stops.filter(function (s) { return state.done[s]; }).length;
