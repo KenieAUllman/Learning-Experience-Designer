@@ -1271,6 +1271,339 @@
         grid-template-columns: repeat(2, minmax(0,1fr));
       }
     }
+  
+    /* Fleet visual language v4 */
+    .fleet-redesign-section {
+      background:
+        radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--color-gold) 7%, transparent), transparent 26%),
+        var(--color-dark-alt) !important;
+      border-top-color: var(--line) !important;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fleet-redesign-section .eyebrow {
+      color: var(--color-gold) !important;
+    }
+
+    .fleet-redesign-section .section-intro h2 {
+      color: var(--color-text-light) !important;
+    }
+
+    .fleet-redesign-section .section-intro > p:not(.eyebrow) {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .fleet-redesign-section .fleet-photo-strip {
+      background: var(--line);
+      border-color: var(--line);
+    }
+
+    .fleet-redesign-section .fleet-photo-strip figure {
+      background: var(--color-dark) !important;
+    }
+
+    .fleet-redesign-section .fleet-photo-strip figcaption {
+      color: var(--color-text-light) !important;
+    }
+
+    .fleet-redesign-section .fleet-photo-strip figcaption span {
+      color: var(--color-accent) !important;
+    }
+
+    .before-after--editorial {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: clamp(2.5rem, 5vw, 4rem);
+      background: transparent !important;
+      border: 1px solid var(--line) !important;
+      box-shadow: none !important;
+    }
+
+    .before-after--editorial .model-panel {
+      position: relative;
+      padding: clamp(1.8rem, 4vw, 3rem);
+      background: transparent !important;
+      color: var(--color-text-light);
+    }
+
+    .before-after--editorial .model-panel + .model-panel {
+      border-left: 1px solid var(--line);
+    }
+
+    .before-after--editorial .model-panel--before {
+      background: color-mix(in srgb, var(--color-dark) 56%, transparent) !important;
+    }
+
+    .before-after--editorial .model-panel--after {
+      background: color-mix(in srgb, var(--color-dark-raised) 42%, transparent) !important;
+    }
+
+    .before-after--editorial .model-kicker {
+      margin: 0 0 1.5rem;
+      color: var(--color-gold) !important;
+      font-family: var(--font-body);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .24em;
+    }
+
+    .model-sequence {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .model-sequence li {
+      display: grid;
+      grid-template-columns: 2.6rem 1fr;
+      gap: 1rem;
+      align-items: baseline;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .model-sequence span {
+      color: var(--color-accent);
+      font-family: var(--font-body);
+      font-size: .62rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+    }
+
+    .model-sequence strong {
+      color: var(--color-text-light);
+      font-family: var(--font-accent);
+      font-size: clamp(1.25rem, 2vw, 1.65rem);
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    .model-panel--before .model-sequence strong {
+      color: var(--color-text-light-soft);
+    }
+
+    .model-panel--after .model-sequence strong {
+      color: var(--color-text-light);
+    }
+
+    .model-panel--after .model-sequence span {
+      color: var(--color-accent);
+    }
+
+    .model-caption {
+      max-width: 26rem;
+      margin: 1.25rem 0 0;
+      color: var(--color-text-light-soft);
+      font-family: var(--font-accent);
+      font-size: 1.05rem;
+      font-style: italic;
+    }
+
+    /* Design decisions: editorial columns, not cards. */
+    .decisions-grid--three {
+      gap: clamp(1.5rem, 4vw, 3rem) !important;
+      background: transparent !important;
+      border: 0 !important;
+    }
+
+    .decisions-grid--three .decision-card {
+      padding: 1.25rem 0 0 !important;
+      border-top: 1px solid var(--border);
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .decisions-grid--three .decision-number {
+      margin-bottom: .7rem;
+      color: var(--warm-brass);
+      font-family: var(--font-sans);
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    .decisions-grid--three .decision-card h3 {
+      margin-bottom: .55rem;
+      font-family: var(--font-serif) !important;
+      font-size: clamp(1.45rem, 2.5vw, 2rem) !important;
+      font-weight: 600 !important;
+    }
+
+    /* Try-it section: dark frame, editorial content. */
+    .fleet-interaction-section {
+      background:
+        linear-gradient(180deg, var(--color-dark), var(--color-dark-alt)) !important;
+      border-top-color: var(--line) !important;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fleet-interaction-section .eyebrow {
+      color: var(--color-gold) !important;
+    }
+
+    .fleet-interaction-section .section-intro h2,
+    .fleet-interaction-section .demo-intro h3 {
+      color: var(--color-text-light) !important;
+    }
+
+    .fleet-interaction-section .section-intro > p:not(.eyebrow),
+    .fleet-interaction-section .demo-intro p {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .fleet-interaction-section .demo-shell {
+      margin-top: 2rem;
+      border: 1px solid var(--line) !important;
+      background: color-mix(in srgb, var(--color-dark-alt) 72%, transparent) !important;
+      box-shadow: none !important;
+    }
+
+    .fleet-interaction-section .demo-header {
+      background: transparent !important;
+      border-bottom: 1px solid var(--line) !important;
+    }
+
+    .fleet-interaction-section .demo-header span:first-child {
+      color: var(--color-text-light) !important;
+    }
+
+    .fleet-interaction-section .demo-header span:last-child {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .fleet-interaction-section .fleet-editorial-head h4,
+    .fleet-interaction-section .interaction-block--scenario-editorial > h4 {
+      color: var(--color-text-light) !important;
+    }
+
+    .fleet-interaction-section .fleet-editorial-head > p,
+    .fleet-interaction-section .interaction-block--scenario-editorial > p:not(.fleet-editorial-kicker) {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .fleet-interaction-section .fleet-editorial-kicker {
+      color: var(--color-accent) !important;
+    }
+
+    .fleet-interaction-section .fleet-tabs--editorial {
+      border-color: var(--line) !important;
+    }
+
+    .fleet-interaction-section .fleet-tabs--editorial .fleet-tab {
+      border-right-color: var(--line) !important;
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .fleet-interaction-section .fleet-tabs--editorial .fleet-tab:hover,
+    .fleet-interaction-section .fleet-tabs--editorial .fleet-tab.is-active {
+      background: color-mix(in srgb, var(--color-dark-raised) 64%, transparent) !important;
+      color: var(--color-text-light) !important;
+    }
+
+    .fleet-interaction-section .fleet-tab-num {
+      color: var(--color-accent) !important;
+    }
+
+    .fleet-interaction-section .fleet-tabs--editorial .fleet-tab::after,
+    .fleet-interaction-section .fleet-tabs--editorial .fleet-tab.is-active::after {
+      background: var(--color-accent) !important;
+    }
+
+    .fleet-interaction-section .fleet-editorial-copy .detail-tagline {
+      color: var(--color-accent) !important;
+    }
+
+    .fleet-interaction-section .fleet-editorial-copy h4,
+    .fleet-interaction-section .fleet-editorial-copy > p:not(.detail-tagline):not(.fleet-feature-label),
+    .fleet-interaction-section .fleet-feature-label,
+    .fleet-interaction-section .fleet-editorial-copy .detail-list li {
+      color: var(--color-text-light) !important;
+    }
+
+    .fleet-interaction-section .fleet-editorial-copy > p:not(.detail-tagline):not(.fleet-feature-label),
+    .fleet-interaction-section .fleet-photo-frame figcaption {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .fleet-interaction-section .fleet-editorial-copy .detail-list,
+    .fleet-interaction-section .fleet-editorial-copy .detail-list li {
+      border-color: var(--line) !important;
+    }
+
+    .fleet-interaction-section .fleet-editorial-copy .detail-list li::before {
+      background: var(--color-accent) !important;
+    }
+
+    .fleet-interaction-section .fleet-photo-frame figcaption a {
+      color: var(--color-accent) !important;
+    }
+
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-box > p,
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-option {
+      color: var(--color-text-light) !important;
+    }
+
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-options,
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-option {
+      border-color: var(--line) !important;
+    }
+
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-option {
+      background: transparent !important;
+    }
+
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-option:hover,
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-option:focus-visible {
+      background: color-mix(in srgb, var(--color-dark-raised) 60%, transparent) !important;
+    }
+
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-option.is-correct {
+      background: color-mix(in srgb, var(--color-gold) 11%, transparent) !important;
+      box-shadow: inset 0 -2px 0 var(--color-accent);
+    }
+
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-option.is-wrong {
+      background: color-mix(in srgb, var(--color-accent) 8%, transparent) !important;
+      box-shadow: inset 0 -2px 0 var(--color-accent);
+    }
+
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-option span,
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-box h5,
+    .fleet-interaction-section .interaction-block--scenario-editorial .scenario-next {
+      color: var(--color-accent) !important;
+    }
+
+    .fleet-interaction-section .interaction-block--scenario-editorial .feedback {
+      border-left-color: var(--color-accent) !important;
+      color: var(--color-text-light-soft) !important;
+    }
+
+    /* Measurement: simple ruled columns rather than white cards. */
+    .measure-strip {
+      gap: clamp(1.2rem, 4vw, 2.5rem) !important;
+      background: transparent !important;
+      border: 0 !important;
+    }
+
+    .measure-strip > div {
+      padding: 1rem 0 0 !important;
+      border-top: 1px solid var(--border);
+      background: transparent !important;
+    }
+
+    @media (max-width: 960px) {
+      .before-after--editorial {
+        grid-template-columns: 1fr;
+      }
+
+      .before-after--editorial .model-panel + .model-panel {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+    }
   </style>
 </head>
 
@@ -1373,7 +1706,7 @@
 
     
 
-    <section class="case-section case-section--ivory">
+    <section class="case-section case-section--ivory fleet-redesign-section">
       <div class="container">
         <div class="section-intro reveal">
           <p class="eyebrow">02 • Redesign</p>
@@ -1403,25 +1736,28 @@
           </figure>
         </div>
 
-        <div class="before-after reveal">
-          <div class="model-panel">
+        <div class="before-after before-after--editorial reveal">
+          <article class="model-panel model-panel--before">
             <p class="model-kicker">Before</p>
-            <div class="model-flow">
-              <div class="model-node">Vessel</div><div class="model-arrow">↓</div>
-              <div class="model-node">Specifications</div><div class="model-arrow">↓</div>
-              <div class="model-node">Destination</div><div class="model-arrow">↓</div>
-              <div class="model-node">Memorize</div>
-            </div>
-          </div>
-          <div class="model-panel model-panel--after">
+            <ol class="model-sequence">
+              <li><span>01</span><strong>Vessel</strong></li>
+              <li><span>02</span><strong>Specifications</strong></li>
+              <li><span>03</span><strong>Destination</strong></li>
+              <li><span>04</span><strong>Memorize</strong></li>
+            </ol>
+            <p class="model-caption">Individual facts with no organizing model.</p>
+          </article>
+
+          <article class="model-panel model-panel--after">
             <p class="model-kicker">After</p>
-            <div class="model-flow">
-              <div class="model-node">Classification</div><div class="model-arrow">↓</div>
-              <div class="model-node">Environment</div><div class="model-arrow">↓</div>
-              <div class="model-node">Purpose</div><div class="model-arrow">↓</div>
-              <div class="model-node">Apply the model</div>
-            </div>
-          </div>
+            <ol class="model-sequence">
+              <li><span>01</span><strong>Classification</strong></li>
+              <li><span>02</span><strong>Environment</strong></li>
+              <li><span>03</span><strong>Purpose</strong></li>
+              <li><span>04</span><strong>Apply the model</strong></li>
+            </ol>
+            <p class="model-caption">A reusable framework for interpreting new information.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -1452,7 +1788,7 @@
       </div>
     </section>
 
-    <section class="case-section case-section--ivory">
+    <section class="case-section case-section--ivory fleet-interaction-section">
       <div class="container">
         <div class="section-intro reveal">
           <p class="eyebrow">03 • Try It</p>
