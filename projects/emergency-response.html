@@ -738,6 +738,328 @@
         grid-template-columns: 1fr;
       }
     }
+  
+    /* Emergency editorial system v2 */
+    .case-hero {
+      padding-top: clamp(4.75rem, 8vw, 7rem) !important;
+      padding-bottom: clamp(4.5rem, 8vw, 6rem) !important;
+    }
+
+    .case-hero-grid {
+      align-items: center !important;
+    }
+
+    .case-hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: clamp(1.5rem, 4vw, 3.5rem);
+    }
+
+    .hero-response {
+      width: min(100%, 430px);
+      margin: 0 0 clamp(1.75rem, 3vw, 2.4rem);
+      position: relative;
+    }
+
+    .hero-response::after {
+      content: "";
+      position: absolute;
+      inset: 12px -12px -12px 12px;
+      z-index: -1;
+      border: 1px solid var(--line);
+    }
+
+    .hero-response img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center;
+      border: 1px solid var(--line);
+      filter: saturate(.72) contrast(1.04) brightness(.88);
+    }
+
+    .case-summary { display: none; }
+
+    .notice-stack { margin-top: 1.25rem; }
+    .notice-stack .notice {
+      border-left-color: var(--color-accent) !important;
+      background: color-mix(in srgb, var(--color-dark-raised) 70%, transparent) !important;
+    }
+
+    .notice-stack .notice strong { color: var(--color-text-light) !important; }
+    .notice-stack .notice p { color: var(--color-text-light-soft) !important; }
+
+    .scale-item--secondary { display: none; }
+
+    .scale-grid {
+      grid-template-columns: repeat(3, minmax(0,1fr)) !important;
+      gap: clamp(1.25rem, 4vw, 2.5rem) !important;
+      background: transparent !important;
+      border: 0 !important;
+    }
+
+    .scale-item {
+      padding: 1rem 0 0 !important;
+      border-top: 1px solid var(--border);
+      background: transparent !important;
+    }
+
+    .diagnosis-grid {
+      gap: 0 !important;
+      background: transparent !important;
+      border: 1px solid var(--line) !important;
+    }
+
+    .diagnosis-panel {
+      background: var(--color-dark-alt) !important;
+      color: var(--color-text-light);
+    }
+
+    .diagnosis-panel + .diagnosis-panel {
+      border-left: 1px solid var(--line);
+    }
+
+    .diagnosis-panel h3 {
+      color: var(--color-text-light) !important;
+      font-family: var(--font-accent) !important;
+      font-size: clamp(1.35rem,2.3vw,1.8rem) !important;
+      font-weight: 600 !important;
+    }
+
+    .diagnosis-list li {
+      border-bottom-color: var(--line) !important;
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .diagnosis-list li::before {
+      content: "·" !important;
+      color: var(--color-accent) !important;
+    }
+
+    .architecture {
+      gap: 0 !important;
+      justify-items: stretch !important;
+      max-width: 760px !important;
+      margin-inline: 0 !important;
+      border-top: 1px solid var(--line);
+    }
+
+    .arch-node {
+      width: 100% !important;
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      align-items: baseline;
+      padding: .9rem 0 !important;
+      border: 0 !important;
+      border-bottom: 1px solid var(--line) !important;
+      background: transparent !important;
+      color: var(--color-text-light) !important;
+      text-align: left !important;
+      font-family: var(--font-accent) !important;
+      font-size: 1.2rem;
+      font-weight: 500 !important;
+    }
+
+    .arch-node::before {
+      content: counter(arch);
+      counter-increment: arch;
+      color: var(--color-accent);
+      font-family: var(--font-body);
+      font-size: .62rem;
+      letter-spacing: .14em;
+    }
+
+    .architecture { counter-reset: arch; }
+    .arch-arrow { display:none; }
+    .arch-node--accent { color: var(--color-accent) !important; }
+
+    .scope-grid {
+      gap: 0 !important;
+      background: transparent !important;
+      border: 1px solid var(--line) !important;
+    }
+
+    .scope-card {
+      background: var(--color-dark-alt) !important;
+      border-right: 1px solid var(--line);
+    }
+
+    .scope-card:last-child { border-right: 0; }
+
+    .scope-letter { color: var(--color-accent) !important; }
+    .scope-card h3 { color: var(--color-text-light) !important; font-family: var(--font-accent) !important; }
+    .scope-card p { color: var(--color-text-light-soft) !important; }
+
+    .fiction-note {
+      border: 0 !important;
+      border-top: 1px solid var(--line) !important;
+      background: transparent !important;
+      color: var(--color-text-light-soft) !important;
+      font-family: var(--font-accent);
+      font-style: italic;
+    }
+
+    .case-section:has(.scope-grid),
+    .case-section:has(.architecture) {
+      background:
+        radial-gradient(circle at 14% 18%, color-mix(in srgb, var(--color-gold) 6%, transparent), transparent 28%),
+        var(--color-dark-alt) !important;
+      border-top-color: var(--line) !important;
+    }
+
+    .case-section:has(.scope-grid) .eyebrow,
+    .case-section:has(.architecture) .eyebrow {
+      color: var(--color-gold) !important;
+    }
+
+    .case-section:has(.scope-grid) h2,
+    .case-section:has(.architecture) h2 {
+      color: var(--color-text-light) !important;
+    }
+
+    .case-section:has(.scope-grid) .section-intro > p:not(.eyebrow) {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .case-section:has(.demo-shell) {
+      background:
+        linear-gradient(180deg, var(--color-dark), var(--color-dark-alt)) !important;
+      border-top-color: var(--line) !important;
+    }
+
+    .case-section:has(.demo-shell) .eyebrow {
+      color: var(--color-gold) !important;
+    }
+
+    .case-section:has(.demo-shell) h2,
+    .case-section:has(.demo-shell) .interaction-block h3 {
+      color: var(--color-text-light) !important;
+    }
+
+    .case-section:has(.demo-shell) .section-intro > p:not(.eyebrow),
+    .case-section:has(.demo-shell) .interaction-block > p,
+    .case-section:has(.demo-shell) .scenario-box p {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .demo-shell {
+      border-color: var(--line) !important;
+      background: color-mix(in srgb, var(--color-dark-alt) 74%, transparent) !important;
+      box-shadow: none !important;
+    }
+
+    .demo-header {
+      background: transparent !important;
+      border-bottom-color: var(--line) !important;
+    }
+
+    .interaction-block--secondary { display:none; }
+
+    .report-grid {
+      gap: 0 !important;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .report-option,
+    .scenario-option {
+      border: 0 !important;
+      border-right: 1px solid var(--line) !important;
+      border-bottom: 1px solid var(--line) !important;
+      background: transparent !important;
+      color: var(--color-text-light) !important;
+      font-family: var(--font-accent);
+      font-weight: 500 !important;
+    }
+
+    .report-option:hover,
+    .scenario-option:hover {
+      background: color-mix(in srgb, var(--color-dark-raised) 62%, transparent) !important;
+    }
+
+    .report-option.is-selected,
+    .scenario-option.is-correct {
+      background: color-mix(in srgb, var(--color-gold) 11%, transparent) !important;
+      box-shadow: inset 0 -2px 0 var(--color-accent);
+    }
+
+    .scenario-option.is-wrong {
+      background: color-mix(in srgb, var(--color-accent) 8%, transparent) !important;
+      box-shadow: inset 0 -2px 0 var(--color-accent);
+    }
+
+    .scenario-box {
+      padding: 1.25rem 0 0 !important;
+      border: 0 !important;
+      border-top: 1px solid var(--line) !important;
+      background: transparent !important;
+    }
+
+    .assembled-report {
+      border-left-color: var(--color-accent) !important;
+      background: color-mix(in srgb, var(--color-dark-raised) 58%, transparent) !important;
+      color: var(--color-text-light);
+    }
+
+    .assembled-report dt { color: var(--color-accent) !important; }
+    .assembled-report dd { color: var(--color-text-light-soft) !important; }
+
+    .demo-content .button {
+      border-radius: 0 !important;
+    }
+
+    .guide-preview {
+      gap: 0 !important;
+      border-color: var(--border) !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .guide-index {
+      background: transparent !important;
+      border-right: 1px solid var(--border);
+    }
+
+    .guide-index button {
+      border: 0 !important;
+      border-bottom: 1px solid var(--border) !important;
+      background: transparent !important;
+      font-family: var(--font-accent);
+      font-size: 1.05rem;
+      font-weight: 600 !important;
+    }
+
+    .guide-index button.is-active {
+      color: var(--warm-brass) !important;
+      background: transparent !important;
+      box-shadow: inset 2px 0 0 var(--warm-brass);
+    }
+
+    .guide-page {
+      background: transparent !important;
+    }
+
+    .case-section--secondary { display:none; }
+
+    .reflection-copy p:first-child {
+      color: var(--color-text-light) !important;
+    }
+
+    @media (max-width: 980px) {
+      .case-hero-copy { padding-top:0; }
+      .hero-response { width:min(100%,560px); }
+      .scope-grid { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+      .scope-card:nth-child(2n) { border-right:0; }
+    }
+
+    @media (max-width: 720px) {
+      .diagnosis-panel + .diagnosis-panel { border-left:0; border-top:1px solid var(--line); }
+      .scope-grid { grid-template-columns:1fr !important; }
+      .scope-card { border-right:0; border-bottom:1px solid var(--line); }
+      .report-grid { grid-template-columns:1fr !important; }
+    }
   </style>
 </head>
 
@@ -776,13 +1098,18 @@
 
     <section class="case-hero">
       <div class="container case-hero-grid">
-        <div class="reveal">
-          <p class="eyebrow">Instructional Systems Design Case Study</p>
+        <div class="reveal case-hero-copy">
+          <figure class="hero-response">
+            <img
+              src="../assets/images/home/emergency-response.jpg"
+              alt="Reconstructed Emergency Response learning activity used as a portfolio example."
+              loading="eager"
+            />
+          </figure>
+
+          <p class="eyebrow">Case Study</p>
           <h1>Emergency Response</h1>
-          <p class="case-subtitle">Turning procedures and SME knowledge into training new operational leaders could actually use.</p>
-          <p class="case-summary">
-            A reconstructed case study showing how I turned procedural source material and SME expertise into objectives, lesson plans, facilitator guidance, practice, scenarios, and performance support.
-          </p>
+          <p class="case-subtitle">From procedures and SME knowledge to practice leaders could use under pressure.</p>
         </div>
 
         <aside class="reveal reveal--delay-1">
@@ -801,11 +1128,11 @@
             </div>
             <div class="meta-row">
               <span class="meta-label">Format</span>
-              <span class="meta-value">ILT + facilitator guide + scenario practice + performance support</span>
+              <span class="meta-value">ILT · facilitator guide · scenario practice</span>
             </div>
             <div class="meta-row">
               <span class="meta-label">Methods</span>
-              <span class="meta-value">SME discovery, TLO/ELO alignment, scenario design, facilitation, performance support</span>
+              <span class="meta-value">SME discovery · alignment · scenarios · facilitation</span>
             </div>
           </div>
 
@@ -813,18 +1140,8 @@
             <div class="notice">
               <strong>Portfolio Reconstruction</strong>
               <p>
-                This case study reflects professional work I completed in an employer environment.
-                Company terminology, procedures, operating rules, scenarios, systems, and proprietary
-                source material have been replaced with fictional equivalents. The instructional
-                architecture and design decisions reflect my actual work.
-              </p>
-            </div>
-
-            <div class="notice notice--safety">
-              <strong>Safety Disclaimer</strong>
-              <p>
-                All operational procedures and scenarios shown here are fictional and are included only
-                to demonstrate instructional-design methodology. They should not be interpreted as real-world safety guidance.
+                Employer procedures, terminology, scenarios, and operational details have been replaced with fictional equivalents.
+                Nothing shown here is real emergency-response guidance.
               </p>
             </div>
           </div>
@@ -835,8 +1152,8 @@
     <section class="case-section case-section--white">
       <div class="container section-grid">
         <div class="section-label reveal">
-          <p class="eyebrow">01 • Challenge</p>
-          <h2>The procedures existed. The course still had to be built.</h2>
+          <p class="eyebrow">01 • Problem</p>
+          <h2>The procedures existed. The learning didn’t.</h2>
         </div>
 
         <div class="reveal reveal--delay-1">
@@ -851,10 +1168,10 @@
 
           <div class="scale-grid" aria-label="Project scale">
             <div class="scale-item"><strong>20+</strong><span>Source procedures synthesized</span></div>
-            <div class="scale-item"><strong>2 hrs</strong><span>SME discovery</span></div>
-            <div class="scale-item"><strong>1</strong><span>Terminal learning objective</span></div>
+            <div class="scale-item scale-item--secondary"><strong>2 hrs</strong><span>SME discovery</span></div>
+            <div class="scale-item scale-item--secondary"><strong>1</strong><span>Terminal learning objective</span></div>
             <div class="scale-item"><strong>5</strong><span>Aligned enabling objectives</span></div>
-            <div class="scale-item"><strong>23</strong><span>Facilitated segments / slides</span></div>
+            <div class="scale-item scale-item--secondary"><strong>23</strong><span>Facilitated segments / slides</span></div>
             <div class="scale-item"><strong>3</strong><span>Integrated application scenarios</span></div>
           </div>
         </div>
@@ -864,8 +1181,8 @@
     <section class="case-section case-section--ivory">
       <div class="container section-grid">
         <div class="section-label reveal">
-          <p class="eyebrow">02 • Diagnosis</p>
-          <h2>Don’t reteach what experienced operators already know.</h2>
+          <p class="eyebrow">02 • Design</p>
+          <h2>Teach what is specific to the organization.</h2>
         </div>
 
         <div class="diagnosis-grid reveal reveal--delay-1">
@@ -895,8 +1212,8 @@
     <section class="case-section case-section--sage">
       <div class="container section-grid">
         <div class="section-label reveal">
-          <p class="eyebrow">03 • Architecture</p>
-          <h2>Build the course around the decisions learners actually need to make.</h2>
+          <p class="eyebrow">Course architecture</p>
+          <h2>Build around decisions, not documents.</h2>
         </div>
 
         <div class="architecture reveal reveal--delay-1" aria-label="Learning architecture">
@@ -920,11 +1237,8 @@
     <section class="case-section case-section--white">
       <div class="container">
         <div class="section-intro reveal">
-          <p class="eyebrow">04 • Fictional Teaching Framework</p>
+          <p class="eyebrow">Decision framework</p>
           <h2>SCOPE</h2>
-          <p>
-            For the public version, I created a fictional decision framework that shows how I gave a large body of source material one clear through-line for instruction and practice.
-          </p>
         </div>
 
         <div class="scope-grid reveal reveal--delay-1">
@@ -960,7 +1274,7 @@
         </div>
 
         <div class="fiction-note reveal">
-          <strong>SCOPE is fictional.</strong> It was created solely for this portfolio reconstruction and is not an emergency-response protocol.
+          Fictional framework used only to demonstrate the instructional structure.
         </div>
       </div>
     </section>
@@ -968,11 +1282,9 @@
     <section class="case-section case-section--ivory">
       <div class="container">
         <div class="section-intro reveal">
-          <p class="eyebrow">05 • Interactive Samples</p>
-          <h2>Let learners practice the decisions without publishing real procedures.</h2>
-          <p>
-            These reconstructed activities show the kinds of thinking learners practiced: reporting what matters, clarifying roles, and making coordinated decisions. They do not teach real emergency procedures.
-          </p>
+          <p class="eyebrow">03 • Practice</p>
+          <h2>Practice the decisions.</h2>
+          <p>Public reconstruction using fictional content.</p>
         </div>
 
         <div class="demo-shell reveal reveal--delay-1">
@@ -985,7 +1297,7 @@
 
             <div class="interaction-block">
               <h3>Build a Better Report</h3>
-              <p>Select the details that would help a decision-maker understand the current condition.</p>
+              <p>Select the details a decision-maker actually needs.</p>
 
               <div class="report-grid" data-report-options>
                 <button type="button" class="report-option" data-key="impact">Production stopped.</button>
@@ -1001,7 +1313,7 @@
               <div class="assembled-report" data-assembled-report hidden aria-live="polite"></div>
             </div>
 
-            <div class="interaction-block">
+            <div class="interaction-block interaction-block--secondary">
               <h3>Who Owns What?</h3>
               <p>Match each task to the role that most directly owns it in this fictional organization.</p>
 
@@ -1052,7 +1364,7 @@
 
             <div class="interaction-block">
               <h3>Scenario Lab</h3>
-              <p>Choose the strongest organizational response. These scenarios intentionally avoid real-world emergency procedures.</p>
+              <p>Choose the strongest organizational response.</p>
 
               <div class="scenario-box">
                 <h4 data-scenario-title>Scenario 1 of 3</h4>
@@ -1072,7 +1384,7 @@
               </div>
             </div>
 
-            <div class="interaction-block">
+            <div class="interaction-block interaction-block--secondary">
               <h3>Capstone</h3>
               <p>Move through a fictional operating disruption and see which parts of SCOPE your decisions activate.</p>
 
@@ -1103,8 +1415,8 @@
     <section class="case-section case-section--white">
       <div class="container section-grid">
         <div class="section-label reveal">
-          <p class="eyebrow">06 • Facilitator Design</p>
-          <h2>Design the instructor experience too.</h2>
+          <p class="eyebrow">04 • Facilitation</p>
+          <h2>Design for the instructor too.</h2>
         </div>
 
         <div class="guide-preview reveal reveal--delay-1">
@@ -1154,10 +1466,10 @@
       </div>
     </section>
 
-    <section class="case-section case-section--sage">
+    <section class="case-section case-section--sage case-section--secondary">
       <div class="container section-grid">
         <div class="section-label reveal">
-          <p class="eyebrow">07 • Alignment</p>
+          <p class="eyebrow">Alignment</p>
           <h2>Objectives, practice, and assessment should point to the same performance.</h2>
         </div>
 
@@ -1208,10 +1520,10 @@
       </div>
     </section>
 
-    <section class="case-section case-section--ivory">
+    <section class="case-section case-section--ivory case-section--secondary">
       <div class="container section-grid">
         <div class="section-label reveal">
-          <p class="eyebrow">08 • Performance Support</p>
+          <p class="eyebrow">Performance Support</p>
           <h2>If learners can look it up, don’t make them memorize it.</h2>
         </div>
 
@@ -1252,19 +1564,12 @@
     <section class="case-section case-section--ink">
       <div class="container section-grid">
         <div class="section-label reveal">
-          <p class="eyebrow eyebrow--light">09 • Reflection</p>
-          <h2>What I took from the project.</h2>
+          <p class="eyebrow eyebrow--light">Takeaway</p>
+          <h2>High-stakes content still needs restraint.</h2>
         </div>
 
         <div class="reflection-copy reveal reveal--delay-1">
-          <p>High-stakes content makes it tempting to teach everything.</p>
-          <p>This project pushed me in the opposite direction.</p>
-          <p>
-            Experienced learners did not need every foundational concept repeated. They needed the organization-specific expectations, realistic practice, and a facilitator prepared to coach the reasoning behind their decisions.
-          </p>
-          <p>
-            The value of the finished program was not the number of procedures or slides. It was the structure connecting the source material to the decisions learners needed to make.
-          </p>
+          <p>The strongest design decision was deciding what not to teach.</p>
         </div>
       </div>
     </section>
