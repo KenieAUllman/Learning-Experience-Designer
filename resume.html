@@ -3,92 +3,369 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Résumé for McKena Ullman, a learning experience designer and instructional designer with experience in curriculum, eLearning, instructor-led training, assessment, and analytics." />
+  <meta name="description" content="Résumé for McKena Ullman, Learning Experience Designer with 7+ years of experience in curriculum development, eLearning, instructor-led training, and learning analytics." />
   <meta name="author" content="McKena Ullman" />
-  <meta name="theme-color" content="#163A2F" />
-  <!-- SEO -->
+  <meta name="theme-color" content="#131a11" />
   <link rel="canonical" href="https://kenieaullman.github.io/Learning-Experience-Designer/resume.html" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Résumé | McKena Ullman, Learning Experience Designer" />
-  <meta property="og:description" content="Résumé for McKena Ullman, a learning experience designer and instructional designer with experience in curriculum, eLearning, instructor-led training, assessment, and analytics." />
+  <meta property="og:description" content="Learning Experience Designer with 7+ years of experience across financial services, corporate learning, and education." />
   <meta property="og:url" content="https://kenieaullman.github.io/Learning-Experience-Designer/resume.html" />
   <meta property="og:site_name" content="McKena Ullman Learning Design Portfolio" />
   <meta name="twitter:card" content="summary" />
-  <!-- /SEO -->
   <title>Résumé | McKena Ullman, Learning Experience Designer</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/components.css" />
   <script src="js/main.js" defer></script>
+
   <style>
-    .resume-simple{padding:clamp(4.5rem,9vw,7rem) 0;background:var(--warm-ivory)}
-    .resume-top{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end}
-    .resume-simple h1{max-width:13ch}
-    .exp-list{border-top:1px solid var(--border)}
-    .exp{display:grid;grid-template-columns:180px 1fr;gap:2rem;padding:1.6rem 0;border-bottom:1px solid var(--border)}
-    .exp .date{font-size:.82rem;color:var(--muted-ink)}
-    .exp .org{color:var(--evergreen);font-weight:800;margin-bottom:.7rem}
-    .exp ul{margin:0;padding-left:1.1rem;color:var(--muted-ink);font-size:.9rem}
-    .exp li+li{margin-top:.45rem}
-    .edu{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    .edu article{padding:1.3rem;border:1px solid var(--border);background:var(--white)}
-    @media(max-width:760px){.resume-top,.exp,.edu{grid-template-columns:1fr}}
+    .resume-hero {
+      padding: clamp(5rem,9vw,7.5rem) 0 clamp(4rem,7vw,6rem);
+      background: var(--color-dark, #131a11);
+      color: var(--color-text-light, #ede6d3);
+      border-bottom: 1px solid var(--line);
+    }
+    .resume-hero-grid {
+      display:grid;
+      grid-template-columns:minmax(0,1.25fr) auto;
+      gap:clamp(2rem,6vw,6rem);
+      align-items:end;
+    }
+    .resume-hero .eyebrow { color:var(--color-gold); }
+    .resume-hero h1 {
+      margin:0 0 1rem;
+      color:var(--color-text-light);
+      font-family:var(--font-display);
+      font-size:clamp(3.8rem,8vw,7rem);
+      line-height:.94;
+    }
+    .resume-summary {
+      max-width:760px;
+      margin:0;
+      color:var(--color-text-light-soft);
+      font-size:1.04rem;
+      line-height:1.7;
+    }
+    .resume-actions {
+      display:flex;
+      flex-direction:column;
+      gap:.8rem;
+      align-items:flex-start;
+    }
+    .resume-contact {
+      margin-top:1.5rem;
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem 1.2rem;
+      color:var(--color-text-light-soft);
+      font-size:.82rem;
+    }
+    .resume-contact a { color:var(--color-accent); text-decoration:none; }
+    .resume-section {
+      padding:clamp(4rem,8vw,6.5rem) 0;
+      background:var(--color-paper-bright, #f8f4ea);
+    }
+    .resume-section + .resume-section { border-top:1px solid var(--border); }
+    .resume-section--dark {
+      background:var(--color-dark-alt, #1b2418);
+      color:var(--color-text-light);
+      border-top:1px solid var(--line) !important;
+    }
+    .resume-section--dark .eyebrow { color:var(--color-gold); }
+    .resume-section--dark h2 { color:var(--color-text-light); }
+    .resume-section-head {
+      display:grid;
+      grid-template-columns:minmax(180px,.38fr) minmax(0,1fr);
+      gap:clamp(2rem,6vw,6rem);
+      align-items:start;
+    }
+    .resume-section h2 {
+      margin:0;
+      max-width:9ch;
+      font-family:var(--font-accent);
+      font-size:clamp(2.2rem,4vw,3.6rem);
+      font-weight:600;
+      line-height:1.05;
+    }
+    .competencies {
+      display:grid;
+      gap:0;
+      border-top:1px solid var(--line);
+    }
+    .competency-row {
+      display:grid;
+      grid-template-columns:180px 1fr;
+      gap:1.5rem;
+      padding:1.15rem 0;
+      border-bottom:1px solid var(--line);
+    }
+    .competency-row strong {
+      color:var(--color-accent);
+      font-family:var(--font-accent);
+      font-size:1.15rem;
+      font-weight:600;
+    }
+    .competency-row span { color:var(--color-text-light-soft); }
+    .experience-list { border-top:1px solid var(--border); }
+    .experience {
+      display:grid;
+      grid-template-columns:minmax(170px,.3fr) minmax(0,1fr);
+      gap:clamp(1.5rem,5vw,4rem);
+      padding:clamp(1.8rem,4vw,2.6rem) 0;
+      border-bottom:1px solid var(--border);
+    }
+    .experience-date {
+      color:var(--muted-ink);
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .experience h3 {
+      margin:0 0 .25rem;
+      font-family:var(--font-accent);
+      font-size:clamp(1.45rem,2.6vw,2rem);
+      font-weight:600;
+      line-height:1.15;
+    }
+    .experience-org {
+      margin:0 0 1rem;
+      color:var(--warm-brass);
+      font-weight:700;
+    }
+    .experience ul {
+      margin:0;
+      padding-left:1.15rem;
+      color:var(--muted-ink);
+    }
+    .experience li + li { margin-top:.55rem; }
+    .project-list {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1px;
+      border:1px solid var(--line);
+      background:var(--line);
+    }
+    .resume-project {
+      padding:clamp(1.4rem,3vw,2rem);
+      background:var(--color-dark-alt);
+    }
+    .resume-project .project-type {
+      margin:0 0 .65rem;
+      color:var(--color-gold);
+      font-size:.67rem;
+      font-weight:700;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .resume-project h3 {
+      margin:0 0 .75rem;
+      color:var(--color-text-light);
+      font-family:var(--font-accent);
+      font-size:1.45rem;
+      font-weight:600;
+    }
+    .resume-project p {
+      margin:0;
+      color:var(--color-text-light-soft);
+      font-size:.9rem;
+      line-height:1.6;
+    }
+    .education-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1px;
+      border:1px solid var(--border);
+      background:var(--border);
+    }
+    .education-grid article {
+      padding:1.5rem;
+      background:var(--white);
+    }
+    .education-grid h3 {
+      margin:0 0 .35rem;
+      font-family:var(--font-accent);
+      font-size:1.35rem;
+      font-weight:600;
+    }
+    .education-grid p { margin:0; color:var(--muted-ink); }
+    @media(max-width:800px){
+      .resume-hero-grid,.resume-section-head,.experience{grid-template-columns:1fr}
+      .resume-actions{align-items:flex-start}
+      .competency-row{grid-template-columns:1fr;gap:.35rem}
+      .project-list,.education-grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <header class="site-header" data-header>
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="McKena Ullman home">
-        <span class="brand-name">McKena Ullman</span><span class="brand-title">Learning Designer</span>
+        <span class="brand-name">McKena Ullman</span>
+        <span class="brand-title">Learning Designer</span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span><span></span></button>
       <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
-        <a href="work.html">Work</a><a href="about.html">About</a><a href="resume.html" aria-current="page">Résumé</a><a href="contact.html">Contact</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="resume.html" aria-current="page">Résumé</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="resume-simple">
-      <div class="container resume-top">
-        <div><p class="eyebrow">Résumé</p><h1>Learning design across education, training, and complex operations.</h1></div>
-        <a class="button button--primary" href="assets/downloads/McKena-Ullman-Resume.pdf" download>Download PDF</a>
+    <section class="resume-hero">
+      <div class="container resume-hero-grid">
+        <div>
+          <p class="eyebrow">Résumé</p>
+          <h1>McKena Ullman</h1>
+          <p class="resume-summary">
+            Learning Experience Designer with 7+ years of experience in curriculum development, eLearning, and instructor-led training across financial services, corporate learning, and education. Skilled in translating complex information into practical learning solutions through needs analysis, instructional design, and performance evaluation. Combines hands-on development expertise with business analysis and stakeholder consulting.
+          </p>
+          <div class="resume-contact">
+            <span>(801) 400-2452</span>
+            <a href="mailto:ullman.kena@gmail.com">ullman.kena@gmail.com</a>
+            <span>Pleasant Grove, UT</span>
+            <a href="index.html">Portfolio</a>
+          </div>
+        </div>
+        <div class="resume-actions">
+          <a class="button button--light" href="assets/downloads/McKena-Ullman-Resume.pdf" download>Download PDF</a>
+        </div>
       </div>
     </section>
 
-    <section class="section section--white">
+    <section class="resume-section resume-section--dark">
+      <div class="container resume-section-head">
+        <div>
+          <p class="eyebrow">Core Competencies</p>
+          <h2>What I bring.</h2>
+        </div>
+        <div class="competencies">
+          <div class="competency-row">
+            <strong>Learning Design</strong>
+            <span>Curriculum Architecture, Needs Analysis, ADDIE, Scenario-Based Learning, Assessment Design, ILT/VILT, Performance Support</span>
+          </div>
+          <div class="competency-row">
+            <strong>Technology</strong>
+            <span>Articulate Storyline 360, Rise 360, LMS, SCORM/xAPI, Microsoft Excel, Generative AI</span>
+          </div>
+          <div class="competency-row">
+            <strong>Strategy &amp; Evaluation</strong>
+            <span>SME Collaboration, Stakeholder Consulting, Learning Analytics, Competency Development, Onboarding</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-section">
       <div class="container">
-        <p class="eyebrow">Selected Experience</p>
-        <div class="exp-list">
-          <article class="exp">
-            <div class="date">2026–Present</div>
-            <div><h3>Instructional Designer / Training Specialist</h3><p class="org">American Cruise Lines</p><ul><li>Designs Storyline, Rise, ILT, and curriculum from operational standards and SOPs.</li><li>Builds assessments, learning pathways, facilitator support, and training analytics.</li></ul></div>
+        <p class="eyebrow">Professional Experience</p>
+        <div class="experience-list">
+
+          <article class="experience">
+            <div class="experience-date">June 2026 – Present</div>
+            <div>
+              <h3>eLearning Content Developer &amp; Curriculum Designer</h3>
+              <p class="experience-org">American Cruise Lines</p>
+              <ul>
+                <li>Design eLearning, instructor-led training, and assessments for maritime employees and officers in a regulated operational environment.</li>
+                <li>Developed 10+ SOP-aligned lesson plans and facilitator guides supporting more than eight hours of instruction.</li>
+                <li>Designed an emergency-response learning system incorporating measurable objectives, facilitated scenarios, and performance support.</li>
+                <li>Redesigned onboarding in Articulate Rise and Storyline, replacing memorization-focused content with interactive, application-based learning.</li>
+                <li>Analyzed 1,050+ workforce records and developed a training analytics dashboard examining retention, cohort outcomes, and operational trends.</li>
+              </ul>
+            </div>
           </article>
-          <article class="exp">
-            <div class="date">2024–2026</div>
-            <div><h3>Learning &amp; Performance Consultant</h3><p class="org">RPE Strategies</p><ul><li>Turned complex financial and underwriting concepts into guides, webinars, microlearning, and interactive tools.</li><li>Built learning pathways that helped clients apply technical concepts independently.</li></ul></div>
+
+          <article class="experience">
+            <div class="experience-date">August 2024 – May 2026</div>
+            <div>
+              <h3>Learning Design &amp; Business Training</h3>
+              <p class="experience-org">RPE Strategies</p>
+              <ul>
+                <li>Designed and delivered sales-team training on real estate investment analysis, underwriting, and business development.</li>
+                <li>Created instructional resources and analytical tools to help team members evaluate investment opportunities independently.</li>
+                <li>Directed training development, research, and business presentations for an independent real estate venture.</li>
+              </ul>
+            </div>
           </article>
-          <article class="exp">
-            <div class="date">2023–2024</div>
-            <div><h3>Training Coordinator</h3><p class="org">All In Credit Union</p><ul><li>Designed onboarding, SOPs, training resources, and internal knowledge systems.</li><li>Restructured onboarding workflows and improved employee retention by 12%.</li></ul></div>
+
+          <article class="experience">
+            <div class="experience-date">September 2023 – May 2024</div>
+            <div>
+              <h3>Training Coordinator &amp; Instructional Designer</h3>
+              <p class="experience-org">All In Credit Union</p>
+              <ul>
+                <li>Designed and coordinated onboarding, product training, and instructional resources for employees in a regulated financial-services environment.</li>
+                <li>Developed Home Equity Line of Credit (HELOC) product training to support employee understanding of lending products, procedures, and operational expectations.</li>
+                <li>Collaborated with loan officers, compliance personnel, and subject matter experts to translate complex financial information into accessible, accurate learning materials.</li>
+                <li>Created and maintained job aids, standard operating procedures, and internal knowledge resources supporting employee development and consistent performance.</li>
+                <li>Supported onboarding and employee training improvements through curriculum development, instructional resources, and coordination of learning activities.</li>
+              </ul>
+            </div>
           </article>
-          <article class="exp">
-            <div class="date">2019–2023</div>
-            <div><h3>Teacher &amp; Economics Professor</h3><p class="org">Lumen Scholar Institute</p><ul><li>Designed online curriculum and eLearning across social studies and economics.</li><li>Mentored instructors and aligned content to learning objectives.</li></ul></div>
+
+          <article class="experience">
+            <div class="experience-date">August 2019 – August 2023</div>
+            <div>
+              <h3>Curriculum Designer &amp; Instructor</h3>
+              <p class="experience-org">Lumen Scholar Institute</p>
+              <ul>
+                <li>Designed and delivered 21 online courses serving more than 450 students, developing curriculum, instructional activities, assessments, and multimedia learning resources aligned to defined learning objectives.</li>
+                <li>Applied adult learning principles, differentiated instruction, and learner-centered design strategies across virtual and online learning environments.</li>
+                <li>Developed assessments and learning activities to evaluate knowledge acquisition and support continuous instructional improvement.</li>
+                <li>Used learning management systems to organize learning pathways, monitor student progress, and manage instructional resources.</li>
+                <li>Mentored instructors, provided feedback on instructional quality, and supported improvements in curriculum delivery.</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-section resume-section--dark">
+      <div class="container">
+        <p class="eyebrow">Selected Instructional Design Projects</p>
+        <div class="project-list">
+          <article class="resume-project">
+            <p class="project-type">Curriculum Architecture &amp; ILT</p>
+            <h3>Emergency Response Learning System</h3>
+            <p>Developed an instructor-led learning system translating operational procedures and SME expertise into aligned learning objectives, facilitated instruction, scenario-based practice, assessments, and performance support tools.</p>
+          </article>
+          <article class="resume-project">
+            <p class="project-type">Interactive eLearning Redesign</p>
+            <h3>Fleet Foundations</h3>
+            <p>Redesigned complex onboarding instruction around conceptual understanding and practical application. Developed interactive learning activities emphasizing classification, reasoning, and learner decision-making.</p>
+          </article>
+          <article class="resume-project">
+            <p class="project-type">Learning Evaluation</p>
+            <h3>Workforce Training Analytics</h3>
+            <p>Developed a workforce performance evaluation framework examining training outcomes, retention, cohort maturity, and operational variables. Created a public-facing portfolio reconstruction using synthetic data to demonstrate the analytical methodology.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section section--sage">
+    <section class="resume-section">
       <div class="container">
         <p class="eyebrow">Education</p>
-        <div class="edu">
-          <article><h3>M.A. International Relations &amp; Global Enterprise</h3><p>University of Utah</p></article>
-          <article><h3>B.A. Criminal Justice</h3><p>Utah Valley University</p></article>
+        <div class="education-grid">
+          <article>
+            <h3>Bachelor of Science (BS)</h3>
+            <p>Utah Valley University · 2015</p>
+          </article>
+          <article>
+            <h3>Master of Arts (MA)</h3>
+            <p>University of Utah · 2018</p>
+          </article>
         </div>
       </div>
     </section>
