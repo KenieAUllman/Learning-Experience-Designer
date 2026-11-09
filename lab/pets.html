@@ -553,6 +553,186 @@
         transition: none;
       }
     }
+  
+    /* Pets editorial frame v2 */
+    .pet-experience {
+      background:
+        radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--color-gold) 7%, transparent), transparent 28%),
+        var(--color-dark) !important;
+      color: var(--color-text-light);
+    }
+
+    .experience-bar {
+      border-bottom-color: var(--line) !important;
+      background: color-mix(in srgb, var(--color-dark) 94%, transparent) !important;
+      backdrop-filter: blur(14px);
+    }
+
+    .experience-title strong {
+      color: var(--color-text-light) !important;
+      font-family: var(--font-accent) !important;
+      font-weight: 600;
+    }
+
+    .experience-title span {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .experience-menu-toggle {
+      border-color: var(--line) !important;
+      background: transparent !important;
+      color: var(--color-text-light) !important;
+      font-weight: 500 !important;
+    }
+
+    .experience-menu-toggle::after {
+      color: var(--color-accent) !important;
+    }
+
+    .experience-menu {
+      border-color: var(--line) !important;
+      background: var(--color-dark-alt) !important;
+      box-shadow: 0 18px 46px rgba(0,0,0,.22) !important;
+    }
+
+    .experience-menu button {
+      color: var(--color-text-light-soft) !important;
+      font-weight: 500 !important;
+    }
+
+    .experience-menu button:hover,
+    .experience-menu button:focus-visible,
+    .experience-menu button.is-active {
+      background: var(--accent-wash) !important;
+      color: var(--color-text-light) !important;
+    }
+
+    .experience-state {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .experience-state .eyebrow {
+      color: var(--color-gold) !important;
+    }
+
+    .experience-state h1,
+    .pet-copy h1 {
+      color: var(--color-text-light) !important;
+    }
+
+    .state-lede,
+    .source-note,
+    .pet-copy > p,
+    .sources {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .source-note a,
+    .sources a {
+      color: var(--color-accent) !important;
+    }
+
+    /* The chart is the artifact, so it gets the intentional paper surface. */
+    .chart-card {
+      border-color: var(--line) !important;
+      background: var(--color-paper-bright) !important;
+      box-shadow: 18px 18px 0 rgba(0,0,0,.14) !important;
+    }
+
+    .chart-card .eyebrow {
+      color: var(--color-accent-deep) !important;
+    }
+
+    .chart-card h2 {
+      color: var(--color-ink) !important;
+    }
+
+    .chart-card-header p,
+    .donut-center span,
+    .chart-caveat {
+      color: var(--color-ink-soft) !important;
+    }
+
+    .legend-button {
+      border-color: var(--line-ink) !important;
+      background: transparent !important;
+      color: var(--color-ink) !important;
+      font-weight: 500 !important;
+    }
+
+    .legend-button:hover,
+    .legend-button:focus-visible,
+    .legend-button.is-active {
+      border-color: var(--color-accent-deep) !important;
+      background: color-mix(in srgb, var(--color-accent) 9%, transparent) !important;
+    }
+
+    /* Reasons become editorial rows instead of white mini-cards. */
+    .reason-list {
+      gap: 0 !important;
+      border: 0 !important;
+      border-top: 1px solid var(--line) !important;
+      background: transparent !important;
+    }
+
+    .reason {
+      padding: 1rem 0 !important;
+      border-bottom: 1px solid var(--line);
+      background: transparent !important;
+    }
+
+    .reason-number {
+      color: var(--color-accent) !important;
+    }
+
+    .reason strong {
+      color: var(--color-text-light) !important;
+      font-family: var(--font-accent);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .reason p {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .pet-visual {
+      border-color: var(--line) !important;
+      background: var(--color-dark-alt) !important;
+      box-shadow: 18px 18px 0 rgba(0,0,0,.14);
+    }
+
+    .fact-trigger:focus-visible {
+      outline-color: var(--color-accent) !important;
+    }
+
+    .speech-bubble {
+      border-color: var(--line-ink) !important;
+      border-radius: 0 !important;
+      background: var(--color-paper-bright) !important;
+      color: var(--color-ink) !important;
+      box-shadow: 12px 12px 0 rgba(19,26,17,.18) !important;
+    }
+
+    .speech-bubble::after {
+      border-color: var(--line-ink) !important;
+      background: var(--color-paper-bright) !important;
+    }
+
+    .speech-bubble strong {
+      color: var(--color-accent-deep) !important;
+    }
+
+    .image-hint {
+      background: color-mix(in srgb, var(--color-dark) 86%, transparent) !important;
+      color: var(--color-text-light) !important;
+      font-weight: 500 !important;
+    }
+
+    .experiment-footer {
+      border-top-color: var(--line) !important;
+      background: var(--color-dark-alt) !important;
+    }
   </style>
 </head>
 
