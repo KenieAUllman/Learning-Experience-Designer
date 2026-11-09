@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,follow" />
+  <title>McKena Ullman Résumé</title>
+  <style>
+    @page { size: Letter; margin: 0.48in 0.55in; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #ececec;
+      color: #111;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      line-height: 1.28;
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      background: #131a11;
+    }
+    .toolbar button, .toolbar a {
+      border: 0;
+      background: #e8a281;
+      color: #131a11;
+      padding: 9px 14px;
+      font: 700 12px Arial, sans-serif;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 22px auto;
+      padding: 0.48in 0.55in;
+      background: white;
+      box-shadow: 0 8px 30px rgba(0,0,0,.14);
+    }
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-size: 19pt;
+      line-height: 1.05;
+      font-weight: 700;
+    }
+    .contact {
+      margin: 5px 0 3px;
+      text-align: center;
+      font-size: 9.5pt;
+    }
+    .portfolio {
+      margin: 0 0 11px;
+      text-align: center;
+      font-size: 9.5pt;
+    }
+    a { color: inherit; }
+    .summary { margin: 0 0 10px; }
+    .section-title {
+      margin: 10px 0 5px;
+      font-size: 10.5pt;
+      font-weight: 700;
+    }
+    .competency {
+      margin: 0 0 5px;
+    }
+    .competency strong { font-weight: 700; }
+    .role {
+      margin-top: 9px;
+    }
+    .role-head {
+      margin: 0 0 4px;
+      font-weight: 700;
+      font-size: 10pt;
+    }
+    ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+    li { margin: 0 0 3px; }
+    .project {
+      margin-top: 8px;
+    }
+    .project-title {
+      margin: 0 0 3px;
+      font-weight: 700;
+    }
+    .project p { margin: 0; }
+    .education p { margin: 2px 0; }
+    @media print {
+      body { background: white; font-size: 9.6pt; }
+      .toolbar { display: none !important; }
+      .page {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+    }
+    @media (max-width: 900px) {
+      .page {
+        width: calc(100% - 24px);
+        min-height: auto;
+        margin: 12px;
+        padding: 28px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+    <a href="resume.html">Back to portfolio résumé</a>
+  </div>
+
+  <main class="page">
+    <h1>McKena Ullman</h1>
+    <p class="contact">(801) 400-2452 | ullman.kena@gmail.com | Pleasant Grove, UT</p>
+    <p class="portfolio">Portfolio: https://kenieaullman.github.io/Learning-Experience-Designer/</p>
+
+    <p class="summary">
+      Learning Experience Designer with 7+ years of experience in curriculum development, eLearning, and instructor-led training across financial services, corporate learning, and education. Skilled in translating complex information into practical learning solutions through needs analysis, instructional design, and performance evaluation. Combines hands-on development expertise with business analysis and stakeholder consulting.
+    </p>
+
+    <div class="section-title">Core Competencies:</div>
+    <p class="competency"><strong>Learning Design:</strong> Curriculum Architecture, Needs Analysis, ADDIE, Scenario-Based Learning, Assessment Design, ILT/VILT, Performance Support</p>
+    <p class="competency"><strong>Technology:</strong> Articulate Storyline 360, Rise 360, LMS, SCORM/xAPI, Microsoft Excel, Generative AI</p>
+    <p class="competency"><strong>Strategy &amp; Evaluation:</strong> SME Collaboration, Stakeholder Consulting, Learning Analytics, Competency Development, Onboarding</p>
+
+    <div class="section-title">Professional Experience:</div>
+
+    <section class="role">
+      <p class="role-head">eLearning Content Developer &amp; Curriculum Designer | American Cruise Lines | June 2026 – Present</p>
+      <ul>
+        <li>Design eLearning, instructor-led training, and assessments for maritime employees and officers in a regulated operational environment.</li>
+        <li>Developed 10+ SOP-aligned lesson plans and facilitator guides supporting more than eight hours of instruction.</li>
+        <li>Designed an emergency-response learning system incorporating measurable objectives, facilitated scenarios, and performance support.</li>
+        <li>Redesigned onboarding in Articulate Rise and Storyline, replacing memorization-focused content with interactive, application-based learning.</li>
+        <li>Analyzed 1,050+ workforce records and developed a training analytics dashboard examining retention, cohort outcomes, and operational trends.</li>
+      </ul>
+    </section>
+
+    <section class="role">
+      <p class="role-head">Learning Design &amp; Business Training | RPE Strategies | August 2024 – May 2026</p>
+      <ul>
+        <li>Designed and delivered sales-team training on real estate investment analysis, underwriting, and business development.</li>
+        <li>Created instructional resources and analytical tools to help team members evaluate investment opportunities independently.</li>
+        <li>Directed training development, research, and business presentations for an independent real estate venture.</li>
+      </ul>
+    </section>
+
+    <section class="role">
+      <p class="role-head">Training Coordinator &amp; Instructional Designer | All In Credit Union | September 2023 – May 2024</p>
+      <ul>
+        <li>Designed and coordinated onboarding, product training, and instructional resources for employees in a regulated financial-services environment.</li>
+        <li>Developed Home Equity Line of Credit (HELOC) product training to support employee understanding of lending products, procedures, and operational expectations.</li>
+        <li>Collaborated with loan officers, compliance personnel, and subject matter experts to translate complex financial information into accessible, accurate learning materials.</li>
+        <li>Created and maintained job aids, standard operating procedures, and internal knowledge resources supporting employee development and consistent performance.</li>
+        <li>Supported onboarding and employee training improvements through curriculum development, instructional resources, and coordination of learning activities.</li>
+      </ul>
+    </section>
+
+    <section class="role">
+      <p class="role-head">Curriculum Designer &amp; Instructor | Lumen Scholar Institute | August 2019 – August 2023</p>
+      <ul>
+        <li>Designed and delivered 21 online courses serving more than 450 students, developing curriculum, instructional activities, assessments, and multimedia learning resources aligned to defined learning objectives.</li>
+        <li>Applied adult learning principles, differentiated instruction, and learner-centered design strategies across virtual and online learning environments.</li>
+        <li>Developed assessments and learning activities to evaluate knowledge acquisition and support continuous instructional improvement.</li>
+        <li>Used learning management systems to organize learning pathways, monitor student progress, and manage instructional resources.</li>
+        <li>Mentored instructors, provided feedback on instructional quality, and supported improvements in curriculum delivery.</li>
+      </ul>
+    </section>
+
+    <div class="section-title">Selected Instructional Design Projects</div>
+
+    <section class="project">
+      <p class="project-title">Emergency Response Learning System | Curriculum Architecture &amp; ILT</p>
+      <p>Developed an instructor-led learning system translating operational procedures and SME expertise into aligned learning objectives, facilitated instruction, scenario-based practice, assessments, and performance support tools.</p>
+    </section>
+
+    <section class="project">
+      <p class="project-title">Fleet Foundations | Interactive eLearning Redesign</p>
+      <p>Redesigned complex onboarding instruction around conceptual understanding and practical application. Developed interactive learning activities emphasizing classification, reasoning, and learner decision-making.</p>
+    </section>
+
+    <section class="project">
+      <p class="project-title">Workforce Training Analytics | Learning Evaluation</p>
+      <p>Developed a workforce performance evaluation framework examining training outcomes, retention, cohort maturity, and operational variables. Created a public-facing portfolio reconstruction using synthetic data to demonstrate the analytical methodology.</p>
+    </section>
+
+    <div class="section-title">Education:</div>
+    <div class="education">
+      <p>Bachelor of Science (BS), Utah Valley University, 2015</p>
+      <p>Master of Arts (MA), University of Utah, 2018</p>
+    </div>
+  </main>
+</body>
+</html>
