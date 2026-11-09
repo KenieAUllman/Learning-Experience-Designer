@@ -1,11 +1,20 @@
 (() => {
-  // Build a Better Report
+  // Build the first update
   const selectedReportParts = new Set();
   const reportButtons = document.querySelectorAll("[data-report-options] .report-option");
   const buildReportButton = document.querySelector("[data-build-report]");
   const assembledReport = document.querySelector("[data-assembled-report]");
+  const reportCount = document.querySelector("[data-report-count]");
+  const requiredReportKeys = ["impact","people","action","unknown"];
+
+  const renderReportState = () => {
+    const selectedRequired = requiredReportKeys.filter((key) => selectedReportParts.has(key)).length;
+    if (reportCount) reportCount.textContent = selectedRequired + " of 4 selected";
+    if (buildReportButton) buildReportButton.disabled = selectedReportParts.size === 0;
+  };
 
   reportButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", "false");
     button.addEventListener("click", () => {
       const key = button.dataset.key;
       if (selectedReportParts.has(key)) {
@@ -17,39 +26,42 @@
         button.classList.add("is-selected");
         button.setAttribute("aria-pressed", "true");
       }
+      renderReportState();
     });
   });
 
-  buildReportButton.addEventListener("click", () => {
-    assembledReport.hidden = false;
+  if (buildReportButton) {
+    buildReportButton.addEventListener("click", () => {
+      if (!assembledReport) return;
+      assembledReport.hidden = false;
 
-    if (selectedReportParts.size === 0) {
-      assembledReport.innerHTML = "<strong>Select at least one piece of information first.</strong>";
-      return;
-    }
+      const missing = requiredReportKeys.filter((key) => !selectedReportParts.has(key));
+      const distractors = ["history","schedule"].filter((key) => selectedReportParts.has(key));
 
-    const rows = [];
-    if (selectedReportParts.has("observation")) rows.push(["What happened", "Unexpected equipment stop after an unusual noise was observed."]);
-    if (selectedReportParts.has("location")) rows.push(["Where", "Zone C."]);
-    if (selectedReportParts.has("impact")) rows.push(["Current impact", "Production stopped."]);
-    if (selectedReportParts.has("people")) rows.push(["People", "No injuries reported."]);
-    if (selectedReportParts.has("action")) rows.push(["Current action", "The area has been paused."]);
-    if (selectedReportParts.has("unknown")) rows.push(["Known / unknown", "The cause is not yet known."]);
+      if (missing.length === 0 && distractors.length === 0) {
+        assembledReport.innerHTML = `
+          <strong>Strong first update.</strong>
+          <p>You separated the current impact, people affected, action already taken, and what remains unknown.</p>
+        `;
+        return;
+      }
 
-    const usefulKeys = ["observation","location","impact","people","action","unknown"];
-    const complete = usefulKeys.every((key) => selectedReportParts.has(key));
+      if (missing.length === 0 && distractors.length > 0) {
+        assembledReport.innerHTML = `
+          <strong>You have the essential facts.</strong>
+          <p>For the first update, leave out background details that do not change the immediate decision.</p>
+        `;
+        return;
+      }
 
-    assembledReport.innerHTML = `
-      <dl>
-        ${rows.map(([label, value]) => `<dt>${label}</dt><dd>${value}</dd>`).join("")}
-      </dl>
-      <p style="margin:1rem 0 0;color:var(--evergreen);font-weight:800;">
-        ${complete
-          ? "Strong update. You separated facts, impact, current actions, and uncertainty."
-          : "Useful start. A stronger update usually distinguishes what happened, impact, current action, people affected, and what remains unknown."}
-      </p>
-    `;
-  });
+      assembledReport.innerHTML = `
+        <strong>Not quite yet.</strong>
+        <p>A useful first update should cover the current impact, people affected, action already taken, and what remains unknown.</p>
+      `;
+    });
+  }
+
+  renderReportState();
 
   // Who Owns What
   const roleFeedback = document.querySelector("[data-role-feedback]");
@@ -70,89 +82,37 @@
     });
   });
 
-  // Scenario Lab
-  const scenarios = [
-    {
-      text: "A piece of equipment stops unexpectedly during a busy operating period. An employee reports an unusual sound beforehand. No injuries have been reported, but the cause is unknown.",
-      correct: "b",
-      feedback: "The organizational priority is to establish what is known, maintain the current operational pause, and make sure the right people have usable information."
-    },
-    {
-      text: "An operating disruption affects a customer area. Two supervisors independently begin giving customers different instructions while management is still assessing the situation.",
-      correct: "b",
-      feedback: "The primary organizational risk is conflicting direction. Clarify who owns communication and what information has been confirmed."
-    },
-    {
-      text: "The disruption has been controlled and normal operations are beginning to resume. Is the response finished?",
-      correct: "c",
-      feedback: "Not necessarily. Follow-up may include documentation, remaining issues, corrective actions, and lessons that should inform future operations or training."
-    }
-  ];
-
-  const scenarioChoices = [
-    [
-      ["a","Restart it to see whether the issue repeats."],
-      ["b","Establish what is known, maintain the operational pause, and communicate the condition."],
-      ["c","Wait until the cause is known before communicating."],
-      ["d","Send a company-wide update immediately."]
-    ],
-    [
-      ["a","Give every available detail to customers immediately."],
-      ["b","Clarify communication ownership and align the confirmed message."],
-      ["c","Allow each supervisor to continue using their own judgment."],
-      ["d","Avoid communicating until the disruption is fully resolved."]
-    ],
-    [
-      ["a","Yes. Once operations resume, the response is complete."],
-      ["b","Yes, unless a manager asks for more work."],
-      ["c","Not necessarily. Recovery, documentation, and improvement may still remain."],
-      ["d","No. The entire training program must be repeated."]
-    ]
-  ];
-
-  let scenarioIndex = 0;
-  const scenarioTitle = document.querySelector("[data-scenario-title]");
+  // One follow-up decision
   const scenarioText = document.querySelector("[data-scenario-text]");
   const scenarioOptions = document.querySelector("[data-scenario-options]");
   const scenarioFeedback = document.querySelector("[data-scenario-feedback]");
   const nextScenario = document.querySelector("[data-next-scenario]");
+  const scenarioTitle = document.querySelector("[data-scenario-title]");
 
-  const renderScenario = () => {
-    const scenario = scenarios[scenarioIndex];
-    scenarioTitle.textContent = `Scenario ${scenarioIndex + 1} of ${scenarios.length}`;
-    scenarioText.textContent = scenario.text;
-    scenarioFeedback.textContent = "";
-    nextScenario.disabled = true;
-    nextScenario.textContent = scenarioIndex === scenarios.length - 1 ? "Restart Scenarios" : "Next Scenario";
+  if (scenarioTitle) scenarioTitle.textContent = "";
+  if (nextScenario) nextScenario.hidden = true;
 
-    scenarioOptions.innerHTML = scenarioChoices[scenarioIndex]
-      .map(([value, label]) => `<button type="button" class="scenario-option" data-choice="${value}">${label}</button>`)
-      .join("");
-
+  if (scenarioOptions) {
     scenarioOptions.querySelectorAll(".scenario-option").forEach((button) => {
       button.addEventListener("click", () => {
         const choice = button.dataset.choice;
-        scenarioOptions.querySelectorAll(".scenario-option").forEach((b) => b.disabled = true);
+        scenarioOptions.querySelectorAll(".scenario-option").forEach((b) => {
+          b.disabled = true;
+          b.classList.remove("is-correct","is-wrong");
+        });
 
-        if (choice === scenario.correct) {
+        if (choice === "b") {
           button.classList.add("is-correct");
-          scenarioFeedback.textContent = scenario.feedback;
+          if (scenarioFeedback) scenarioFeedback.textContent =
+            "Strong choice. It preserves the pause, separates confirmed facts from assumptions, and gives others enough information to coordinate.";
         } else {
           button.classList.add("is-wrong");
-          scenarioFeedback.textContent = `Not the strongest organizational response. ${scenario.feedback}`;
+          if (scenarioFeedback) scenarioFeedback.textContent =
+            "Not the strongest response. The priority is to preserve the pause, confirm what is known, and communicate enough information to support coordinated decisions.";
         }
-
-        nextScenario.disabled = false;
       });
     });
-  };
-
-  nextScenario.addEventListener("click", () => {
-    scenarioIndex = scenarioIndex === scenarios.length - 1 ? 0 : scenarioIndex + 1;
-    renderScenario();
-  });
-
-  renderScenario();
+  }
 
   // Capstone
   const capstone = [
