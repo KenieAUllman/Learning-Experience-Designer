@@ -198,6 +198,71 @@
       .competency-row{grid-template-columns:1fr;gap:.35rem}
       .project-list,.education-grid{grid-template-columns:1fr}
     }
+  
+    /* Resume editorial frame v2 */
+    .resume-section,
+    .resume-section--dark {
+      background: var(--color-dark-alt) !important;
+      color: var(--color-text-light) !important;
+      border-top: 1px solid var(--line) !important;
+    }
+
+    .resume-section:nth-of-type(even) {
+      background:
+        radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--color-gold) 5%, transparent), transparent 28%),
+        var(--color-dark) !important;
+    }
+
+    .resume-section .eyebrow {
+      color: var(--color-gold) !important;
+    }
+
+    .resume-section h2,
+    .resume-section h3 {
+      color: var(--color-text-light) !important;
+    }
+
+    .experience-list {
+      border-top-color: var(--line) !important;
+    }
+
+    .experience {
+      border-bottom-color: var(--line) !important;
+    }
+
+    .experience-date {
+      color: var(--color-gold) !important;
+      font-weight: 500 !important;
+    }
+
+    .experience-org {
+      color: var(--color-accent) !important;
+    }
+
+    .experience ul {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    .education-grid {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: clamp(1.5rem,4vw,3rem) !important;
+      border: 0 !important;
+      background: transparent !important;
+    }
+
+    .education-grid article {
+      padding: 1.2rem 0 !important;
+      border-top: 1px solid var(--line);
+      background: transparent !important;
+    }
+
+    .education-grid p {
+      color: var(--color-text-light-soft) !important;
+    }
+
+    @media(max-width:800px){
+      .education-grid { grid-template-columns:1fr; }
+    }
   </style>
 </head>
 <body>
