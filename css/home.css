@@ -917,3 +917,57 @@ button, input { font: inherit; color: inherit; }
     justify-content: space-between;
   }
 }
+
+
+/* ---------- homepage simplification v4 ---------- */
+.section-head--quiet {
+  gap: .7rem;
+}
+
+.section-head--quiet .display {
+  margin-bottom: 0;
+}
+
+.chooser--simple .choices {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 720px;
+}
+
+.steps--concise {
+  gap: 2rem 2.2rem;
+}
+
+.steps--concise .step {
+  gap: .35rem;
+}
+
+.steps--concise .step p {
+  color: var(--color-text-light-soft);
+  max-width: 28ch;
+}
+
+.about-prose--short {
+  max-width: 58ch;
+}
+
+.portfolio-note {
+  max-width: 60rem;
+  margin: clamp(3rem, 6vw, 4.5rem) 0 0;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  color: var(--color-text-light-soft);
+  font-family: var(--font-accent);
+  font-size: .95rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .chooser--simple .choices {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-note {
+    font-size: .9rem;
+  }
+}
