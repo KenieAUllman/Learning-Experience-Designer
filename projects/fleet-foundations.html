@@ -1223,6 +1223,54 @@
         min-height: 280px;
       }
     }
+  
+    .fleet-photo-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 1px;
+      margin: 0 0 clamp(2.25rem, 5vw, 3.75rem);
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .fleet-photo-strip figure {
+      min-width: 0;
+      margin: 0;
+      background: var(--warm-ivory);
+    }
+
+    .fleet-photo-strip img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      filter: saturate(.68) contrast(1.04) brightness(.9);
+    }
+
+    .fleet-photo-strip figcaption {
+      display: flex;
+      align-items: baseline;
+      gap: .55rem;
+      padding: .8rem .85rem .9rem;
+      color: var(--deep-ink);
+      font-family: var(--font-serif);
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    .fleet-photo-strip figcaption span {
+      color: var(--warm-brass);
+      font-family: var(--font-sans);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    @media (max-width: 760px) {
+      .fleet-photo-strip {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
   </style>
 </head>
 
@@ -1336,14 +1384,24 @@
           </p>
         </div>
 
-        <figure class="case-feature-visual reveal reveal--delay-1">
-          <img
-            src="../assets/images/home/fleet-foundations.jpg"
-            alt="Reconstructed Fleet Foundations learning screen showing fictional fleet classes and how design connects to operating purpose."
-            loading="lazy"
-          />
-          <figcaption>A public reconstruction of the redesigned learning experience.</figcaption>
-        </figure>
+        <div class="fleet-photo-strip reveal reveal--delay-1" aria-label="Four fictional fleet environments">
+          <figure>
+            <img src="https://images.pexels.com/photos/37490421/pexels-photo-37490421.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Passenger ferry at a riverbank." loading="lazy" />
+            <figcaption><span>01</span> River</figcaption>
+          </figure>
+          <figure>
+            <img src="https://images.pexels.com/photos/19683534/pexels-photo-19683534.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Passenger ferry crossing open water at dusk." loading="lazy" />
+            <figcaption><span>02</span> Coastal</figcaption>
+          </figure>
+          <figure>
+            <img src="https://images.pexels.com/photos/15194859/pexels-photo-15194859.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Passenger vessel maneuvering in a busy harbor." loading="lazy" />
+            <figcaption><span>03</span> Harbor</figcaption>
+          </figure>
+          <figure>
+            <img src="https://images.pexels.com/photos/17892479/pexels-photo-17892479.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="Passenger vessel navigating icy water below a glacier." loading="lazy" />
+            <figcaption><span>04</span> Explorer</figcaption>
+          </figure>
+        </div>
 
         <div class="before-after reveal">
           <div class="model-panel">
@@ -1454,7 +1512,7 @@
                   </div>
                   <figcaption>
                     Portfolio reference photography sourced from Pexels under its free-use license.
-                    <a data-fleet-photo-link href="https://www.pexels.com/photo/passenger-ferry-docked-at-riverside-shore-37490421/" target="_blank" rel="noopener">Pexels</a>.
+                    <a data-fleet-photo-link href="https://www.pexels.com/photo/passenger-ferry-docked-at-riverside-shore-37490421/" target="_blank" rel="noopener">View photo source ↗</a>
                   </figcaption>
                 </figure>
 
