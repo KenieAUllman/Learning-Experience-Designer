@@ -112,12 +112,14 @@
     return { done: done, total: p.stops.length, pct: done / p.stops.length };
   }
   function renderPath() {
-    var key = pathKey(), p = PATHS[key], pr = progress();
+    var key = pathKey(), p = PATHS[key], pr = progress(), hasPath = !!state.path;
+    var pathPanel = $("path-panel");
+    if (pathPanel) pathPanel.hidden = !hasPath;
     document.querySelectorAll(".choice").forEach(function (b) {
       b.setAttribute("aria-pressed", String(state.path === b.dataset.path));
     });
-    $("path-title").textContent = (state.path ? "Your path: " : "Suggested: ") + p.name + ", about " + p.minutes + " minutes";
-    $("path-count").textContent = pr.done + " of " + pr.total + " stops complete";
+    $("path-title").textContent = p.name + " · about " + p.minutes + " minutes";
+    $("path-count").textContent = pr.done + " of " + pr.total + " complete";
     var nextFound = false;
     var items = p.stops.map(function (id, i) {
       var isDone = !!state.done[id];
@@ -131,7 +133,7 @@
     $("path-list").innerHTML = items.join("");
 
     var label = pr.done + " of " + pr.total + " stops";
-    $("record-btn-status").textContent = label;
+    $("record-btn-status").textContent = hasPath ? label : "Choose a path";
     $("rec-count").textContent = label;
     $("rec-path").textContent = (state.path ? "" : "Suggested: ") + p.name;
     $("rec-bar").style.width = (pr.pct * 100) + "%";
